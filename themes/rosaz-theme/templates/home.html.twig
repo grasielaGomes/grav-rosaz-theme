@@ -1,0 +1,38 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  {# Hero section #}
+  <section
+    class="relative h-[70vh] flex items-center justify-center overflow-hidden
+           bg-[url('{{ url('theme://images/hero-bg.jpg') }}')] bg-cover bg-center bg-fixed"
+  >
+    <div class="absolute inset-0 bg-slate-900/40"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto text-center text-white px-4">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+        {{ page.header.hero_title|default('Um título bonito aqui') }}
+      </h1>
+      <p class="text-lg md:text-xl mb-6">
+        {{ page.header.hero_subtitle|default('Um subtítulo inspirador para resumir a missão do instituto.') }}
+      </p>
+      <a
+        href="{{ page.header.hero_button_link|default('#') }}"
+        class="inline-flex items-center px-6 py-3 rounded-full bg-sky-500 hover:bg-sky-600 text-sm font-medium shadow-lg"
+      >
+        {{ page.header.hero_button_text|default('Saiba mais') }}
+      </a>
+    </div>
+  </section>
+
+  {# Example content section #}
+  <section class="py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-6">
+        {{ page.header.section_title|default('Seção de destaque') }}
+      </h2>
+      <div class="prose max-w-none">
+        {{ page.content|raw }}
+      </div>
+    </div>
+  </section>
+{% endblock %}

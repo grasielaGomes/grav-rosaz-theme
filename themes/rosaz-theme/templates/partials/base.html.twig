@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: 'pt' }}">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      {% if header.title %}{{ header.title }} | {% endif %}{{ site.title|e }}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="{{ url('theme://css/theme.css') }}" />
+
+    {# Optional: place for extra head content #}
+    {% block head_extra %}{% endblock %}
+  </head>
+
+  <body class="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+    {% include 'partials/header.html.twig' %}
+
+    <main class="flex-1">
+      {% block content %}{% endblock %}
+    </main>
+
+    {% include 'partials/footer.html.twig' %}
+
+    <script src="{{ url('theme://js/main.js') }}"></script>
+    {% block body_extra %}{% endblock %}
+  </body>
+</html>
