@@ -1,48 +1,123 @@
-<header class="w-full border-b border-slate-200 bg-white/90 backdrop-blur">
-  <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-    <a href="{{ base_url_absolute }}" class="flex items-center gap-2">
-      <span
-        class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-sky-500 text-white text-lg font-bold"
-      >
-        A
-      </span>
-      <span class="font-semibold tracking-tight">
-        {{ 'ROSAZ.BRAND' | t }}
-      </span>
-    </a>
+{# partials/header.html.twig #}
 
-    <nav class="hidden md:flex gap-6 text-sm items-center">
-      {# menu baseado nas páginas #} {% for p in pages.children.visible %}
-      <a
-        href="{{ p.url }}"
-        class="hover:text-sky-600 {% if p.active or p.activeChild %}text-sky-600 font-medium{% endif %}"
-      >
-        {{ p.menu }}
-      </a>
-      {% endfor %} {# simple language selector #}
-      <div class="flex items-center gap-2 text-xs">
-        {% for lang in grav.language.getLanguages %} {% set is_active =
-        (grav.language.getActive == lang) %} {# Build language-specific URL
-        WITHOUT stacking the current lang #} {% set lang_prefix =
-        grav.language.getLanguageURLPrefix(lang) %} {% set lang_url =
-        base_url_simple ~ lang_prefix ~ page.rawRoute %}
-
-        <a
-          href="{{ lang_url }}"
-          class="uppercase tracking-wide {{
-            is_active
-              ? 'font-bold text-sky-600'
-              : 'text-slate-500 hover:text-sky-600'
-          }}"
-        >
-          {{ lang }}
+<header
+  class="sticky top-0 z-40 w-full border-b border-neutral-200 bg-neutral-100 bg-opacity-70 backdrop-blur"
+>
+  <div class="max-w-6xl mx-auto px-4">
+    {# 3 zones: left (logo) | center (nav) | right (languages) #}
+    <div class="flex items-center gap-4 py-4 h-30">
+      {# LEFT: logo #}
+      <div class="flex flex-1 items-center justify-start">
+        <a href="{{ base_url_absolute }}" class="flex items-center gap-3">
+          <img
+            src="{{ url('theme://images/logo.png') }}"
+            alt="Beato Rosaz"
+            class="h-16 w-auto object-contain"
+          />
         </a>
-        {% endfor %}
-
-        <span class="text-[10px] text-slate-400">
-          lang: {{ grav.language.getActive }}
-        </span>
       </div>
-    </nav>
+
+      {# CENTER: main navigation (desktop) #}
+      <nav class="nav-main hidden md:flex flex-none justify-center">
+        <ul class="flex items-center gap-8">
+          {% for p in pages.children.visible %}
+          <li>
+            <a
+              href="{{ p.url }}"
+              class="nav-link inline-flex items-center py-1.5 border-b-2 border-transparent transition {% if p.active or p.activeChild %} text-orange-500 border-orange-500 {% else %} text-neutral-600 hover:text-orange-500 hover:border-orange-300 {% endif %}"
+            >
+              {{ p.menu }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      {# RIGHT: language switcher + mobile button #}
+      <div class="flex flex-1 items-center justify-end gap-3">
+        {# Language selector (desktop only) #}
+        <div class="hidden md:flex items-center gap-2 text-xs">
+          {% for lang in grav.language.getLanguages %} {% set is_active =
+          (grav.language.getActive == lang) %} {% set lang_prefix =
+          grav.language.getLanguageURLPrefix(lang) %} {% set lang_url =
+          base_url_simple ~ lang_prefix ~ page.rawRoute %}
+
+          <a
+            href="{{ lang_url }}"
+            class="uppercase tracking-wide px-2 py-1 rounded
+                {{
+              is_active
+                ? 'font-bold text-orange-600 bg-orange-50 border border-orange-300'
+                : 'text-neutral-500 hover:text-orange-600 border border-transparent hover:border-orange-300'
+            }}"
+          >
+            {{ lang }}
+          </a>
+          {% endfor %}
+        </div>
+
+        {# Mobile menu button #}
+        <button
+          class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-neutral-300 text-neutral-700 bg-white/80"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          data-nav-toggle
+        >
+          <span class="sr-only">Menu</span>
+
+          {# Icon: hamburger (open state) #}
+          <svg
+            data-icon-open
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 7h16" />
+            <path d="M4 12h16" />
+            <path d="M4 17h16" />
+          </svg>
+
+          {# Icon: close (when menu is open) #}
+          <svg
+            data-icon-close
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="h-6 w-6 hidden"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M6 6l12 12" />
+            <path d="M18 6l-12 12" />
+          </svg>
+        </button>
+      </div>
+      {# Mobile navigation panel #}
+      <nav
+        class="nav-main-mobile md:hidden absolute left-0 right-0 top-full border-b border-neutral-200 bg-neutral-50/95 backdrop-blur shadow-sm opacity-0 pointer-events-none transition-opacity duration-200"
+        data-nav-panel
+      >
+        <ul class="flex flex-col gap-1 px-4 py-3 text-sm">
+          {% for p in pages.children.visible %}
+          <li>
+            <a
+              href="{{ p.url }}"
+              class="block py-2 text-neutral-800 hover:text-orange-500 border-b border-neutral-200 last:border-b-0"
+            >
+              {{ p.menu }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>

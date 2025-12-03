@@ -1,0 +1,105 @@
+{# partials/navigation.html.twig #} {% import _self as nav %} {# Recursive macro
+to render submenu levels #} {% macro render_menu(parent) %} {% import _self as
+nav %} {% set children = parent.children.visible %} {% if children|length %}
+<ul class="pl-4 mt-2 space-y-1 navbar__submenu">
+  {% for page in children %} {% set has_children = page.children.visible|length
+  > 0 %}
+  <li class="relative group navbar__item">
+    <a
+      href="{{ page.url }}"
+      class="inline-block py-1 text-sm text-neutral-700 hover:text-sky-600 navbar__link"
+    >
+      {{ page.menu }}
+    </a>
+
+    {# Render deeper levels if needed #} {% if has_children %}
+    <div class="mt-1 pl-2 border-l border-neutral-200 navbar__submenu-wrapper">
+      {{ nav.render_menu(page) }}
+    </div>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %} {% endmacro %} {# Get top level pages (children of root) #} {% set
+root = pages.root %} {% set top_pages = root.children.visible %}
+
+<nav class="flex items-center justify-between h-16 gap-4">
+  {# Logo area #}
+  <div class="flex items-center flex-shrink-0">
+    <a href="{{ home_url }}" class="flex items-center gap-2">
+      <img
+        src="{{ url('theme://images/logo.png') }}"
+        alt="Beato Rosaz"
+        class="h-10 w-auto"
+      />
+      {# Optional text logo #}
+      <span class="text-base font-semibold text-neutral-800 hidden sm:inline">
+        {{ site.title }}
+      </span>
+    </a>
+  </div>
+
+  {# Desktop menu #}
+  <div class="hidden md:flex items-center gap-8">
+    <ul class="flex items-center gap-6 text-sm navbar__menu">
+      {% for page in top_pages %} {% set has_children =
+      page.children.visible|length > 0 %}
+      <li class="relative group navbar__item navbar__item--top">
+        <a
+          href="{{ page.url }}"
+          class="inline-flex items-center gap-1 py-2 text-neutral-700 hover:text-sky-600 {{
+            page.active ? 'font-semibold text-sky-700' : ''
+          }} navbar__link"
+        >
+          {{ page.menu }}
+
+          {# Simple chevron indicator for dropdowns #} {% if has_children %}
+          <span class="text-xs opacity-70">▾</span>
+          {% endif %}
+        </a>
+
+        {# Dropdown for children #} {% if has_children %}
+        <div
+          class="absolute left-0 top-full mt-2 min-w-[220px] rounded-md bg-white shadow-lg border border-neutral-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity navbar__dropdown"
+        >
+          <div class="py-2 px-3">
+            {{ nav.render_menu(page) }}
+          </div>
+        </div>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+
+    {# Language switcher #}
+    <div class="flex items-center gap-2 navbar__languages">
+      {% for code in grav.language.getLanguages %} {% set is_active =
+      (grav.language.getActive == code) or (not grav.language.getActive and code
+      == 'it') %}
+      <a
+        href="{{ uri.route(true, '', code) }}"
+        class="text-xs font-semibold px-2 py-1 rounded border transition {{
+          is_active
+            ? 'bg-sky-600 text-white border-sky-600'
+            : 'border-neutral-300 text-neutral-600 hover:border-sky-500 hover:text-sky-600'
+        }}"
+      >
+        {{ code | upper }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# Mobile button placeholder #}
+  <button
+    class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-neutral-300 text-neutral-700"
+    type="button"
+    aria-label="Toggle navigation"
+    data-nav-toggle
+  >
+    <span class="sr-only">Open main menu</span>
+    <span class="block w-5 h-0.5 bg-neutral-700 mb-1"></span>
+    <span class="block w-5 h-0.5 bg-neutral-700 mb-1"></span>
+    <span class="block w-5 h-0.5 bg-neutral-700"></span>
+  </button>
+</nav>
