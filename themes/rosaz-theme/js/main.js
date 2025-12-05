@@ -51,3 +51,74 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 })
+
+// Desktop dropdown: highlight path in cascading menu
+document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.querySelector('.nav-main')
+  if (!nav) return
+
+  const PATH_BG = '#f97316' // Tailwind orange-500
+  const PATH_TEXT = '#ffffff' // white
+
+  const clearPath = () => {
+    // Clear dropdown links
+    const dropdownLinks = nav.querySelectorAll('[data-nav-link="dropdown"]')
+    dropdownLinks.forEach((el) => {
+      el.style.backgroundColor = ''
+      el.style.color = ''
+    })
+
+    // Clear root nav links (top-level menu)
+    const rootLinks = nav.querySelectorAll('.nav-link')
+    rootLinks.forEach((el) => {
+      el.style.color = ''
+      el.style.borderBottomColor = ''
+    })
+  }
+
+  const findParentDropdownLink = (link) => {
+    // Find the closest dropdown panel that contains this link
+    const panel = link.closest('[data-nav-subpanel]')
+    if (!panel) return null
+
+    // Parent <li> of the panel, which contains the parent link
+    const parentLi = panel.parentElement
+    if (!parentLi) return null
+
+    return parentLi.querySelector('[data-nav-link="dropdown"]')
+  }
+
+  const updatePath = (leafLink) => {
+    clearPath()
+
+    // 1) Highlight dropdown chain (leaf -> parents dentro do dropdown)
+    let current = leafLink
+    while (current) {
+      current.style.backgroundColor = PATH_BG
+      current.style.color = PATH_TEXT
+      current = findParentDropdownLink(current)
+    }
+
+    // 2) Highlight root nav link (item do menu principal)
+    const rootLi = leafLink.closest('li.group')
+    if (rootLi) {
+      const rootLink = rootLi.querySelector('.nav-link')
+      if (rootLink) {
+        rootLink.style.color = PATH_BG
+        rootLink.style.borderBottomColor = PATH_BG
+      }
+    }
+  }
+
+  // When hovering any dropdown link, update the active path
+  nav.addEventListener('mouseover', (event) => {
+    const link = event.target.closest('[data-nav-link="dropdown"]')
+    if (!link) return
+    updatePath(link)
+  })
+
+  // When leaving the whole nav area, clear the path
+  nav.addEventListener('mouseleave', () => {
+    clearPath()
+  })
+})
