@@ -1,4 +1,4 @@
-// Mobile navigation toggle
+// Mobile navigation toggle (simple dropdown)
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('[data-nav-toggle]')
   const panel = document.querySelector('[data-nav-panel]')
@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeIcon = toggle.querySelector('[data-icon-close]')
 
   const setOpenState = (isOpen) => {
-    // Toggle panel visibility with animation
     if (isOpen) {
       panel.classList.remove(
         'opacity-0',
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
       toggle.setAttribute('aria-expanded', 'false')
     }
 
-    // Toggle icons
     if (openIcon && closeIcon) {
       if (isOpen) {
         openIcon.classList.add('hidden')
@@ -45,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Close menu when clicking a link inside the panel
   panel.addEventListener('click', (event) => {
-    if (event.target.tagName.toLowerCase() === 'a') {
+    const link = event.target.closest('a')
+    if (link) {
       isOpen = false
       setOpenState(false)
     }
