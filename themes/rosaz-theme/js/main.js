@@ -1,5 +1,5 @@
+// Mobile navigation toggle
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile navigation toggle
   const toggle = document.querySelector('[data-nav-toggle]')
   const panel = document.querySelector('[data-nav-panel]')
 
@@ -9,14 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeIcon = toggle.querySelector('[data-icon-close]')
 
   const setOpenState = (isOpen) => {
-    // Toggle panel visibility
+    // Toggle panel visibility with animation
     if (isOpen) {
-      panel.classList.remove('opacity-0', 'pointer-events-none')
-      panel.classList.add('opacity-100')
+      panel.classList.remove(
+        'opacity-0',
+        '-translate-y-2',
+        'pointer-events-none'
+      )
+      panel.classList.add('opacity-100', 'translate-y-0')
       toggle.setAttribute('aria-expanded', 'true')
     } else {
-      panel.classList.add('opacity-0', 'pointer-events-none')
-      panel.classList.remove('opacity-100')
+      panel.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none')
+      panel.classList.remove('opacity-100', 'translate-y-0')
       toggle.setAttribute('aria-expanded', 'false')
     }
 
@@ -39,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setOpenState(isOpen)
   })
 
-  // Optional: close menu when clicking a link inside the panel
+  // Close menu when clicking a link inside the panel
   panel.addEventListener('click', (event) => {
     if (event.target.tagName.toLowerCase() === 'a') {
       isOpen = false
