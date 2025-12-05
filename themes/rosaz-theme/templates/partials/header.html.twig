@@ -8,6 +8,7 @@ dropdown_items(parent, depth) %} {% import _self as nav %}
   <li class="relative">
     <a
       href="{{ page.url }}"
+      data-nav-link="dropdown"
       class="block px-5 py-3 text-sm text-neutral-800
                  transition-colors duration-150
                  hover:bg-orange-500 hover:text-neutral-100 {{
@@ -20,6 +21,7 @@ dropdown_items(parent, depth) %} {% import _self as nav %}
 
     {# Side dropdown for deeper levels #} {% if has_children %}
     <div
+      data-nav-subpanel
       class="pointer-events-none opacity-0 transition-opacity duration-200 absolute left-full top-0 peer-hover:opacity-100 peer-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto"
     >
       {{ nav.dropdown_items(page, depth + 1) }}
