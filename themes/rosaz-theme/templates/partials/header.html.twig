@@ -1,33 +1,74 @@
-{# partials/header.html.twig #}
+{# Recursive dropdown macro for multi-level menus #} {% macro
+dropdown_items(parent, depth) %} {% import _self as nav %}
+
+<ul class="min-w-[220px] bg-white shadow-lg rounded-b-xl">
+  {% for page in parent.children.visible %} {% set has_children =
+  page.children.visible|length > 0 %}
+
+  <li class="relative">
+    <a
+      href="{{ page.url }}"
+      class="block px-5 py-3 text-sm text-neutral-800
+                 transition-colors duration-150
+                 hover:bg-orange-500 hover:text-neutral-100 {{
+        loop.last ? 'hover:rounded-b-xl' : ''
+      }}
+                 {{ has_children ? 'peer' : '' }}"
+    >
+      {{ page.menu }}
+    </a>
+
+    {# Side dropdown for deeper levels #} {% if has_children %}
+    <div
+      class="pointer-events-none opacity-0 transition-opacity duration-200 absolute left-full top-0 peer-hover:opacity-100 peer-hover:pointer-events-auto hover:opacity-100 hover:pointer-events-auto"
+    >
+      {{ nav.dropdown_items(page, depth + 1) }}
+    </div>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %} {% import _self as nav %}
 
 <header
   class="sticky top-0 z-40 w-full border-b border-neutral-200 bg-neutral-100 bg-opacity-70 backdrop-blur"
 >
   <div class="max-w-6xl mx-auto px-4">
     {# 3 zones: left (logo) | center (nav) | right (languages) #}
-    <div class="flex items-center gap-4 py-4 h-30">
+    <div class="flex items-center gap-4 h-24 md:h-[112px] relative">
       {# LEFT: logo #}
       <div class="flex flex-1 items-center justify-start">
         <a href="{{ base_url_absolute }}" class="flex items-center gap-3">
           <img
             src="{{ url('theme://images/logo.png') }}"
             alt="Beato Rosaz"
-            class="h-16 w-auto object-contain"
+            class="h-12 md:h-14 w-auto object-contain"
           />
         </a>
       </div>
 
       {# CENTER: main navigation (desktop) #}
       <nav class="nav-main hidden md:flex flex-none justify-center">
-        <ul class="flex items-center gap-8">
-          {% for p in pages.children.visible %}
-          <li>
+        <ul class="flex items-center gap-6">
+          {% for p in pages.children.visible %} {% set has_children =
+          p.children.visible|length > 0 %}
+
+          <li class="group">
             <a
               href="{{ p.url }}"
-              class="nav-link inline-flex items-center py-1.5 border-b-2 border-transparent transition {% if p.active or p.activeChild %} text-orange-500 border-orange-500 {% else %} text-neutral-600 hover:text-orange-500 hover:border-orange-300 {% endif %}"
+              class="nav-link inline-flex items-center py-1.5 border-b-2 border-transparent transition {% if p.active or p.activeChild %} text-orange-500 border-orange-500 font-semibold {% else %} text-neutral-800 hover:text-orange-500 hover:border-orange-300 {% endif %}"
             >
               {{ p.menu }}
             </a>
+
+            {# Dropdown panel for children pages (desktop) #} {% if has_children
+            %}
+            <div
+              class="pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 absolute left pt-[38px]"
+            >
+              {{ nav.dropdown_items(p, 0) }}
+            </div>
+            {% endif %}
           </li>
           {% endfor %}
         </ul>
@@ -58,7 +99,7 @@
 
         {# Mobile menu button #}
         <button
-          class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-neutral-300 text-neutral-700 bg-white/80"
+          class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-neutral-300 text-neutral-700 bg-white/80 transition-colors duration-150 hover:bg-neutral-100 hover:border-orange-300 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:ring-offset-2 focus:ring-offset-neutral-100 active:scale-95"
           type="button"
           aria-label="Toggle navigation"
           aria-expanded="false"
@@ -102,7 +143,7 @@
       </div>
       {# Mobile navigation panel #}
       <nav
-        class="nav-main-mobile md:hidden absolute left-0 right-0 top-full border-b border-neutral-200 bg-neutral-50/95 backdrop-blur shadow-sm opacity-0 pointer-events-none transition-opacity duration-200"
+        class="nav-main-mobile md:hidden absolute left-0 right-0 top-full border-b border-neutral-200 bg-neutral-100/95 backdrop-blur shadow-sm opacity-0 -translate-y-2 pointer-events-none transform transition-all duration-600 ease-out"
         data-nav-panel
       >
         <ul class="flex flex-col gap-1 px-4 py-3 text-sm">
