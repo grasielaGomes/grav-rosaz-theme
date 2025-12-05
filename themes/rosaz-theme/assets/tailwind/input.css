@@ -18,11 +18,3 @@
     @apply font-heading;
   }
 }
-
-@layer components {
-  /* Main navigation typography */
-  .nav-main,
-  .nav-link {
-    @apply font-heading;
-  }
-}
