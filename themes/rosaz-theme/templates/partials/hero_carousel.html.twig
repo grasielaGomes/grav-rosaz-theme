@@ -1,0 +1,109 @@
+{% set slides = slides ?? [] %} {% if slides|length %}
+<section class="relative bg-neutral-200 overflow-hidden hidden md:block">
+  <div
+    class="max-w-6xl mx-auto px-4 py-16 md:py-20 relative"
+    data-hero-carousel
+  >
+    {# Spacer to define the height of the hero (the image uses this as a
+    reference) #}
+    <div class="min-h-[320px] lg:min-h-[360px]"></div>
+    {# Overlapping slides #} {% for slide in slides %} {# Resolve image path
+    once #} {% set image_src = null %} {% if slide.image is defined and
+    slide.image %} {% set image_src = slide.image starts with 'theme://' ?
+    slide.image : 'theme://images/' ~ slide.image %} {% endif %}
+    <div
+      class="absolute inset-0 flex flex-row items-center gap-10 opacity-0 pointer-events-none transition-opacity duration-700"
+      data-hero-slide="{{ loop.index0 }}"
+    >
+      {# Left: text #}
+      <div class="w-1/2 relative z-1">
+        {% if slide.tag %}
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500 mb-3"
+        >
+          {{ slide.tag }}
+        </p>
+        {% endif %} {% if slide.title %}
+        <h1
+          class="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold leading-tight text-neutral-900 mb-4"
+        >
+          {{ slide.title }}
+        </h1>
+        {% endif %} {% if slide.subtitle %}
+        <p class="text-base md:text-lg text-neutral-700 mb-8 max-w-xl">
+          {{ slide.subtitle }}
+        </p>
+        {% endif %}
+        <div class="flex flex-wrap items-center gap-3">
+          {% if slide.primary_cta_link and slide.primary_cta_label %}
+          <a
+            href="{{ slide.primary_cta_link }}"
+            class="inline-flex items-center justify-center rounded-full bg-orange-500 px-6 py-2.5 text-sm font-semibold text-neutral-50 shadow-sm hover:bg-orange-600 transition-colors duration-200"
+          >
+            {{ slide.primary_cta_label }}
+          </a>
+          {% endif %} {% if slide.secondary_cta_link and
+          slide.secondary_cta_label %}
+          <a
+            href="{{ slide.secondary_cta_link }}"
+            class="inline-flex items-center justify-center rounded-full border border-neutral-300 px-6 py-2.5 text-sm font-semibold text-neutral-800 hover:border-orange-400 hover:text-orange-500 transition-colors duration-200"
+          >
+            {{ slide.secondary_cta_label }}
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {# Right: image + two thin stripes, all with coordinated cutouts #} {% if
+      image_src %}
+      <div class="absolute inset-y-0 right-0 w-[60%] z-0" aria-hidden="true">
+        {# 1) main image #}
+        <div class="absolute inset-0">
+          <img
+            src="{{ url(image_src) }}"
+            alt=""
+            class="h-full w-full object-cover"
+            style="clip-path: polygon(20% 0, 90% 0, 70% 100%, 0 100%)"
+          />
+          <div
+            class="absolute inset-0 pointer-events-none"
+            style="
+              clip-path: polygon(20% 0, 90% 0, 70% 100%, 0 100%);
+              background: linear-gradient(
+                to right,
+                rgba(15, 23, 42, 0.95) 5%,
+                rgba(15, 23, 42, 0.65) 20%,
+                rgba(15, 23, 42, 0.45) 30%,
+                rgba(15, 23, 42, 0) 60%
+              );
+              mix-blend-mode: multiply;
+            "
+          ></div>
+        </div>
+        {# 2) First orange stripe, attached to the right edge of the image #}
+        <div
+          class="absolute inset-0 bg-orange-500"
+          style="clip-path: polygon(91% 0, 100% 0, 80% 100%, 71% 100%)"
+        ></div>
+        {# 3) Second light orange stripe, much thinner at the edge #}
+        <div
+          class="absolute inset-0 bg-yellow-500"
+          style="clip-path: polygon(98% 0, 100% 0, 80% 100%, 78% 100%)"
+        ></div>
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %} {# Dots navigation #} {% if slides|length > 1 %}
+    <div class="mt-6 flex gap-2 relative z-2" data-hero-dots>
+      {% for slide in slides %}
+      <button
+        type="button"
+        class="h-1.5 w-6 rounded-full bg-neutral-300 transition-colors duration-200"
+        data-hero-dot="{{ loop.index0 }}"
+        aria-label="Go to slide {{ loop.index }}"
+      ></button>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
