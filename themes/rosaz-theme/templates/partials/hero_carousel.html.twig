@@ -57,20 +57,21 @@
       image_src %}
       <div class="absolute inset-y-0 right-0 w-[60%] z-0" aria-hidden="true">
         {# 1) main image #}
-        <div class="absolute inset-0">
+        <div
+          class="absolute inset-0 overflow-hidden"
+          style="clip-path: polygon(20% 0, 90% 0, 70% 100%, 0 100%)"
+        >
           <img
             src="{{ url(image_src) }}"
             alt=""
-            class="h-full w-full object-cover"
-            style="clip-path: polygon(20% 0, 90% 0, 70% 100%, 0 100%)"
+            class="h-full w-full object-cover animate-hero-image"
           />
           <div
             class="absolute inset-0 pointer-events-none"
             style="
-              clip-path: polygon(20% 0, 90% 0, 70% 100%, 0 100%);
               background: linear-gradient(
                 to right,
-                rgba(15, 23, 42, 0.95) 5%,
+                rgba(15, 23, 42, 1) 5%,
                 rgba(15, 23, 42, 0.65) 20%,
                 rgba(15, 23, 42, 0.45) 30%,
                 rgba(15, 23, 42, 0) 60%
