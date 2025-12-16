@@ -16,7 +16,7 @@
       data-hero-slide="{{ loop.index0 }}"
     >
       {# Left: text #}
-      <div class="w-1/2 relative z-1">
+      <div data-hero-text class="w-1/2 relative z-1 animate-hero-text">
         {% if slide.tag %}
         <p
           class="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500 mb-3"
@@ -34,7 +34,10 @@
           {{ slide.subtitle }}
         </p>
         {% endif %}
-        <div class="flex flex-wrap items-center gap-3">
+        <div
+          data-hero-cta
+          class="flex flex-wrap items-center gap-3 animate-hero-cta"
+        >
           {% if slide.primary_cta_link and slide.primary_cta_label %}
           <a
             href="{{ slide.primary_cta_link }}"
