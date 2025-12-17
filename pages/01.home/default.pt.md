@@ -19,6 +19,16 @@ hero_slides:
     secondary_cta_label: 'Quem somos'
     secondary_cta_link: '/chi-siamo'
     image: 'theme://images/hero-2.png'
+parallax_banner:
+  enable: true
+  image: 'theme://images/banner-home.png'
+  overlay_color: 'rgba(249,115,22,0.9)'
+  eyebrow: 'Edoardo Rosaz'
+  title: '"A providência conduz tudo suavemente ao seu próprio fim."'
+  cta:
+    label: 'Saiba mais'
+    link: '/beato-rosaz'
+  align: center # center | left | right
 section_title: 'Últimas notícias'
 ---
 
