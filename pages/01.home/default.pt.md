@@ -29,7 +29,25 @@ parallax_banner:
     label: 'Saiba mais'
     link: '/beato-rosaz'
   align: center # center | left | right
-section_title: 'Últimas notícias'
+help_cards:
+  title: 'Nossas missões'
+  items:
+    - icon: 'italia.webp'
+      title: 'Italia'
+      text: 'Presença fraterna no dia a dia das famílias e jovens do Vale de Susa.'
+      link: '/presenze'
+    - icon: 'brasile.webp'
+      title: 'Brasil'
+      text: 'Comunidades em contextos de missão, ao lado dos mais frágeis.'
+      link: '/presenze/missao'
+    - icon: 'mozambico.webp'
+      title: 'Moçambique'
+      text: 'Caminhos de formação humana e espiritual inspirados no Beato Rosaz.'
+      link: '/associazione'
+    - icon: 'albania.webp'
+      title: 'Albânia'
+      text: 'Leigos, leigas e simpatizantes que partilham o mesmo carisma.'
+      link: '/amici-del-rosaz'
 ---
 
 Conteúdo em **português** aqui.
