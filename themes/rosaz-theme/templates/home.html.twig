@@ -1,12 +1,35 @@
-{# user/themes/rosaz-theme/templates/home.html.twig #} {% extends
-'partials/base.html.twig' %} {% block content %} {# HERO CAROUSEL (usa
-header.hero_slides) #} {% set slides = page.header.hero_slides ?? [] %} {% if
-slides|length %} {% include 'partials/hero_carousel.html.twig' with { slides:
-slides } %} {% endif %} {# PARALLAX BANNER (usa header.parallax_banner) #} {%
-set banner = page.header.parallax_banner ?? {} %} {# Se não tiver "enable:
-false", mostramos o banner #} {% if banner and (banner.enable is not defined or
-banner.enable) %} {% include 'partials/parallax_banner.html.twig' with { image:
-banner.image ?? null, overlay_color: banner.overlay_color ?? null, eyebrow:
-banner.eyebrow ?? null, title: banner.title ?? null, text: banner.text ?? null,
-cta_label: banner.cta.label ?? null, cta_link: banner.cta.link ?? null, align:
-banner.align ?? 'center' } %} {% endif %} {% endblock %}
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+  {# HERO CAROUSEL #}
+  {% set slides = page.header.hero_slides ?? [] %}
+  {% if slides|length %}
+    {% include 'partials/hero_carousel.html.twig' with { slides: slides } %}
+  {% endif %}
+
+  {# PARALLAX BANNER #}
+  {% set banner = page.header.parallax_banner ?? {} %}
+  {% if banner and (banner.enable is not defined or banner.enable) %}
+    {% include 'partials/parallax_banner.html.twig' with {
+      image:         banner.image ?? null,
+      overlay_color: banner.overlay_color ?? null,
+      eyebrow:       banner.eyebrow ?? null,
+      title:         banner.title ?? null,
+      text:          banner.text ?? null,
+      cta_label:     banner.cta.label ?? null,
+      cta_link:      banner.cta.link ?? null,
+      align:         banner.align ?? 'center'
+    } %}
+  {% endif %}
+
+  {# HIGHLIGHT CARDS SECTION #}
+  {% set help = page.header.help_cards ?? {} %}
+  {% if help.items is defined and help.items|length %}
+    {% include 'partials/highlight_cards.html.twig' with {
+      title: help.title ?? null,
+      items: help.items
+    } %}
+  {% endif %}
+
+{% endblock %}
