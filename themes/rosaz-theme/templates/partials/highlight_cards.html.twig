@@ -18,12 +18,12 @@ items|length %}
       ?? null %}
 
       <article
-        class="group bg-transparent rounded-3xl border border-neutral-200 shadow-sm px-6 py-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-orange-500 hover:bg-white"
+        class="group bg-transparent rounded-3xl border border-neutral-200 shadow-sm px-6 py-8 flex flex-col justify-between transition-all duration-800 hover:-translate-y-1 hover:shadow-xl hover:border-orange-500 hover:bg-white"
       >
         <div>
           {% if icon %}
           <div
-            class="inline-flex items-center justify-center  "
+            class="inline-flex items-center justify-center"
           >
             <img src="{{ url(icon) }}" alt="" class="h-20 w-20 object-contain" />
           </div>
@@ -51,7 +51,7 @@ items|length %}
         >
           {{ 'ROSAZ.READ_MORE'|t|default('Saiba mais') }}
           <span
-            class="ml-2 inline-block transform transition-transform duration-200 group-hover:translate-x-1 group-hover:text-orange-500"
+            class="ml-2 inline-block transform transition-transform duration-600 group-hover:translate-x-1 group-hover:text-orange-500"
           >
             &rarr;
           </span>
