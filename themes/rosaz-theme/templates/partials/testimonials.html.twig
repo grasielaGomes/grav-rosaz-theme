@@ -1,0 +1,112 @@
+{% set t = testimonials ?? page.header.testimonials ?? {} %}
+{% set items = (t.items ?? []) %}
+
+{% if items|length %}
+  {# Limit to a maximum of 2 testimonials #}
+  {% set items = items|slice(0, 2) %}
+  {% set background_image = t.background_image ?? null %}
+  {% set label = t.label ?? null %}
+  {% set title = t.title ?? null %}
+  {% set subtitle = t.subtitle ?? null %}
+
+  <section class="relative bg-neutral-100 py-16 md:py-20 overflow-hidden">
+    {# Subtle background image #}
+    {% if background_image %}
+      {% set bg_src = background_image starts with 'theme://' 
+        ? background_image 
+        : 'theme://images/' ~ background_image 
+      %}
+      <div
+        class="absolute inset-0 pointer-events-none opacity-20"
+        style="
+          background-image: url('{{ url(bg_src) }}');
+          background-size: cover;
+          background-position: center;
+        "
+      ></div>
+    {% endif %}
+
+    <div class="relative max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-start gap-10">
+        {# Left column: section title #}
+        <div class="md:w-5/12 space-y-4">
+          {% if label %}
+            <p
+              class="text-xs font-semibold tracking-[0.28em] uppercase text-orange-500"
+            >
+              {{ label }}
+            </p>
+          {% endif %}
+
+          {% if title %}
+            <h2
+              class="text-2xl md:text-3xl lg:text-4xl font-heading font-semibold text-neutral-900"
+            >
+              {{ title }}
+            </h2>
+          {% endif %}
+
+          {% if subtitle %}
+            <p class="text-sm md:text-base text-neutral-700 max-w-md">
+              {{ subtitle }}
+            </p>
+          {% endif %}
+        </div>
+
+        {# Right column: testimonial cards (max 2) #}
+        <div class="md:w-7/12 grid gap-8 md:grid-cols-2">
+          {% for item in items %}
+            {% set avatar = item.avatar ?? null %}
+            {% if avatar %}
+              {% set avatar_src = avatar starts with 'theme://' 
+                ? avatar 
+                : 'theme://images/' ~ avatar 
+              %}
+            {% endif %}
+
+            <article class="flex flex-col items-start">
+              {# Main card with indicator #}
+              <div class="testimonial-card">
+                <div class="flex flex-col gap-4 mb-4">
+                  <img
+                      src="{{ url('theme://images/quotes.webp') }}"
+                      alt=""
+                      class="h-10 w-16 object-contain"
+                    />
+                  <p class="text-sm md:text-[15px] leading-relaxed text-neutral-700">
+                    {{ item.quote }}
+                  </p>
+                </div>
+              </div>
+
+              {# Avatar + caption OUTSIDE the card #}
+              <div class="mt-6 flex items-center gap-3 pl-4">
+                {% if avatar_src %}
+                  <img
+                    src="{{ url(avatar_src) }}"
+                    alt="{{ item.name|e }}"
+                    class="h-12 w-12 rounded-full object-cover"
+                  />
+                {% endif %}
+
+                <div>
+                  {% if item.name %}
+                    <p class="text-sm font-semibold text-neutral-900">
+                      {{ item.name }}
+                    </p>
+                  {% endif %}
+
+                  {% if item.role %}
+                    <p class="text-xs text-orange-500 mt-0.5">
+                      {{ item.role }}
+                    </p>
+                  {% endif %}
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
