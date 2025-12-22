@@ -1,6 +1,10 @@
-{# partials/navigation.html.twig #} {% import _self as nav %} {# Recursive macro
-to render submenu levels #} {% macro render_menu(parent) %} {% import _self as
-nav %} {% set children = parent.children.visible %} {% if children|length %}
+{% import _self as nav %} 
+{# Recursive macro
+to render submenu levels #} 
+{% macro render_menu(parent) %} 
+{% import _self as nav %} 
+{% set children = parent.children.visible %} 
+{% if children|length %}
 <ul class="pl-4 mt-2 space-y-1 navbar__submenu">
   {% for page in children %} {% set has_children = page.children.visible|length
   > 0 %}
