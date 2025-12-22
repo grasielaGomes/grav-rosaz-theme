@@ -32,4 +32,9 @@
     } %}
   {% endif %}
 
+  {# TESTIMONIALS #}
+  {% include 'partials/testimonials.html.twig' with {
+    testimonials: page.header.testimonials ?? {}
+  } %}
+
 {% endblock %}
