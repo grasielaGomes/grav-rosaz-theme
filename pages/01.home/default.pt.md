@@ -48,6 +48,24 @@ help_cards:
       title: 'Albânia'
       text: 'Leigos, leigas e simpatizantes que partilham o mesmo carisma.'
       link: '/amici-del-rosaz'
----
+testimonials:
+  background_image: ''
+  label: 'NOSSOS TESTEMUNHOS'
+  title: 'O que dizem sobre a missão Rosaz'
+  subtitle: 'Palavras de quem viveu de perto a presença das irmãs nas comunidades.'
 
-Conteúdo em **português** aqui.
+  items:
+    - quote: >
+        A comunidade Rosaz foi um sinal concreto da ternura de Deus no nosso bairro.
+        Sempre presentes, simples e profundamente humanas.
+      name: 'Maria Helena'
+      role: 'Voluntária em Susa'
+      avatar: 'avatar-maria.png'
+
+    - quote: >
+        A presença das irmãs mudou a forma como a paróquia se relaciona com os jovens.
+        Hoje temos uma pastoral muito mais viva.
+      name: 'Pe. Ricardo'
+      role: 'Pároco, diocese de Turim'
+      avatar: 'avatar-ricardo.png'
+---
