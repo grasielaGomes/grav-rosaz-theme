@@ -68,4 +68,29 @@ testimonials:
       name: 'Pe. Ricardo'
       role: 'Pároco, diocese de Turim'
       avatar: 'avatar-ricardo.png'
+events_section:
+  enabled: true
+  eyebrow: 'PRONTOS PARA CAMINHAR JUNTOS'
+  title: 'Próximos eventos'
+  items:
+    - title: 'Missa com a comunidade'
+      image: 'events/evento-1.png'
+      date: '2025-10-20' # ISO para poder formatar o dia/mês
+      time: '18h00 – 19h30'
+      location: 'Susa, Itália'
+      url: '/eventos/missa-comunidade'
+
+    - title: 'Encontro de formação'
+      image: 'events/evento-2.png'
+      date: '2025-11-05'
+      time: '15h00 – 17h00'
+      location: 'Turim, Itália'
+      url: '/eventos/encontro-formacao'
+
+    - title: 'Retiro espiritual'
+      image: 'events/evento-3.png'
+      date: '2026-01-12'
+      time: '09h00 – 17h00'
+      location: 'Val di Susa'
+      url: '/eventos/retiro-espiritual'
 ---
