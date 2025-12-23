@@ -37,4 +37,10 @@
     testimonials: page.header.testimonials ?? {}
   } %}
 
+   {# EVENTS #}
+  {% set events_section = page.header.events_section ?? {} %}
+  {% if events_section.enabled and (events_section.items|default([])|length > 0) %}
+    {% include 'partials/events_grid.html.twig' with { events_section: events_section } %}
+  {% endif %}
+
 {% endblock %}
