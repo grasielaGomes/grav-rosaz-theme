@@ -10,7 +10,7 @@
 
   {# PARALLAX BANNER #}
   {% set banner = page.header.parallax_banner ?? {} %}
-  {% if banner and (banner.enable is not defined or banner.enable) %}
+  {% if banner and (banner.enabled is not defined or banner.enabled) %}
     {% include 'partials/parallax_banner.html.twig' with {
       image:         banner.image ?? null,
       overlay_color: banner.overlay_color ?? null,
@@ -25,17 +25,20 @@
 
   {# HIGHLIGHT CARDS SECTION #}
   {% set help = page.header.help_cards ?? {} %}
-  {% if help.items is defined and help.items|length %}
-    {% include 'partials/highlight_cards.html.twig' with {
-      title: help.title ?? null,
-      items: help.items
-    } %}
+  {% if help.enabled ?? false %}
+    {% if help.items is defined and help.items|length %}
+      {% include 'partials/highlight_cards.html.twig' with {
+        title: help.title ?? null,
+        items: help.items
+      } %}
+    {% endif %}
   {% endif %}
 
   {# TESTIMONIALS #}
-  {% include 'partials/testimonials.html.twig' with {
-    testimonials: page.header.testimonials ?? {}
-  } %}
+  {% set testimonials = page.header.testimonials ?? {} %}
+  {% if testimonials.enabled ?? false %}
+    {% include 'partials/testimonials.html.twig' with { testimonials: testimonials } %}
+  {% endif %}
 
    {# EVENTS #}
   {% set events_section = page.header.events_section ?? {} %}
