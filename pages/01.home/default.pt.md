@@ -19,8 +19,9 @@ hero_slides:
     secondary_cta_label: 'Quem somos'
     secondary_cta_link: '/chi-siamo'
     image: 'theme://images/hero-2.png'
+
 parallax_banner:
-  enable: true
+  enabled: true
   image: 'theme://images/banner-home.png'
   overlay_color: 'rgba(249,115,22,0.9)'
   eyebrow: 'Edoardo Rosaz'
@@ -29,7 +30,9 @@ parallax_banner:
     label: 'Saiba mais'
     link: '/beato-rosaz'
   align: center # center | left | right
+
 help_cards:
+  enabled: true
   title: 'Nossas missões'
   items:
     - icon: 'italia.webp'
@@ -48,26 +51,25 @@ help_cards:
       title: 'Albânia'
       text: 'Leigos, leigas e simpatizantes que partilham o mesmo carisma.'
       link: '/amici-del-rosaz'
+
 testimonials:
+  enabled: true
   background_image: ''
   label: 'NOSSOS TESTEMUNHOS'
   title: 'O que dizem sobre a missão Rosaz'
   subtitle: 'Palavras de quem viveu de perto a presença das irmãs nas comunidades.'
-
   items:
     - quote: >
-        A comunidade Rosaz foi um sinal concreto da ternura de Deus no nosso bairro.
-        Sempre presentes, simples e profundamente humanas.
+        A comunidade Rosaz foi um sinal concreto da ternura de Deus no nosso bairro. Sua presença constante trouxe esperança e renovação para muitas famílias. Sempre presentes, simples e profundamente humanas, as irmãs foram verdadeiras pontes de amor e solidariedade, ajudando-nos a enfrentar desafios com fé e coragem.
       name: 'Maria Helena'
       role: 'Voluntária em Susa'
       avatar: 'avatar-maria.png'
-
     - quote: >
-        A presença das irmãs mudou a forma como a paróquia se relaciona com os jovens.
-        Hoje temos uma pastoral muito mais viva.
+        A presença das irmãs mudou profundamente a dinâmica da nossa paróquia, especialmente no trabalho com os jovens. Sua dedicação e proximidade trouxeram uma nova energia para a pastoral, tornando-a mais acolhedora, participativa e cheia de vida. Hoje, vemos jovens mais engajados, famílias mais unidas e uma comunidade que realmente vive o Evangelho no dia a dia.
       name: 'Pe. Ricardo'
       role: 'Pároco, diocese de Turim'
       avatar: 'avatar-ricardo.png'
+
 events_section:
   enabled: true
   eyebrow: 'PRONTOS PARA CAMINHAR JUNTOS'
