@@ -1,11 +1,53 @@
 pt:
   ROSAZ:
     READ_MORE: 'Saiba mais'
+    FOOTER:
+      CTA_TITLE: 'Suas doações podem transformar vidas.'
+      CTA_SUBTITLE: 'Cada gesto de carinho ajuda a manter viva a missão do Rosaz.'
+      CTA_BUTTON: 'Doar agora'
+
+      COL_LINKS_TITLE: 'Links'
+      COL_MISSION_TITLE: 'Missão'
+
+      LINK_HOME: 'Início'
+      LINK_ABOUT: 'Quem somos'
+      LINK_PRESENCES: 'Presenças'
+      LINK_EVENTS: 'Eventos & notícias'
+      LINK_CHARISM: 'Carisma'
+      LINK_FRIENDS: 'Amigos do Rosaz'
+      LINK_ASSOCIATION: 'Associação'
+
+      CONTACT_TITLE: 'Contato'
+      ADDRESS_LINE1: 'Via Exemplo 123'
+      ADDRESS_LINE2: '10059 Susa (TO)'
+      ADDRESS_LINE3: 'Itália'
+
+      COPYRIGHT_TEXT: 'Suore Francescane di Susa. Todos os direitos reservados.'
+      COPYRIGHT_BUILT_WITH: 'Built with Grav & Tailwind.'
 
 it:
   ROSAZ:
     READ_MORE: 'Scopri di più'
+    FOOTER:
+      CTA_TITLE: 'Le tue donazioni possono cambiare la loro vita quotidiana.'
+      CTA_SUBTITLE: 'Ogni gesto di cura mantiene viva la missione del Rosaz.'
+      CTA_BUTTON: 'Dona ora'
 
-en:
-  ROSAZ:
-    READ_MORE: 'Read more'
+      COL_LINKS_TITLE: 'Link'
+      COL_MISSION_TITLE: 'Missione'
+
+      LINK_HOME: 'Home'
+      LINK_ABOUT: 'Chi siamo'
+      LINK_PRESENCES: 'Presenze'
+      LINK_EVENTS: 'Eventi & notizie'
+      LINK_CHARISM: 'Carisma'
+      LINK_FRIENDS: 'Amici del Rosaz'
+      LINK_ASSOCIATION: 'Associazione'
+
+      CONTACT_TITLE: 'Contatti'
+      ADDRESS_LINE1: 'Via Esempio 123'
+      ADDRESS_LINE2: '10059 Susa (TO)'
+      ADDRESS_LINE3: 'Italia'
+
+      COPYRIGHT_TEXT: 'Suore Francescane di Susa. Tutti i diritti riservati.'
+      COPYRIGHT_BUILT_WITH: 'Realizzato con Grav & Tailwind.'
