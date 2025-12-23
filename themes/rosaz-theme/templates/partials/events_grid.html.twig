@@ -22,7 +22,7 @@
 {% if items|length %}
 <section class="bg-neutral-50 py-16 md:py-20">
   <div class="max-w-6xl mx-auto px-4">
-    {# Header da seção #}
+    {# Section header #}
     {% if eyebrow or title %}
       <div class="text-center mb-10 md:mb-14">
         {% if eyebrow %}
@@ -39,10 +39,10 @@
       </div>
     {% endif %}
 
-    {# Grid de eventos #}
+    {# Events grid #}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {% for event in items %}
-        {# Resolve imagem #}
+        {# Resolve image #}
         {% set raw_image = event.image ?? null %}
         {% if raw_image %}
           {% set image_src = raw_image starts with 'theme://' ? raw_image : 'theme://images/' ~ raw_image %}
@@ -50,7 +50,7 @@
           {% set image_src = null %}
         {% endif %}
 
-        {# Dia e mês (se date definido em ISO) #}
+        {# Day and month (if date is defined in ISO) #}
         {% set date_value = event.date ?? null %}
         {% if date_value %}
           {% set day   = date_value|date('d') %}
