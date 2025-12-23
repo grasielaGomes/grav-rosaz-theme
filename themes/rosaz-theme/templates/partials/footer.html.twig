@@ -1,11 +1,166 @@
-<footer class="w-full border-t border-neutral-200 bg-white mt-8">
-  <div
-    class="max-w-6xl mx-auto px-4 py-6 text-sm text-neutral-500 flex flex-col md:flex-row items-center justify-between gap-2"
-  >
-    <p>
-      &copy; {{ "now"|date("Y") }}
-      {{ site.title|default('Suore Francescane di Susa') }}. All rights reserved.
-    </p>
-    <p class="text-xs">Built with Grav & Tailwind.</p>
+{# Resolve current theme name and configuration #}
+{% set theme_name = config.system.pages.theme %}
+{% set theme = attribute(config.themes, theme_name)|default({}) %}
+
+{# Footer configuration: always from theme config so it is global #}
+{% set footer = theme.footer ?? {} %}
+
+{% set background_image = footer.background_image ?? null %}
+{% set cta = footer.cta ?? {} %}
+{% set columns = footer.columns ?? [] %}
+{% set contact = footer.contact ?? {} %}
+{% set copyright = footer.copyright ?? {} %}
+
+<footer class="relative w-full bg-slate-900 text-neutral-200">
+  {# Optional background image with dark overlay #}
+  {% if background_image %}
+    {% set bg_src = background_image starts with 'theme://'
+      ? background_image
+      : 'theme://images/' ~ background_image
+    %}
+    <div
+      class="absolute inset-0 opacity-20 pointer-events-none"
+      style="
+        background-image: url('{{ url(bg_src) }}');
+        background-size: cover;
+        background-position: center;
+      "
+    ></div>
+    <div class="absolute inset-0 bg-slate-900/80 pointer-events-none"></div>
+  {% endif %}
+
+  <div class="relative max-w-6xl mx-auto px-4 py-12 md:py-16">
+    <div class="flex flex-col lg:flex-row gap-10 lg:gap-16">
+      {# Left: donation CTA #}
+      <div class="lg:w-4/12 space-y-6">
+        {% if cta.title %}
+          <h2 class="text-xl md:text-2xl lg:text-3xl font-heading font-semibold text-white leading-snug">
+            {{ cta.title|t }}
+          </h2>
+        {% endif %}
+
+        {% if cta.subtitle %}
+          <p class="text-sm md:text-base text-neutral-300 max-w-md">
+            {{ cta.subtitle|t }}
+          </p>
+        {% endif %}
+
+        {% set button_label = cta.button_label ?? '' %}
+        {% set button_url = cta.button_url ?? '#' %}
+
+        {% if button_label %}
+          <a
+            href="{{ button_url }}"
+            class="inline-flex items-center gap-3 rounded-full bg-orange-500 px-7 py-2 text-sm font-semibold text-white shadow-md hover:bg-orange-600 transition-colors duration-200"
+          >
+            <span
+              class="flex h-6 w-6 items-center justify-center rounded-full bg-white text-orange-500 text-md"
+            >
+              ♥
+            </span>
+            <span class="uppercase tracking-[0.16em]">
+              {{ button_label|t }}
+            </span>
+          </a>
+        {% endif %}
+      </div>
+
+      {# Right: columns + contact #}
+      <div class="lg:w-7/12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-sm">
+        {# Dynamic columns (Links, Mission, etc.) #}
+        {% for col in columns %}
+          <div>
+            {% if col.title %}
+              <h3 class="text-base font-heading font-semibold text-white mb-4">
+                {{ col.title|t }}
+              </h3>
+            {% endif %}
+
+            {% if col.items %}
+              <ul class="space-y-2 text-neutral-300">
+                {% for link in col.items %}
+                  <li>
+                    <a
+                      href="{{ link.url ?? '#' }}"
+                      class="hover:text-white transition-colors duration-150"
+                    >
+                      {{ link.label|t }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+        {# Contact column #}
+        <div>
+          <h3 class="text-base font-heading font-semibold text-white mb-4">
+            {{ (contact.title ?? 'ROSAZ.FOOTER.CONTACT_TITLE')|t }}
+          </h3>
+
+          <div class="space-y-4 text-neutral-300">
+            {% if contact.email %}
+              <div class="flex items-start gap-3">
+                <span class="mt-1 text-orange-400">@</span>
+                <a
+                  href="mailto:{{ contact.email }}"
+                  class="hover:text-white transition-colors duration-150"
+                >
+                  {{ contact.email }}
+                </a>
+              </div>
+            {% endif %}
+
+            {% if contact.phone %}
+              <div class="flex items-start gap-3">
+                <span class="mt-1 text-orange-400">☎</span>
+                <a
+                  href="tel:{{ contact.phone|replace({' ': ''}) }}"
+                  class="hover:text-white transition-colors duration-150"
+                >
+                  {{ contact.phone }}
+                </a>
+              </div>
+            {% endif %}
+
+            {% if contact.address_lines %}
+              <div class="flex items-start gap-3">
+                <span class="mt-1 text-orange-400">📍</span>
+                <div class="space-y-0.5">
+                  {% for line in contact.address_lines %}
+                    <p>{{ line|t }}</p>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Bottom bar: copyright #}
+  <div class="relative border-t border-slate-800">
+    <div
+      class="max-w-6xl mx-auto px-4 py-4 text-xs text-neutral-400 flex flex-col md:flex-row items-center justify-between gap-2"
+    >
+      <p>
+        &copy; {{ "now"|date("Y") }}
+        {% if copyright.text %}
+          {{ copyright.text|t }}
+        {% else %}
+          {{ site.title|default('Suore Francescane di Susa') }}. All rights reserved.
+        {% endif %}
+      </p>
+
+      <p>
+        {% if copyright.built_with %}
+          {{ copyright.built_with|t }}
+        {% else %}
+          Built with Grav & Tailwind.
+        {% endif %}
+      </p>
+    </div>
   </div>
 </footer>
