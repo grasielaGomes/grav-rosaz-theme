@@ -19,6 +19,7 @@ languages:
   supported:
     - pt
     - it
+    - sq
   default_lang: it
   include_default_lang: true
   include_default_lang_file_extension: true
