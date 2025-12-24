@@ -31,12 +31,11 @@ footer:
 
   contact:
     title: 'ROSAZ.FOOTER.CONTACT_TITLE'
-    email: 'contato@rosaz.org'
+    email: 'segreteriacasamadre@francescanerosaz.org'
     phone: '+39 000 000 000'
     address_lines:
-      - 'ROSAZ.FOOTER.ADDRESS_LINE1'
-      - 'ROSAZ.FOOTER.ADDRESS_LINE2'
-      - 'ROSAZ.FOOTER.ADDRESS_LINE3'
+      - 'P.tta Carlo Andrea Rana, 5'
+      - '10059 Susa (TO) - Italy'
 
   copyright:
     text: 'ROSAZ.FOOTER.COPYRIGHT_TEXT'
