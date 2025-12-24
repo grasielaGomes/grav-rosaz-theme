@@ -755,6 +755,10 @@ h1,
   margin-top: 3rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .block {
   display: block;
 }
@@ -1559,6 +1563,11 @@ h1,
 
 .text-neutral-100\/80 {
   color: rgb(245 245 245 / 0.8);
+}
+
+.text-green-400 {
+  --tw-text-opacity: 1;
+  color: rgb(74 222 128 / var(--tw-text-opacity));
 }
 
 .opacity-0 {
