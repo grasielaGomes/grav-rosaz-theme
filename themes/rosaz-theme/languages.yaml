@@ -18,9 +18,6 @@ pt:
       LINK_ASSOCIATION: 'Associação'
 
       CONTACT_TITLE: 'Contato'
-      ADDRESS_LINE1: 'Via Exemplo 123'
-      ADDRESS_LINE2: '10059 Susa (TO)'
-      ADDRESS_LINE3: 'Itália'
 
       COPYRIGHT_TEXT: 'Suore Francescane di Susa. Todos os direitos reservados.'
       COPYRIGHT_BUILT_WITH: 'Built with Grav & Tailwind.'
@@ -45,9 +42,6 @@ it:
       LINK_ASSOCIATION: 'Associazione'
 
       CONTACT_TITLE: 'Contatti'
-      ADDRESS_LINE1: 'Via Esempio 123'
-      ADDRESS_LINE2: '10059 Susa (TO)'
-      ADDRESS_LINE3: 'Italia'
 
       COPYRIGHT_TEXT: 'Suore Francescane di Susa. Tutti i diritti riservati.'
       COPYRIGHT_BUILT_WITH: 'Realizzato con Grav & Tailwind.'
