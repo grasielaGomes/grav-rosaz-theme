@@ -1,0 +1,271 @@
+title: Home
+'@extends':
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          type: tab
+          title: Content
+          fields:
+            content:
+              type: textarea
+              label: Page content
+              help: 'Main Markdown content of the page.'
+
+        hero:
+          type: tab
+          title: Hero
+          fields:
+            header.hero_slides:
+              type: list
+              label: 'Hero slides'
+              style: vertical
+              btnLabel: 'Add slide'
+              fields:
+                .tag:
+                  type: text
+                  label: 'Tag'
+                .title:
+                  type: text
+                  label: 'Title'
+                .subtitle:
+                  type: textarea
+                  label: 'Subtitle'
+                .primary_cta_label:
+                  type: text
+                  label: 'Primary CTA label'
+                .primary_cta_link:
+                  type: text
+                  label: 'Primary CTA link'
+                .secondary_cta_label:
+                  type: text
+                  label: 'Secondary CTA label'
+                .secondary_cta_link:
+                  type: text
+                  label: 'Secondary CTA link'
+                .image:
+                  type: pagemediaselect
+                  label: 'Slide image'
+                  preview_images: true
+                  multiple: false
+
+        parallax:
+          type: tab
+          title: Parallax banner
+          fields:
+            header.parallax_banner:
+              type: fieldset
+              title: 'Parallax banner'
+              fields:
+                .enabled:
+                  type: toggle
+                  label: 'Enabled'
+                  highlight: 1
+                  default: 1
+                  options:
+                    1: 'Yes'
+                    0: 'No'
+                  validate:
+                    type: bool
+
+                .image:
+                  type: pagemediaselect
+                  label: 'Background image'
+                  preview_images: true
+                  multiple: false
+
+                .overlay_color:
+                  type: colorpicker
+                  label: 'Overlay color'
+                  default: '#f97316'
+                  help: 'Base color for the overlay.'
+
+                .eyebrow:
+                  type: text
+                  label: 'Eyebrow'
+
+                .title:
+                  type: textarea
+                  label: 'Title'
+
+                .align:
+                  type: select
+                  label: 'Content alignment'
+                  default: center
+                  options:
+                    center: 'Center'
+                    left: 'Left'
+                    right: 'Right'
+
+                cta:
+                  type: fieldset
+                  title: 'CTA'
+                  fields:
+                    .label:
+                      type: text
+                      label: 'CTA label'
+                    .link:
+                      type: text
+                      label: 'CTA link'
+
+        help_cards_tab:
+          type: tab
+          title: 'Help cards / Missions'
+          fields:
+            header.help_cards:
+              type: fieldset
+              title: 'Help cards section'
+              fields:
+                .enabled:
+                  type: toggle
+                  label: 'Enabled'
+                  highlight: 1
+                  default: 1
+                  options:
+                    1: 'Yes'
+                    0: 'No'
+                  validate:
+                    type: bool
+
+                .title:
+                  type: text
+                  label: 'Section title'
+
+                .items:
+                  type: list
+                  label: 'Cards'
+                  style: vertical
+                  btnLabel: 'Add card'
+                  fields:
+                    .icon:
+                      type: pagemediaselect
+                      label: 'Icon'
+                      preview_images: true
+                      multiple: false
+                    .title:
+                      type: text
+                      label: 'Title'
+                    .text:
+                      type: textarea
+                      label: 'Text'
+                    .link:
+                      type: text
+                      label: 'Link'
+
+        testimonials_tab:
+          type: tab
+          title: Testimonials
+          fields:
+            header.testimonials:
+              type: fieldset
+              title: 'Testimonials section'
+              fields:
+                .enabled:
+                  type: toggle
+                  label: 'Enabled'
+                  highlight: 1
+                  default: 1
+                  options:
+                    1: 'Yes'
+                    0: 'No'
+                  validate:
+                    type: bool
+
+                .background_image:
+                  type: pagemediaselect
+                  label: 'Background image (optional)'
+                  preview_images: true
+                  multiple: false
+
+                .label:
+                  type: text
+                  label: 'Eyebrow / label'
+
+                .title:
+                  type: text
+                  label: 'Title'
+
+                .subtitle:
+                  type: textarea
+                  label: 'Subtitle'
+
+                .items:
+                  type: list
+                  label: 'Testimonials'
+                  style: vertical
+                  btnLabel: 'Add testimonial'
+                  fields:
+                    .quote:
+                      type: textarea
+                      label: 'Quote'
+                    .name:
+                      type: text
+                      label: 'Name'
+                    .role:
+                      type: text
+                      label: 'Role'
+                    .avatar:
+                      type: pagemediaselect
+                      label: 'Avatar'
+                      preview_images: true
+                      multiple: false
+
+        events_tab:
+          type: tab
+          title: Events
+          fields:
+            header.events_section:
+              type: fieldset
+              title: 'Events section'
+              fields:
+                .enabled:
+                  type: toggle
+                  label: 'Enabled'
+                  highlight: 1
+                  default: 1
+                  options:
+                    1: 'Yes'
+                    0: 'No'
+                  validate:
+                    type: bool
+
+                .eyebrow:
+                  type: text
+                  label: 'Eyebrow'
+
+                .title:
+                  type: text
+                  label: 'Title'
+
+                .items:
+                  type: list
+                  label: 'Events'
+                  style: vertical
+                  btnLabel: 'Add event'
+                  fields:
+                    .title:
+                      type: text
+                      label: 'Title'
+                    .image:
+                      type: pagemediaselect
+                      label: 'Image'
+                      preview_images: true
+                      multiple: false
+                    .date:
+                      type: text
+                      label: 'Date (YYYY-MM-DD)'
+                    .time:
+                      type: text
+                      label: 'Time'
+                    .location:
+                      type: text
+                      label: 'Location'
+                    .url:
+                      type: text
+                      label: 'Link'
