@@ -2,7 +2,7 @@ name: Rosaz Theme
 slug: rosaz-theme
 type: theme
 version: 1.0.0
-description: 'Tema custom com Tailwind para o site.'
+description: 'A custom Grav theme built with Tailwind CSS.'
 icon: paint-brush
 
 author:
