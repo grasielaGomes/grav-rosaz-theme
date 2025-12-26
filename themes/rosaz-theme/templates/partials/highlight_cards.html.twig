@@ -12,10 +12,11 @@ items|length %}
 
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
       {% for item in items %} {% set raw_icon = item.icon ?? null %} {% set icon
-      = raw_icon ? (raw_icon starts with 'theme://' ? raw_icon :
-      'theme://images/' ~ raw_icon) : null %} {% set card_title = item.title ??
-      '' %} {% set card_text = item.text ?? '' %} {% set card_link = item.link
-      ?? null %}
+      = null %} {% if raw_icon %} {% if page.media[raw_icon] is defined %}
+      {% set icon = page.media[raw_icon].url %} {% else %} {% set icon =
+      raw_icon %} {% endif %} {% endif %} {% set card_title = item.title ?? ''
+      %} {% set card_text = item.text ?? '' %} {% set card_link = item.link ??
+      null %}
 
       <article
         class="group bg-transparent rounded-3xl border border-neutral-200 shadow-sm px-6 py-8 flex flex-col justify-between transition-all duration-800 hover:-translate-y-1 hover:shadow-xl hover:border-orange-500 hover:bg-white"

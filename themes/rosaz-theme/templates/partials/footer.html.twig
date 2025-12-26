@@ -14,10 +14,11 @@
 <footer class="relative w-full bg-slate-900 text-neutral-200">
   {# Optional background image with dark overlay #}
   {% if background_image %}
-    {% set bg_src = background_image starts with 'theme://'
-      ? background_image
-      : 'theme://images/' ~ background_image
-    %}
+    {% if page.media[background_image] is defined %}
+      {% set bg_src = page.media[background_image].url %}
+    {% else %}
+      {% set bg_src = background_image %}
+    {% endif %}
     <div
       class="absolute inset-0 opacity-20 pointer-events-none"
       style="

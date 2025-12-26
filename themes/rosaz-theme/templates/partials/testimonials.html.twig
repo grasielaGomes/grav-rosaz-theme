@@ -19,19 +19,21 @@
     {# Avatar #}
     {% set avatar = item.avatar ?? null %}
     {% if avatar %}
-      {% set avatar_src = avatar starts with 'theme://' 
-        ? avatar 
-        : 'theme://images/' ~ avatar 
-      %}
+      {% if page.media[avatar] is defined %}
+        {% set avatar_src = page.media[avatar].url %}
+      {% else %}
+        {% set avatar_src = avatar %}
+      {% endif %}
     {% endif %}
 
     <section class="relative bg-neutral-100 py-16 md:py-20 overflow-hidden">
       {# Subtle background image #}
       {% if background_image %}
-        {% set bg_src = background_image starts with 'theme://' 
-          ? background_image 
-          : 'theme://images/' ~ background_image 
-        %}
+        {% if page.media[background_image] is defined %}
+          {% set bg_src = page.media[background_image].url %}
+        {% else %}
+          {% set bg_src = background_image %}
+        {% endif %}
         <div
           class="absolute inset-0 pointer-events-none opacity-20"
           style="
@@ -76,7 +78,7 @@
               <div class="relative bg-neutral-50 rounded-3xl shadow-sm px-6 md:px-8 py-6 md:py-8">
                 <div class="flex flex-col gap-4">
                   <img
-                    src="{{ url('theme://images/quotes.webp') }}"
+                    src="{{ url('quotes.webp') }}"
                     alt=""
                     class="h-10 w-16 object-contain"
                   />

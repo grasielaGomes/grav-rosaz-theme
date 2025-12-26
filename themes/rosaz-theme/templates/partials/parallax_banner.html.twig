@@ -1,16 +1,22 @@
-{% set image = image ?? 'theme://images/banner_home.png' %} {% set overlay_color
-= overlay_color ?? 'rgba(249,115,22,0.9)' %} {% set eyebrow = eyebrow ?? null %}
-{% set title = title ?? null %} {% set text = text ?? null %} {% set cta_label =
-cta_label ?? null %} {% set cta_link = cta_link ?? null %} {% set align = align
-?? 'center' %} {% set align_classes = { 'left': 'items-start text-left',
-'right': 'items-end text-right', 'center': 'items-center text-center' } %}
+{% set raw_image = image ?? null %} {% if raw_image and page.media[raw_image] is
+defined %} {% set resolved_image = page.media[raw_image].url %} {% else %} {% set
+resolved_image = raw_image %} {% endif %} {% set overlay_color = overlay_color ??
+'rgba(249,115,22,0.9)' %} {% set eyebrow = eyebrow ?? null %} {% set title =
+title ?? null %} {% set text = text ?? null %} {% set cta_label = cta_label ??
+null %} {% set cta_link = cta_link ?? null %} {% set align = align ?? 'center' %}
+{% set align_classes = { 'left': 'items-start text-left', 'right': 'items-end
+text-right', 'center': 'items-center text-center' } %}
 
 <section class="relative overflow-hidden">
   {# Here is the background image + parallax #}
-  <div
-    class="relative py-16 md:py-24 bg-cover bg-center bg-no-repeat bg-fixed"
-    style="background-image: url('{{ url(image) }}');"
-  >
+  {% if resolved_image %}
+    <div
+      class="relative py-16 md:py-24 bg-cover bg-center bg-no-repeat bg-fixed"
+      style="background-image: url('{{ url(resolved_image) }}');"
+    >
+  {% else %}
+    <div class="relative py-16 md:py-24 bg-neutral-900">
+  {% endif %}
     {# Configurable color overlay #}
     <div
       class="absolute inset-0"

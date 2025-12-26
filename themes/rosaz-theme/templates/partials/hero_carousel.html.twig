@@ -9,8 +9,9 @@
     <div class="min-h-[320px] lg:min-h-[360px]"></div>
     {# Overlapping slides #} {% for slide in slides %} {# Resolve image path
     once #} {% set image_src = null %} {% if slide.image is defined and
-    slide.image %} {% set image_src = slide.image starts with 'theme://' ?
-    slide.image : 'theme://images/' ~ slide.image %} {% endif %}
+    slide.image %} {% set raw_image = slide.image %} {% if page.media[raw_image]
+    is defined %} {% set image_src = page.media[raw_image].url %} {% else %}
+    {% set image_src = raw_image %} {% endif %} {% endif %}
     <div
       class="absolute inset-0 flex flex-row items-center gap-10 opacity-0 pointer-events-none transition-opacity duration-700"
       data-hero-slide="{{ loop.index0 }}"

@@ -45,7 +45,11 @@
         {# Resolve image #}
         {% set raw_image = event.image ?? null %}
         {% if raw_image %}
-          {% set image_src = raw_image starts with 'theme://' ? raw_image : 'theme://images/' ~ raw_image %}
+          {% if page.media[raw_image] is defined %}
+            {% set image_src = page.media[raw_image].url %}
+          {% else %}
+            {% set image_src = raw_image %}
+          {% endif %}
         {% else %}
           {% set image_src = null %}
         {% endif %}
