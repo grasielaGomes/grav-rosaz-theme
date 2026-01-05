@@ -25,21 +25,21 @@
 
           <li class="group">
             <a
-              href="{{ p.url }}"
-              class="nav-link inline-flex items-center py-1.5 border-b-2 border-transparent transition {% if p.active or p.activeChild %} text-orange-500 border-orange-500 font-semibold {% else %} text-neutral-800 hover:text-orange-500 hover:border-orange-300 {% endif %}"
+              {% if not has_children %}href="{{ p.url }}"{% endif %}
+              class="cursor-pointer nav-link inline-flex items-center py-1.5 border-b-2 border-transparent transition {% if p.active or p.activeChild %} text-orange-500 border-orange-500 font-semibold {% else %} text-neutral-800 hover:text-orange-500 hover:border-orange-300 {% endif %}"
             >
               {{ p.menu }}
             </a>
 
-            {# Dropdown panel for children pages (desktop) #} {% if has_children
-            %}
-            <div
-              class="pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 absolute left pt-[38px]"
-            >
-              {{ nav.dropdown_items(p, 0) }}
-            </div>
+            {% if has_children %}
+              <div
+                class="pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 absolute left pt-[38px]"
+              >
+                {{ nav.dropdown_items(p, 0) }}
+              </div>
             {% endif %}
           </li>
+
           {% endfor %}
         </ul>
       </nav>
