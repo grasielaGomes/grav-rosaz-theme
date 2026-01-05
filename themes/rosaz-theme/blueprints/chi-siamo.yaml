@@ -1,0 +1,71 @@
+title: Chi siamo
+'@extends':
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          type: tab
+          title: Content
+          fields:
+            content:
+              type: textarea
+              label: Page content
+              help: 'Main Markdown content of this page.'
+
+        about_menu_tab:
+          type: tab
+          title: About menu
+          fields:
+            header.about_menu:
+              type: fieldset
+              title: 'About menu section'
+              fields:
+                .enabled:
+                  type: toggle
+                  label: 'Enabled'
+                  highlight: 1
+                  default: 1
+                  options:
+                    1: 'Yes'
+                    0: 'No'
+                  validate:
+                    type: bool
+
+                .eyebrow:
+                  type: text
+                  label: 'Eyebrow'
+
+                .title:
+                  type: text
+                  label: 'Title'
+
+                .subtitle:
+                  type: textarea
+                  label: 'Subtitle'
+
+                .items:
+                  type: list
+                  label: 'Cards'
+                  style: vertical
+                  btnLabel: 'Add card'
+                  fields:
+                    .icon:
+                      type: pagemediaselect
+                      label: 'Icon'
+                      preview_images: true
+                      multiple: false
+                    .title:
+                      type: text
+                      label: 'Title'
+                    .text:
+                      type: textarea
+                      label: 'Text'
+                    .link:
+                      type: text
+                      label: 'Link'
