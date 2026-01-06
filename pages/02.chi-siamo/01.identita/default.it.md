@@ -30,6 +30,18 @@ sections_top:
       - label: 'Di Susa'
         text: >
           Siamo legate alle nostre radici, ma con il cuore aperto a tutta l’umanità.
+gallery_strip:
+  enabled: true
+  background_color: '#0f172a'
+  images:
+    - src: 'galeria1.png'
+      alt: 'Suore in Brasile'
+    - src: 'galeria2.png'
+      alt: 'Suore a Vila Scarafia'
+    - src: 'galeria3.png'
+      alt: 'Suore e il beato'
+    - src: 'galeria4.png'
+      alt: 'Suore a Roma'
 
 parallax_banner:
   enabled: true
@@ -56,7 +68,7 @@ testimonials:
         luogo di misericordia e di speranza.
       name: 'Sr. Maria'
       role: 'Suora Francescana Missionaria di Susa'
-      avatar: '' # opcional, pode adicionar depois
+      avatar: 'avatar.png'
 
 sections_bottom:
   - id: 'mamme-nella-carita'
