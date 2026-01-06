@@ -11,12 +11,12 @@ form:
       fields:
         content:
           type: tab
-          title: Content
+          title: Contenuto
           fields:
             content:
               type: textarea
-              label: Page content
-              help: 'Main Markdown content of the page.'
+              label: Contenuto della pagina
+              help: 'Contenuto Markdown principale della pagina.'
 
         hero:
           type: tab
@@ -24,84 +24,84 @@ form:
           fields:
             header.hero_slides:
               type: list
-              label: 'Hero slides'
+              label: 'Slide hero'
               style: vertical
-              btnLabel: 'Add slide'
+              btnLabel: 'Aggiungi slide'
               fields:
                 .tag:
                   type: text
                   label: 'Tag'
                 .title:
                   type: text
-                  label: 'Title'
+                  label: 'Titolo'
                 .subtitle:
                   type: textarea
-                  label: 'Subtitle'
+                  label: 'Sottotitolo'
                 .primary_cta_label:
                   type: text
-                  label: 'Primary CTA label'
+                  label: 'Etichetta CTA principale'
                 .primary_cta_link:
                   type: text
-                  label: 'Primary CTA link'
+                  label: 'Link CTA principale'
                 .secondary_cta_label:
                   type: text
-                  label: 'Secondary CTA label'
+                  label: 'Etichetta CTA secondaria'
                 .secondary_cta_link:
                   type: text
-                  label: 'Secondary CTA link'
+                  label: 'Link CTA secondaria'
                 .image:
                   type: pagemediaselect
-                  label: 'Slide image'
+                  label: 'Immagine slide'
                   preview_images: true
                   multiple: false
 
         parallax:
           type: tab
-          title: Parallax banner
+          title: Banner parallax
           fields:
             header.parallax_banner:
               type: fieldset
-              title: 'Parallax banner'
+              title: 'Banner parallax'
               fields:
                 .enabled:
                   type: toggle
-                  label: 'Enabled'
+                  label: 'Abilitato'
                   highlight: 1
                   default: 1
                   options:
-                    1: 'Yes'
-                    0: 'No'
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
                   validate:
                     type: bool
 
                 .image:
                   type: pagemediaselect
-                  label: 'Background image'
+                  label: 'Immagine di sfondo'
                   preview_images: true
                   multiple: false
 
                 .overlay_color:
                   type: colorpicker
-                  label: 'Overlay color'
+                  label: 'Colore overlay'
                   default: '#f97316'
-                  help: 'Base color for the overlay.'
+                  help: 'Colore base per l''overlay.'
 
                 .eyebrow:
                   type: text
-                  label: 'Eyebrow'
+                  label: 'Eyebrow / etichetta'
 
                 .title:
                   type: textarea
-                  label: 'Title'
+                  label: 'Titolo'
 
                 .align:
                   type: select
-                  label: 'Content alignment'
+                  label: 'Allineamento contenuto'
                   default: center
                   options:
-                    center: 'Center'
-                    left: 'Left'
-                    right: 'Right'
+                    center: 'Centro'
+                    left: 'Sinistra'
+                    right: 'Destra'
 
                 cta:
                   type: fieldset
@@ -109,107 +109,107 @@ form:
                   fields:
                     .label:
                       type: text
-                      label: 'CTA label'
+                      label: 'Etichetta CTA'
                     .link:
                       type: text
-                      label: 'CTA link'
+                      label: 'Link CTA'
 
         help_cards_tab:
           type: tab
-          title: 'Help cards / Missions'
+          title: 'Schede di supporto / Missioni'
           fields:
             header.help_cards:
               type: fieldset
-              title: 'Help cards section'
+              title: 'Sezione schede di supporto'
               fields:
                 .enabled:
                   type: toggle
-                  label: 'Enabled'
+                  label: 'Abilitata'
                   highlight: 1
                   default: 1
                   options:
-                    1: 'Yes'
-                    0: 'No'
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
                   validate:
                     type: bool
 
                 .title:
                   type: text
-                  label: 'Section title'
+                  label: 'Titolo sezione'
 
                 .items:
                   type: list
-                  label: 'Cards'
+                  label: 'Schede'
                   style: vertical
-                  btnLabel: 'Add card'
+                  btnLabel: 'Aggiungi scheda'
                   fields:
                     .icon:
                       type: pagemediaselect
-                      label: 'Icon'
+                      label: 'Icona'
                       preview_images: true
                       multiple: false
                     .title:
                       type: text
-                      label: 'Title'
+                      label: 'Titolo'
                     .text:
                       type: textarea
-                      label: 'Text'
+                      label: 'Testo'
                     .link:
                       type: text
                       label: 'Link'
 
         testimonials_tab:
           type: tab
-          title: Testimonials
+          title: Testimonianze
           fields:
             header.testimonials:
               type: fieldset
-              title: 'Testimonials section'
+              title: 'Sezione testimonianze'
               fields:
                 .enabled:
                   type: toggle
-                  label: 'Enabled'
+                  label: 'Abilitata'
                   highlight: 1
                   default: 1
                   options:
-                    1: 'Yes'
-                    0: 'No'
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
                   validate:
                     type: bool
 
                 .background_image:
                   type: pagemediaselect
-                  label: 'Background image (optional)'
+                  label: 'Immagine di sfondo (opzionale)'
                   preview_images: true
                   multiple: false
 
                 .label:
                   type: text
-                  label: 'Eyebrow / label'
+                  label: 'Eyebrow / etichetta'
 
                 .title:
                   type: text
-                  label: 'Title'
+                  label: 'Titolo'
 
                 .subtitle:
                   type: textarea
-                  label: 'Subtitle'
+                  label: 'Sottotitolo'
 
                 .items:
                   type: list
-                  label: 'Testimonials'
+                  label: 'Testimonianze'
                   style: vertical
-                  btnLabel: 'Add testimonial'
+                  btnLabel: 'Aggiungi testimonianza'
                   fields:
                     .quote:
                       type: textarea
-                      label: 'Quote'
+                      label: 'Citazione'
                     .name:
                       type: text
-                      label: 'Name'
+                      label: 'Nome'
                     .role:
                       type: text
-                      label: 'Role'
+                      label: 'Ruolo'
                     .avatar:
                       type: pagemediaselect
                       label: 'Avatar'
@@ -218,54 +218,54 @@ form:
 
         events_tab:
           type: tab
-          title: Events
+          title: Eventi
           fields:
             header.events_section:
               type: fieldset
-              title: 'Events section'
+              title: 'Sezione eventi'
               fields:
                 .enabled:
                   type: toggle
-                  label: 'Enabled'
+                  label: 'Abilitata'
                   highlight: 1
                   default: 1
                   options:
-                    1: 'Yes'
-                    0: 'No'
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
                   validate:
                     type: bool
 
                 .eyebrow:
                   type: text
-                  label: 'Eyebrow'
+                  label: 'Eyebrow / etichetta'
 
                 .title:
                   type: text
-                  label: 'Title'
+                  label: 'Titolo'
 
                 .items:
                   type: list
-                  label: 'Events'
+                  label: 'Eventi'
                   style: vertical
-                  btnLabel: 'Add event'
+                  btnLabel: 'Aggiungi evento'
                   fields:
                     .title:
                       type: text
-                      label: 'Title'
+                      label: 'Titolo'
                     .image:
                       type: pagemediaselect
-                      label: 'Image'
+                      label: 'Immagine'
                       preview_images: true
                       multiple: false
                     .date:
                       type: text
-                      label: 'Date (YYYY-MM-DD)'
+                      label: 'Data (YYYY-MM-DD)'
                     .time:
                       type: text
-                      label: 'Time'
+                      label: 'Orario'
                     .location:
                       type: text
-                      label: 'Location'
+                      label: 'Luogo'
                     .url:
                       type: text
                       label: 'Link'

@@ -11,61 +11,61 @@ form:
       fields:
         content:
           type: tab
-          title: Content
+          title: Contenuto
           fields:
             content:
               type: textarea
-              label: Page content
-              help: 'Main Markdown content of this page.'
+              label: Contenuto della pagina
+              help: 'Contenuto Markdown principale di questa pagina.'
 
         about_menu_tab:
           type: tab
-          title: About menu
+          title: Menu Chi siamo
           fields:
             header.about_menu:
               type: fieldset
-              title: 'About menu section'
+              title: 'Sezione menu Chi siamo'
               fields:
                 .enabled:
                   type: toggle
-                  label: 'Enabled'
+                  label: 'Abilitata'
                   highlight: 1
                   default: 1
                   options:
-                    1: 'Yes'
-                    0: 'No'
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
                   validate:
                     type: bool
 
                 .eyebrow:
                   type: text
-                  label: 'Eyebrow'
+                  label: 'Eyebrow / etichetta'
 
                 .title:
                   type: text
-                  label: 'Title'
+                  label: 'Titolo'
 
                 .subtitle:
                   type: textarea
-                  label: 'Subtitle'
+                  label: 'Sottotitolo'
 
                 .items:
                   type: list
-                  label: 'Cards'
+                  label: 'Schede'
                   style: vertical
-                  btnLabel: 'Add card'
+                  btnLabel: 'Aggiungi scheda'
                   fields:
                     .icon:
                       type: pagemediaselect
-                      label: 'Icon'
+                      label: 'Icona'
                       preview_images: true
                       multiple: false
                     .title:
                       type: text
-                      label: 'Title'
+                      label: 'Titolo'
                     .text:
                       type: textarea
-                      label: 'Text'
+                      label: 'Testo'
                     .link:
                       type: text
                       label: 'Link'
