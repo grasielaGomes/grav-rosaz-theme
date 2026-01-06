@@ -6,6 +6,12 @@
   {% set sections_top = page.header.sections_top ?? [] %}
   {% include 'partials/content_sections.html.twig' with { sections: sections_top } %}
 
+  {# GALLERY STRIP #}
+  {% set gallery = page.header.gallery_strip ?? {} %}
+  {% if gallery and (gallery.enabled is not defined or gallery.enabled) %}
+    {% include 'partials/gallery-strip.html.twig' with { gallery: gallery } %}
+  {% endif %}
+
   {# TESTIMONIALS #}
   {% if page.header.testimonials is defined %}
     {% include 'partials/testimonials.html.twig' %}
