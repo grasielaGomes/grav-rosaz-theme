@@ -1,0 +1,51 @@
+form:
+  fields:
+    header.events_section:
+      type: fieldset
+      title: 'Sezione eventi'
+      fields:
+        .enabled:
+          type: toggle
+          label: 'Abilitata'
+          highlight: 1
+          default: 1
+          options:
+            1: PLUGIN_ADMIN.YES
+            0: PLUGIN_ADMIN.NO
+          validate:
+            type: bool
+
+        .eyebrow:
+          type: text
+          label: 'Eyebrow / etichetta'
+
+        .title:
+          type: text
+          label: 'Titolo'
+
+        .items:
+          type: list
+          label: 'Eventi'
+          style: vertical
+          btnLabel: 'Aggiungi evento'
+          fields:
+            .title:
+              type: text
+              label: 'Titolo'
+            .image:
+              type: pagemediaselect
+              label: 'Immagine'
+              preview_images: true
+              multiple: false
+            .date:
+              type: text
+              label: 'Data (YYYY-MM-DD)'
+            .time:
+              type: text
+              label: 'Orario'
+            .location:
+              type: text
+              label: 'Luogo'
+            .url:
+              type: text
+              label: 'Link'

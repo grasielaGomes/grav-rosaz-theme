@@ -1,4 +1,4 @@
-title: Identità
+title: Carisma
 '@extends':
   type: default
   context: blueprints://pages
@@ -37,13 +37,6 @@ form:
           title: Galleria
           import@:
             type: partials/gallery
-            context: theme://blueprints
-
-        parallax:
-          type: tab
-          title: Parallax
-          import@:
-            type: partials/parallax
             context: theme://blueprints
 
         testimonials:

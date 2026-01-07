@@ -1,0 +1,41 @@
+form:
+  fields:
+    header.help_cards:
+      type: fieldset
+      title: 'Sezione schede di supporto'
+      fields:
+        .enabled:
+          type: toggle
+          label: 'Abilitata'
+          highlight: 1
+          default: 1
+          options:
+            1: PLUGIN_ADMIN.YES
+            0: PLUGIN_ADMIN.NO
+          validate:
+            type: bool
+
+        .title:
+          type: text
+          label: 'Titolo sezione'
+
+        .items:
+          type: list
+          label: 'Schede'
+          style: vertical
+          btnLabel: 'Aggiungi scheda'
+          fields:
+            .icon:
+              type: pagemediaselect
+              label: 'Icona'
+              preview_images: true
+              multiple: false
+            .title:
+              type: text
+              label: 'Titolo'
+            .text:
+              type: textarea
+              label: 'Testo'
+            .link:
+              type: text
+              label: 'Link'

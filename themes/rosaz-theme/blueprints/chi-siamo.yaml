@@ -6,66 +6,21 @@ title: Chi siamo
 form:
   fields:
     tabs:
+      '@override': true
       type: tabs
       active: 1
+
       fields:
         content:
           type: tab
-          title: Contenuto
-          fields:
-            content:
-              type: textarea
-              label: Contenuto della pagina
-              help: 'Contenuto Markdown principale di questa pagina.'
+          title: PLUGIN_ADMIN.CONTENT
+          import@:
+            type: partials/content
+            context: theme://blueprints
 
         about_menu_tab:
           type: tab
           title: Menu Chi siamo
-          fields:
-            header.about_menu:
-              type: fieldset
-              title: 'Sezione menu Chi siamo'
-              fields:
-                .enabled:
-                  type: toggle
-                  label: 'Abilitata'
-                  highlight: 1
-                  default: 1
-                  options:
-                    1: PLUGIN_ADMIN.YES
-                    0: PLUGIN_ADMIN.NO
-                  validate:
-                    type: bool
-
-                .eyebrow:
-                  type: text
-                  label: 'Eyebrow / etichetta'
-
-                .title:
-                  type: text
-                  label: 'Titolo'
-
-                .subtitle:
-                  type: textarea
-                  label: 'Sottotitolo'
-
-                .items:
-                  type: list
-                  label: 'Schede'
-                  style: vertical
-                  btnLabel: 'Aggiungi scheda'
-                  fields:
-                    .icon:
-                      type: pagemediaselect
-                      label: 'Icona'
-                      preview_images: true
-                      multiple: false
-                    .title:
-                      type: text
-                      label: 'Titolo'
-                    .text:
-                      type: textarea
-                      label: 'Testo'
-                    .link:
-                      type: text
-                      label: 'Link'
+          import@:
+            type: partials/about-menu
+            context: theme://blueprints

@@ -1,0 +1,11 @@
+form:
+  fields:
+    header.title:
+      type: text
+      label: Titolo
+      validate:
+        required: true
+
+    header.menu:
+      type: text
+      label: Etichetta di menu

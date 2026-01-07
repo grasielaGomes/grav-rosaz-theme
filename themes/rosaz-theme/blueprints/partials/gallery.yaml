@@ -1,0 +1,30 @@
+form:
+  fields:
+    header.gallery_strip.enabled:
+      type: toggle
+      label: Abilita galleria
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
+      validate:
+        type: bool
+
+    header.gallery_strip.background_color:
+      type: colorpicker
+      label: Colore di sfondo
+      default: '#0f172a'
+
+    header.gallery_strip.images:
+      type: list
+      label: Immagini della galleria
+      style: vertical
+      controls: both
+      fields:
+        .src:
+          type: pagemediaselect
+          label: Immagine
+        .alt:
+          type: text
+          label: Testo alternativo (alt)

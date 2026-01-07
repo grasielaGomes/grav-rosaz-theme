@@ -1,0 +1,44 @@
+form:
+  fields:
+    header.testimonials.enabled:
+      type: toggle
+      label: Abilita sezione
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
+      validate:
+        type: bool
+
+    header.testimonials.label:
+      type: text
+      label: Label superiore
+
+    header.testimonials.title:
+      type: text
+      label: Titolo
+
+    header.testimonials.subtitle:
+      type: textarea
+      label: Sottotitolo
+
+    header.testimonials.items:
+      type: list
+      label: Testimonianze
+      style: vertical
+      controls: both
+      fields:
+        .quote:
+          type: textarea
+          label: Testo
+          classes: 'long'
+        .name:
+          type: text
+          label: Nome
+        .role:
+          type: text
+          label: Ruolo
+        .avatar:
+          type: pagemediaselect
+          label: Avatar (opzionale)

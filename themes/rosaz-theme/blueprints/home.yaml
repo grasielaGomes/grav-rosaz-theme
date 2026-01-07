@@ -6,17 +6,17 @@ title: Home
 form:
   fields:
     tabs:
+      '@override': true
       type: tabs
       active: 1
+
       fields:
         content:
           type: tab
-          title: Contenuto
-          fields:
-            content:
-              type: textarea
-              label: Contenuto della pagina
-              help: 'Contenuto Markdown principale della pagina.'
+          title: PLUGIN_ADMIN.CONTENT
+          import@:
+            type: partials/content
+            context: theme://blueprints
 
         hero:
           type: tab
@@ -57,215 +57,28 @@ form:
 
         parallax:
           type: tab
-          title: Banner parallax
-          fields:
-            header.parallax_banner:
-              type: fieldset
-              title: 'Banner parallax'
-              fields:
-                .enabled:
-                  type: toggle
-                  label: 'Abilitato'
-                  highlight: 1
-                  default: 1
-                  options:
-                    1: PLUGIN_ADMIN.YES
-                    0: PLUGIN_ADMIN.NO
-                  validate:
-                    type: bool
+          title: Banner
+          import@:
+            type: partials/parallax
+            context: theme://blueprints
 
-                .image:
-                  type: pagemediaselect
-                  label: 'Immagine di sfondo'
-                  preview_images: true
-                  multiple: false
-
-                .overlay_color:
-                  type: colorpicker
-                  label: 'Colore overlay'
-                  default: '#f97316'
-                  help: 'Colore base per l''overlay.'
-
-                .eyebrow:
-                  type: text
-                  label: 'Eyebrow / etichetta'
-
-                .title:
-                  type: textarea
-                  label: 'Titolo'
-
-                .align:
-                  type: select
-                  label: 'Allineamento contenuto'
-                  default: center
-                  options:
-                    center: 'Centro'
-                    left: 'Sinistra'
-                    right: 'Destra'
-
-                cta:
-                  type: fieldset
-                  title: 'CTA'
-                  fields:
-                    .label:
-                      type: text
-                      label: 'Etichetta CTA'
-                    .link:
-                      type: text
-                      label: 'Link CTA'
-
-        help_cards_tab:
+        help_cards:
           type: tab
-          title: 'Schede di supporto / Missioni'
-          fields:
-            header.help_cards:
-              type: fieldset
-              title: 'Sezione schede di supporto'
-              fields:
-                .enabled:
-                  type: toggle
-                  label: 'Abilitata'
-                  highlight: 1
-                  default: 1
-                  options:
-                    1: PLUGIN_ADMIN.YES
-                    0: PLUGIN_ADMIN.NO
-                  validate:
-                    type: bool
+          title: 'Schede'
+          import@:
+            type: partials/help-cards
+            context: theme://blueprints
 
-                .title:
-                  type: text
-                  label: 'Titolo sezione'
-
-                .items:
-                  type: list
-                  label: 'Schede'
-                  style: vertical
-                  btnLabel: 'Aggiungi scheda'
-                  fields:
-                    .icon:
-                      type: pagemediaselect
-                      label: 'Icona'
-                      preview_images: true
-                      multiple: false
-                    .title:
-                      type: text
-                      label: 'Titolo'
-                    .text:
-                      type: textarea
-                      label: 'Testo'
-                    .link:
-                      type: text
-                      label: 'Link'
-
-        testimonials_tab:
+        testimonials:
           type: tab
-          title: Testimonianze
-          fields:
-            header.testimonials:
-              type: fieldset
-              title: 'Sezione testimonianze'
-              fields:
-                .enabled:
-                  type: toggle
-                  label: 'Abilitata'
-                  highlight: 1
-                  default: 1
-                  options:
-                    1: PLUGIN_ADMIN.YES
-                    0: PLUGIN_ADMIN.NO
-                  validate:
-                    type: bool
+          title: Testimonianza
+          import@:
+            type: partials/testimonials
+            context: theme://blueprints
 
-                .background_image:
-                  type: pagemediaselect
-                  label: 'Immagine di sfondo (opzionale)'
-                  preview_images: true
-                  multiple: false
-
-                .label:
-                  type: text
-                  label: 'Eyebrow / etichetta'
-
-                .title:
-                  type: text
-                  label: 'Titolo'
-
-                .subtitle:
-                  type: textarea
-                  label: 'Sottotitolo'
-
-                .items:
-                  type: list
-                  label: 'Testimonianze'
-                  style: vertical
-                  btnLabel: 'Aggiungi testimonianza'
-                  fields:
-                    .quote:
-                      type: textarea
-                      label: 'Citazione'
-                    .name:
-                      type: text
-                      label: 'Nome'
-                    .role:
-                      type: text
-                      label: 'Ruolo'
-                    .avatar:
-                      type: pagemediaselect
-                      label: 'Avatar'
-                      preview_images: true
-                      multiple: false
-
-        events_tab:
+        events:
           type: tab
           title: Eventi
-          fields:
-            header.events_section:
-              type: fieldset
-              title: 'Sezione eventi'
-              fields:
-                .enabled:
-                  type: toggle
-                  label: 'Abilitata'
-                  highlight: 1
-                  default: 1
-                  options:
-                    1: PLUGIN_ADMIN.YES
-                    0: PLUGIN_ADMIN.NO
-                  validate:
-                    type: bool
-
-                .eyebrow:
-                  type: text
-                  label: 'Eyebrow / etichetta'
-
-                .title:
-                  type: text
-                  label: 'Titolo'
-
-                .items:
-                  type: list
-                  label: 'Eventi'
-                  style: vertical
-                  btnLabel: 'Aggiungi evento'
-                  fields:
-                    .title:
-                      type: text
-                      label: 'Titolo'
-                    .image:
-                      type: pagemediaselect
-                      label: 'Immagine'
-                      preview_images: true
-                      multiple: false
-                    .date:
-                      type: text
-                      label: 'Data (YYYY-MM-DD)'
-                    .time:
-                      type: text
-                      label: 'Orario'
-                    .location:
-                      type: text
-                      label: 'Luogo'
-                    .url:
-                      type: text
-                      label: 'Link'
+          import@:
+            type: partials/events
+            context: theme://blueprints

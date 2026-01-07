@@ -1,0 +1,56 @@
+form:
+  fields:
+    header.parallax_banner:
+      type: fieldset
+      title: 'Banner parallax'
+      fields:
+        .enabled:
+          type: toggle
+          label: 'Abilitato'
+          highlight: 1
+          default: 1
+          options:
+            1: PLUGIN_ADMIN.YES
+            0: PLUGIN_ADMIN.NO
+          validate:
+            type: bool
+
+        .image:
+          type: pagemediaselect
+          label: 'Immagine di sfondo'
+          preview_images: true
+          multiple: false
+
+        .overlay_color:
+          type: colorpicker
+          label: 'Colore overlay'
+          default: '#f97316'
+          help: "Colore base per l'overlay."
+
+        .eyebrow:
+          type: text
+          label: 'Eyebrow / etichetta'
+
+        .title:
+          type: textarea
+          label: 'Titolo'
+
+        .align:
+          type: select
+          label: 'Allineamento contenuto'
+          default: center
+          options:
+            center: 'Centro'
+            left: 'Sinistra'
+            right: 'Destra'
+
+        .cta:
+          type: fieldset
+          title: 'CTA'
+          fields:
+            .label:
+              type: text
+              label: 'Etichetta CTA'
+            .link:
+              type: text
+              label: 'Link CTA'
