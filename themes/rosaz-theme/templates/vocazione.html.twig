@@ -1,0 +1,71 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <main class="bg-white">
+  {# PARALLAX #}
+    {% set banner = page.header.parallax_banner_top ?? {} %}
+    {% if banner and (banner.enabled is not defined or banner.enabled) %}
+      {% include 'partials/parallax_banner.html.twig' with {
+        image:         banner.image ?? null,
+        overlay_color: banner.overlay_color ?? null,
+        eyebrow:       banner.eyebrow ?? null,
+        title:         banner.title ?? null,
+        text:          banner.text ?? null,
+        cta_label:     banner.cta.label ?? null,
+        cta_link:      banner.cta.link ?? null,
+        align:         banner.align ?? 'center'
+      } %}
+    {% endif %}
+    
+    {# CONTENT 1 #}
+    {% set section_top = page.header.section_top ?? {} %}
+    {% include 'partials/content_section.html.twig' with { section: section_top } %}
+
+     {# TESTIMONIAL #}
+    {% set t = page.header.testimonials ?? {} %}
+    {% if t and (t.enabled is not defined or t.enabled) %}
+      {% include 'partials/testimonials.html.twig' with {
+        testimonials: t
+      } %}
+    {% endif %}
+
+    {# HIGHLIGHT CARDS SECTION #}
+  {% set help = page.header.help_cards ?? {} %}
+  {% if help.enabled ?? false %}
+    {% if help.items is defined and help.items|length %}
+      {% include 'partials/highlight_cards.html.twig' with {
+        title: help.title ?? null,
+        text:  help.text ?? null,
+        items: help.items
+      } %}
+    {% endif %}
+  {% endif %}
+
+    {# CONTENT 2 #}
+    {% set section_medium = page.header.section_medium ?? {} %}
+    {% include 'partials/content_section.html.twig' with { section: section_medium } %}
+
+     {# PARALLAX #}
+    {% set banner = page.header.parallax_banner_bottom ?? {} %}
+    {% if banner and (banner.enabled is not defined or banner.enabled) %}
+      {% include 'partials/parallax_banner.html.twig' with {
+        image:         banner.image ?? null,
+        overlay_color: banner.overlay_color ?? null,
+        eyebrow:       banner.eyebrow ?? null,
+        title:         banner.title ?? null,
+        text:          banner.text ?? null,
+        cta_label:     banner.cta.label ?? null,
+        cta_link:      banner.cta.link ?? null,
+        align:         banner.align ?? 'center'
+      } %}
+    {% endif %}
+    
+    {# CONTENT 3 #}
+    {% set section_bottom = page.header.section_bottom ?? {} %}
+    {% set normalized_section_bottom = section_bottom|merge({
+      cta_label: section_bottom.cta.label ?? section_bottom.cta_label ?? null,
+      cta_link: section_bottom.cta.link ?? section_bottom.cta_link ?? null
+    }) %}
+    {% include 'partials/content_section.html.twig' with { section: normalized_section_bottom } %}
+  </main>
+{% endblock %}
