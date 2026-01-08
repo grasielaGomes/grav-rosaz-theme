@@ -18,18 +18,15 @@ form:
             type: partials/content
             context: theme://blueprints
 
-        sections_top_tab:
+        section_top_tab:
           type: tab
           title: Sezione iniziale
-
           fields:
-            header.sections_top:
-              type: list
-              label: Sezione iniziale
-              style: vertical
-              controls: both
+            header.section_top:
+              type: fieldset
+              title: 'Sezione'
               import@:
-                type: partials/sections-list
+                type: partials/section
                 context: theme://blueprints
 
         gallery:
@@ -42,9 +39,13 @@ form:
         parallax:
           type: tab
           title: Parallax
-          import@:
-            type: partials/parallax
-            context: theme://blueprints
+          fields:
+            header.parallax_banner:
+              type: fieldset
+              title: 'Banner parallax'
+              import@:
+                type: partials/parallax
+                context: theme://blueprints
 
         testimonials:
           type: tab
@@ -53,16 +54,13 @@ form:
             type: partials/testimonials
             context: theme://blueprints
 
-        sections_bottom_tab:
+        section_bottom_tab:
           type: tab
           title: Sezione finale
-
           fields:
-            header.sections_bottom:
-              type: list
-              label: Sezione in fondo alla pagina
-              style: vertical
-              controls: both
+            header.section_bottom:
+              type: fieldset
+              title: 'Sezione'
               import@:
-                type: partials/sections-list
+                type: partials/section
                 context: theme://blueprints
