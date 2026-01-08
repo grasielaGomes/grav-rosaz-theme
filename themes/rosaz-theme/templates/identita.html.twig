@@ -3,13 +3,13 @@
 {% block content %}
 
   {# CONTENT 1 #}
-  {% set sections_top = page.header.sections_top ?? [] %}
-  {% include 'partials/content_sections.html.twig' with { sections: sections_top } %}
+  {% set section_top = page.header.section_top ?? {} %}
+  {% include 'partials/content_section.html.twig' with { section: section_top } %}
 
   {# GALLERY STRIP #}
   {% set gallery = page.header.gallery_strip ?? {} %}
   {% if gallery and (gallery.enabled is not defined or gallery.enabled) %}
-    {% include 'partials/gallery-strip.html.twig' with { gallery: gallery } %}
+    {% include 'partials/gallery_strip.html.twig' with { gallery: gallery } %}
   {% endif %}
 
   {# TESTIMONIALS #}
@@ -35,7 +35,7 @@
   
 
   {# CONTENT 2 #}
-  {% set sections_bottom = page.header.sections_bottom ?? [] %}
-  {% include 'partials/content_sections.html.twig' with { sections: sections_bottom } %}
+  {% set section_bottom = page.header.section_bottom ?? {} %}
+  {% include 'partials/content_section.html.twig' with { section: section_bottom } %}
 
 {% endblock %}
