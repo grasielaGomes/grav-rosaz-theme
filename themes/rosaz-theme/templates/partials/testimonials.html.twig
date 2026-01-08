@@ -26,7 +26,7 @@
       {% endif %}
     {% endif %}
 
-    <section class="relative bg-neutral-100 py-16 md:py-20 overflow-hidden">
+    <section class="relative bg-neutral-100 py-12 px-12 md:py-20 md:px-0 overflow-hidden">
       {# Subtle background image #}
       {% if background_image %}
         {% if page.media[background_image] is defined %}
@@ -44,10 +44,10 @@
         ></div>
       {% endif %}
 
-      <div class="relative max-w-6xl mx-auto px-4">
+      <div class="relative max-w-6xl mx-auto">
         <div class="flex flex-col md:flex-row items-start gap-10 md:gap-12">
           {# Left column: section heading #}
-          <div class="md:w-5/12 space-y-4">
+          <div class="md:w-5/12 space-y-4 px-4">
             {% if label %}
               <p
                 class="text-xs font-semibold tracking-[0.28em] uppercase text-orange-500"
