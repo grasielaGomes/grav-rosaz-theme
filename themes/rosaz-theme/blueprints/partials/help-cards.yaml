@@ -19,6 +19,11 @@ form:
           type: text
           label: 'Titolo sezione'
 
+        .text:
+          type: textarea
+          label: Testo principale
+          classes: 'long'
+
         .items:
           type: list
           label: 'Schede'
