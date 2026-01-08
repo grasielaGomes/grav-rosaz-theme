@@ -1,0 +1,88 @@
+title: Vocazione
+'@extends':
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      '@override': true
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: PLUGIN_ADMIN.CONTENT
+          import@:
+            type: partials/content
+            context: theme://blueprints
+
+        parallax_banner_top:
+          type: tab
+          title: Parallax
+          fields:
+            header.parallax_banner_top:
+              type: fieldset
+              title: 'Banner parallax'
+              import@:
+                type: partials/parallax
+                context: theme://blueprints
+
+        section_top_tab:
+          type: tab
+          title: Sezione iniziale
+          fields:
+            header.section_top:
+              type: fieldset
+              title: 'Sezione'
+              import@:
+                type: partials/section
+                context: theme://blueprints
+
+        testimonials:
+          type: tab
+          title: Testimonianza
+          import@:
+            type: partials/testimonials
+            context: theme://blueprints
+
+        section_medium_tab:
+          type: tab
+          title: Sezione mezzo
+          fields:
+            header.section_medium:
+              type: fieldset
+              title: 'Sezione'
+              import@:
+                type: partials/section
+                context: theme://blueprints
+
+        help_cards:
+          type: tab
+          title: 'Schede'
+          import@:
+            type: partials/help-cards
+            context: theme://blueprints
+
+        parallax_bottom:
+          type: tab
+          title: Parallax
+          fields:
+            header.parallax_banner_bottom:
+              type: fieldset
+              title: 'Banner parallax'
+              import@:
+                type: partials/parallax
+                context: theme://blueprints
+
+        section_bottom_tab:
+          type: tab
+          title: Sezione finale
+          fields:
+            header.section_bottom:
+              type: fieldset
+              title: 'Sezione'
+              import@:
+                type: partials/section
+                context: theme://blueprints
