@@ -1,0 +1,59 @@
+form:
+  fields:
+    .id:
+      type: text
+      label: ID sezione (opzionale)
+
+    .enabled:
+      type: toggle
+      label: Abilitata
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
+      validate:
+        type: bool
+
+    .background_color:
+      type: colorpicker
+      label: Colore di sfondo
+      default: '#ffffff'
+
+    .eyebrow:
+      type: text
+      label: Eyebrow / piccolo titolo
+
+    .title:
+      type: text
+      label: Titolo sezione
+
+    .text:
+      type: textarea
+      label: Testo principale
+      classes: 'long'
+
+    .highlights:
+      type: list
+      label: Punti in evidenza
+      style: vertical
+      controls: both
+      fields:
+        .label:
+          type: text
+          label: Titolo punto
+        .text:
+          type: textarea
+          label: Testo
+          classes: 'short'
+
+    .cta:
+      type: fieldset
+      title: 'CTA'
+      fields:
+        .label:
+          type: text
+          label: 'Etichetta CTA'
+        .link:
+          type: text
+          label: 'Link CTA'
