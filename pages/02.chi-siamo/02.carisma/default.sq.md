@@ -3,27 +3,27 @@ title: Karizma
 menu: Karizma
 template: carisma
 
-sections_top:
-  - id: 'carisma'
-    enabled: true
-    background_color: '#ffffff'
-    eyebrow: 'Karizma e Bijave të Rosazit'
-    title: 'Zemra e karizmës'
-    text: >
-      Karizma jonë si Motrat Françeskane Misionare të Susës, bijat e
-      të Lumnuarit Edoardo Rosaz, është një mision dashurie universale i
-      rrënjosur në shpirtësinë françeskane dhe i kushtuar dinjitetit të çdo personi.
-      Është një dhuratë e Shpirtit Shenjt që na fton të jetojmë Ungjillin me
-      thjeshtësi, besim në Providencë dhe vëmendje të veçantë ndaj më të varfërve.
-    highlights:
-      - label: 'Origjina shpirtërore'
-        text: >
-          Një dhuratë e Shpirtit Shenjt që lindi nga zemra e të Lumnuarit Rosaz,
-          njeri plotësisht i kushtuar Lavdisë së Zotit dhe shpëtimit të shpirtrave.
-      - label: 'Stili i jetës'
-        text: >
-          Dorëzim i plotë në Providencën Hyjnore dhe butësi ndaj Shpirtit Shenjt,
-          në një jetë të thjeshtë dhe vëllazërore.
+section_top:
+  id: 'carisma'
+  enabled: true
+  background_color: '#ffffff'
+  eyebrow: 'Karizma e Bijave të Rosazit'
+  title: 'Zemra e karizmës'
+  text: >
+    Karizma jonë si Motrat Françeskane Misionare të Susës, bijat e
+    të Lumnuarit Edoardo Rosaz, është një mision dashurie universale i
+    rrënjosur në shpirtësinë françeskane dhe i kushtuar dinjitetit të çdo personi.
+    Është një dhuratë e Shpirtit Shenjt që na fton të jetojmë Ungjillin me
+    thjeshtësi, besim në Providencë dhe vëmendje të veçantë ndaj më të varfërve.
+  highlights:
+    - label: 'Origjina shpirtërore'
+      text: >
+        Një dhuratë e Shpirtit Shenjt që lindi nga zemra e të Lumnuarit Rosaz,
+        njeri plotësisht i kushtuar Lavdisë së Zotit dhe shpëtimit të shpirtrave.
+    - label: 'Stili i jetës'
+      text: >
+        Dorëzim i plotë në Providencën Hyjnore dhe butësi ndaj Shpirtit Shenjt,
+        në një jetë të thjeshtë dhe vëllazërore.
 
 gallery_strip:
   enabled: true
@@ -55,41 +55,41 @@ testimonials:
       role: 'Nënë e shoqëruar nga komuniteti'
       avatar: 'avatar.png'
 
-sections_bottom:
-  - id: 'missione-mamme'
-    enabled: true
-    background_color: 'rgba(249, 239, 232, 0.9)'
-    eyebrow: 'Misioni'
-    title: 'Të jesh "Nëna" me praninë dhe dëshminë tënde'
-    text: >
-      Ne, motrat, jemi të thirrura të jetojmë kushtimin tonë me një zemër
-      amtare: një amësi vigjilente, e fortë dhe e butë njëkohësisht,
-      e aftë t'i afrohet kujtdo me durim dhe guxim. Shërbimi ynë bëhet shenjë
-      konkrete e një Zoti që kujdeset për bijtë e Tij dhe kthen dinjitetin e
-      secilit person.
-    highlights:
-      - label: 'Butësi dhe durim'
-        text: >
-          Një amësi vigjilente dhe e guximshme, e aftë të kapërcejë vështirësitë me
-          butësi dhe vendosmëri të brendshme.
-      - label: 'Shërbim pa kufij'
-        text: >
-          Një dashuri që nuk njeh kufij gjeografikë as paragjykime, duke arritur
-          njerëzit kudo që janë.
-      - label: 'Promovim njerëzor'
-        text: >
-          Një angazhim i vazhdueshëm për t'i kthyer dinjitetin personit, duke e bërë
-          të lirë dhe përgjegjës si bijë e Zotit.
-      - label: 'Kontemplim në ecje'
-        text: >
-          Shërbimi lind nga lutja dhe sakramentet dhe jetohet si
-          "kontemplim pelegrin", i vëmendshëm ndaj shenjave të kohës.
-      - label: 'Besnikëri ndaj Kishës'
-        text: >
-          Një lidhje bijësore dhe e thellë me Kishën, duke u përfshirë me përulësi dhe
-          guxim në kontekstet shoqërore dhe kulturore ku thirremi të veprojmë.
-      - label: 'Vëmendje ndaj shenjave'
-        text: >
-          Aftësia për të lexuar, në çdo situatë, shenjat e një projekti hyjnor
-          dhe për të marrë përsipër dhimbjen njerëzore me thjeshtësi amtare.
+section_bottom:
+  id: 'missione-mamme'
+  enabled: true
+  background_color: 'rgba(249, 239, 232, 0.9)'
+  eyebrow: 'Misioni'
+  title: 'Të jesh "Nëna" me praninë dhe dëshminë tënde'
+  text: >
+    Ne, motrat, jemi të thirrura të jetojmë kushtimin tonë me një zemër
+    amtare: një amësi vigjilente, e fortë dhe e butë njëkohësisht,
+    e aftë t'i afrohet kujtdo me durim dhe guxim. Shërbimi ynë bëhet shenjë
+    konkrete e një Zoti që kujdeset për bijtë e Tij dhe kthen dinjitetin e
+    secilit person.
+  highlights:
+    - label: 'Butësi dhe durim'
+      text: >
+        Një amësi vigjilente dhe e guximshme, e aftë të kapërcejë vështirësitë me
+        butësi dhe vendosmëri të brendshme.
+    - label: 'Shërbim pa kufij'
+      text: >
+        Një dashuri që nuk njeh kufij gjeografikë as paragjykime, duke arritur
+        njerëzit kudo që janë.
+    - label: 'Promovim njerëzor'
+      text: >
+        Një angazhim i vazhdueshëm për t'i kthyer dinjitetin personit, duke e bërë
+        të lirë dhe përgjegjës si bijë e Zotit.
+    - label: 'Kontemplim në ecje'
+      text: >
+        Shërbimi lind nga lutja dhe sakramentet dhe jetohet si
+        "kontemplim pelegrin", i vëmendshëm ndaj shenjave të kohës.
+    - label: 'Besnikëri ndaj Kishës'
+      text: >
+        Një lidhje bijësore dhe e thellë me Kishën, duke u përfshirë me përulësi dhe
+        guxim në kontekstet shoqërore dhe kulturore ku thirremi të veprojmë.
+    - label: 'Vëmendje ndaj shenjave'
+      text: >
+        Aftësia për të lexuar, në çdo situatë, shenjat e një projekti hyjnor
+        dhe për të marrë përsipër dhimbjen njerëzore me thjeshtësi amtare.
 ---
