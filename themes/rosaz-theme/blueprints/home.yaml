@@ -58,9 +58,13 @@ form:
         parallax:
           type: tab
           title: Banner
-          import@:
-            type: partials/parallax
-            context: theme://blueprints
+          fields:
+            header.parallax_banner:
+              type: fieldset
+              title: 'Banner parallax'
+              import@:
+                type: partials/parallax
+                context: theme://blueprints
 
         help_cards:
           type: tab
