@@ -1,0 +1,41 @@
+title: Beato Rosaz
+'@extends':
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      '@override': true
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: PLUGIN_ADMIN.CONTENT
+          import@:
+            type: partials/content
+            context: theme://blueprints
+
+        timeline:
+          type: tab
+          title: Linea del tempo
+          fields:
+            header.timeline:
+              type: fieldset
+              title: 'Sezione'
+              import@:
+                type: partials/timeline
+                context: theme://blueprints
+
+        section_bottom_tab:
+          type: tab
+          title: Sezione finale
+          fields:
+            header.section_bottom:
+              type: fieldset
+              title: 'Sezione'
+              import@:
+                type: partials/section
+                context: theme://blueprints
