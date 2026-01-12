@@ -1,0 +1,20 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <main class="bg-white">
+
+    {#  TIMELINE #}
+    {% set timeline = page.header.timeline ?? {} %}
+    {% if timeline and (timeline.enabled is not defined or timeline.enabled) %}
+      {% include 'partials/timeline.html.twig' with { timeline: timeline } %}
+    {% endif %}
+
+    {# CONTENT #}
+    {% set section_bottom = page.header.section_bottom ?? {} %}
+    {% set normalized_section_bottom = section_bottom|merge({
+      cta_label: section_bottom.cta.label ?? section_bottom.cta_label ?? null,
+      cta_link: section_bottom.cta.link ?? section_bottom.cta_link ?? null
+    }) %}
+    {% include 'partials/content_section.html.twig' with { section: normalized_section_bottom } %}
+  </main>
+{% endblock %}
