@@ -1,0 +1,118 @@
+{# Generic timeline partial
+  - Accepts a `timeline` variable (object) OR falls back to page.header.timeline
+  - Expects:
+    timeline.enabled (optional)
+    timeline.label (optional)
+    timeline.title (optional)
+    timeline.subtitle (optional)
+    timeline.items[]: { image?,year?, title, text }
+#}
+
+{% set timeline = timeline is defined and timeline ? timeline : (page.header.timeline ?? {}) %}
+{% set items = timeline.items ?? [] %}
+
+{% if timeline and items is iterable and items|length %}
+  <section class="py-12 px-12 md:py-20 md:px-0 bg-neutral-100">
+   <div class="max-w-6xl mx-auto px-4">
+
+    {# Section header #}
+    <div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+      {% if timeline.label is defined and timeline.label %}
+       <p class="text-xs font-semibold tracking-[0.25em] uppercase text-orange-400 mb-3">
+        {{ timeline.label }}
+       </p>
+      {% endif %}
+
+      {% if timeline.title is defined and timeline.title %}
+       <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 mb-3">
+        {{ timeline.title }}
+       </h2>
+      {% endif %}
+
+      {% if timeline.subtitle is defined and timeline.subtitle %}
+       <p class="text-sm md:text-base text-neutral-600 leading-relaxed">
+        {{ timeline.subtitle }}
+       </p>
+      {% endif %}
+    </div>
+
+    {# Alternating timeline #}
+    <div class="mt-10 md:mt-12 relative">
+      {# Central line (desktop) #}
+      <div
+       class="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 border-l border-slate-200"
+       aria-hidden="true"
+      ></div>
+
+      <ol class="space-y-10 md:space-y-12">
+       {% for item in items %}
+        {% set is_left = (loop.index is odd) %}
+
+        <li class="relative">
+          {# Marker #}
+          <div
+           class="absolute left-1/2 -translate-x-1/2 top-2 h-6 w-6 rounded-full border-2 border-orange-500 bg-white flex items-center justify-center"
+          >
+           <div class="h-2.5 w-2.5 rounded-full bg-orange-500"></div>
+          </div>
+
+          {# Card wrapper: full on mobile, half on desktop #}
+          <div
+           class="
+            w-full md:w-1/2
+            pt-6 md:pt-0
+            {% if is_left %}
+              md:pr-10
+            {% else %}
+              md:ml-auto md:pl-10
+            {% endif %}
+           "
+          >
+           <article
+            class="
+              bg-white rounded-3xl border border-neutral-200
+              px-4 py-4 md:px-5 md:py-5
+              max-w-md w-full {% if is_left %}md:ml-auto md:text-right{% endif %}
+            "
+           >
+           {% if item.image %}
+              {% set image_url = item.image %}
+              {% if page.media and page.media[item.image] %}
+                {% set image_url = page.media[item.image].url %}
+              {% endif %}
+              <div
+                class="
+                  h-28 w-28 rounded-full bg-orange-50 bg-center bg-cover bg-no-repeat mb-4
+                  {% if is_left %}md:ml-auto{% else %}md:mr-auto{% endif %}
+                "
+                style="background-image: url('{{ image_url|e }}');"
+              >
+              </div>
+           {% endif %}
+           
+            {% if item.year is defined and item.year %}
+              <p class="text-xs text-orange-500 font-semibold tracking-[0.2em] uppercase mb-1">
+               {{ item.year }}
+              </p>
+            {% endif %}
+
+            {% if item.title is defined and item.title %}
+              <h3 class="text-base md:text-lg font-semibold text-slate-900 mb-2">
+               {{ item.title }}
+              </h3>
+            {% endif %}
+
+            {% if item.text is defined and item.text %}
+              <p class="text-sm md:text-base text-slate-600 leading-relaxed">
+               {{ item.text }}
+              </p>
+            {% endif %}
+           </article>
+          </div>
+        </li>
+       {% endfor %}
+      </ol>
+    </div>
+   </div>
+  </section>
+{% endif %}

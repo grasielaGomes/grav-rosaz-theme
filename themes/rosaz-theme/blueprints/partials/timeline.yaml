@@ -1,0 +1,49 @@
+form:
+  fields:
+    header.timeline.enabled:
+      type: toggle
+      label: Abilita linea del tempo
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
+      validate:
+        type: bool
+
+    header.timeline.label:
+      type: text
+      label: Label superiore (opzionale)
+
+    header.timeline.title:
+      type: text
+      label: Titolo sezione
+
+    header.timeline.subtitle:
+      type: textarea
+      label: Sottotitolo (opzionale)
+      classes: long
+
+    header.timeline.items:
+      type: list
+      label: Eventi nella linea del tempo
+      style: vertical
+      controls: both
+      btnLabel: Aggiungi evento
+      fields:
+        .image:
+          type: pagemediaselect
+          label: 'Immagine evento (opzionale)'
+          preview_images: true
+          multiple: false
+        .year:
+          type: text
+          label: Anno / periodo (opzionale)
+          placeholder: '1830–1845, 1854, 1874...'
+        .title:
+          type: text
+          label: Titolo evento
+        .text:
+          type: textarea
+          label: Testo descrittivo
+          classes: long
