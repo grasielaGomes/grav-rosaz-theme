@@ -20,7 +20,7 @@ form:
 
         parallax_banner_top:
           type: tab
-          title: Parallax
+          title: Banner
           fields:
             header.parallax_banner_top:
               type: fieldset
@@ -67,7 +67,7 @@ form:
 
         parallax_bottom:
           type: tab
-          title: Parallax
+          title: Banner
           fields:
             header.parallax_banner_bottom:
               type: fieldset

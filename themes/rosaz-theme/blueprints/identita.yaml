@@ -38,7 +38,7 @@ form:
 
         parallax:
           type: tab
-          title: Parallax
+          title: Banner
           fields:
             header.parallax_banner:
               type: fieldset
