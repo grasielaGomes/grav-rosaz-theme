@@ -3,7 +3,11 @@ defined %} {% set resolved_image = page.media[raw_image].url %} {% else %} {% se
 resolved_image = raw_image %} {% endif %} {% set overlay_color = overlay_color ??
 'rgba(249,115,22,0.9)' %} {% set eyebrow = eyebrow ?? null %} {% set title =
 title ?? null %} {% set text = text ?? null %} {% set cta_label = cta_label ??
-null %} {% set cta_link = cta_link ?? null %} {% set align = align ?? 'center' %}
+null %} {% set cta_link = cta_link ?? null %} {% set is_external =
+  cta_link starts with 'http' or
+  cta_link starts with 'mailto:' or
+  cta_link starts with 'tel:'
+%} {% set align = align ?? 'center' %}
 {% set align_classes = { 'left': 'items-start text-left', 'right': 'items-end
 text-right', 'center': 'items-center text-center' } %}
 
@@ -51,6 +55,7 @@ text-right', 'center': 'items-center text-center' } %}
       {% endif %} {% if cta_label and cta_link %}
       <a
         href="{{ cta_link }}"
+        {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
         class="inline-flex items-center justify-center rounded-full border border-neutral-50/80 px-6 py-2.5 text-sm font-semibold text-neutral-50 hover:bg-neutral-50 hover:text-neutral-900 transition-colors duration-200"
       >
         {{ cta_label }}
