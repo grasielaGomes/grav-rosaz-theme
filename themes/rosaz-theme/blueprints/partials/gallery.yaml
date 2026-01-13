@@ -25,6 +25,8 @@ form:
         .src:
           type: pagemediaselect
           label: Immagine
+          preview_images: true
+          multiple: false
         .alt:
           type: text
           label: Testo alternativo (alt)
