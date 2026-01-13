@@ -1,0 +1,82 @@
+form:
+  fields:
+    header.location_section:
+      type: section
+      title: 'Sezione posizione'
+      underline: true
+
+      fields:
+        header.location_section.enabled:
+          type: toggle
+          label: Abilitata
+          highlight: 1
+          default: 1
+          options:
+            1: PLUGIN_ADMIN.YES
+            0: PLUGIN_ADMIN.NO
+          validate:
+            type: bool
+
+        header.location_section.id:
+          type: text
+          label: ID sezione (opzionale)
+          help: 'Optional ID used for anchor links (e.g. come-arrivare).'
+
+        header.location_section.background_color:
+          type: colorpicker
+          label: Colore di sfondo
+          default: '#ffffff'
+
+        header.location_section.eyebrow:
+          type: text
+          label: Eyebrow / piccolo titolo
+          help: 'Small uppercase label above the title.'
+
+        header.location_section.title:
+          type: text
+          label: Titolo sezione
+
+        header.location_section.text:
+          type: textarea
+          label: Testo principale
+          rows: 4
+
+        header.location_section.map:
+          type: fieldset
+          title: Mappa
+          collapsible: true
+          collapsed: false
+
+          fields:
+            header.location_section.map.embed_src:
+              type: text
+              label: URL embed Google Maps
+              help: 'Paste here the full URL from the Google Maps embed iframe (the value of src="...").'
+
+            header.location_section.map.latitude:
+              type: text
+              label: Latitudine (opzionale)
+              help: 'Optional. Can be used later for custom map integrations.'
+
+            header.location_section.map.longitude:
+              type: text
+              label: Longitudine (opzionale)
+              help: 'Optional. Can be used later for custom map integrations.'
+
+        header.location_section.directions:
+          type: list
+          label: Indicazioni
+          style: vertical
+          btnLabel: Aggiungi indicazione
+
+          fields:
+            .label:
+              type: text
+              label: Titolo indicazione
+              help: 'E.g. "From Porta Susa railway station".'
+
+            .text:
+              type: textarea
+              label: Descrizione
+              rows: 3
+              help: 'Explain how to arrive using public transport, car, etc.'
