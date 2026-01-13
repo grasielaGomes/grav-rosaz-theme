@@ -23,11 +23,11 @@
     } %}
   {% endif %}
 
-  {# HIGHLIGHT CARDS SECTION #}
+  {# HELP CARDS SECTION #}
   {% set help = page.header.help_cards ?? {} %}
   {% if help.enabled ?? false %}
     {% if help.items is defined and help.items|length %}
-      {% include 'partials/highlight_cards.html.twig' with {
+      {% include 'partials/help_cards.html.twig' with {
         title: help.title ?? null,
         items: help.items
       } %}
