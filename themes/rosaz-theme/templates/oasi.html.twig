@@ -1,0 +1,33 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  {# section_top #}
+  {% include 'partials/content_section.html.twig' with { section: page.header.section_top } %}
+
+  {# GALLERY STRIP #}
+  {% set gallery = page.header.gallery_strip ?? {} %}
+  {% if gallery and (gallery.enabled is not defined or gallery.enabled) %}
+    {% include 'partials/gallery_strip.html.twig' with { gallery: gallery } %}
+  {% endif %}
+
+   {# HELP CARDS SECTION #}
+  {% set help = page.header.help_cards ?? {} %}
+  {% if help.enabled ?? false %}
+    {% if help.items is defined and help.items|length %}
+      {% include 'partials/help_cards.html.twig' with {
+        title: help.title ?? null,
+        text:  help.text ?? null,
+        items: help.items
+      } %}
+    {% endif %}
+  {% endif %}
+
+  {# section_medium #}
+  {% include 'partials/content_section.html.twig' with { section: page.header.section_medium } %}
+
+  {# location_section (novo componente) #}
+  {% include 'partials/location_section.html.twig' %}
+
+  {# section_bottom #}
+  {% include 'partials/content_section.html.twig' with { section: page.header.section_bottom } %}
+{% endblock %}
