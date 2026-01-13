@@ -1,0 +1,98 @@
+{# Location section partial #}
+
+{% set s = section ?? page.header.location_section ?? {} %}
+{% if not s.enabled is defined or s.enabled %}
+  {% set id = s.id ?? 'location-section' %}
+  {% set background_color = s.background_color ?? '' %}
+  {% set eyebrow = s.eyebrow ?? '' %}
+  {% set title = s.title ?? '' %}
+  {% set text = s.text ?? '' %}
+  {% set directions = s.directions ?? [] %}
+  {% set map = s.map ?? {} %}
+
+  {# 1) Try to get embed URL (Google Maps iframe src) #}
+  {% set embed_url = map.embed_src ?? map.embed_url ?? '' %}
+
+  {# 2) Fallback from latitude/longitude if no embed_url #}
+  {% if (not embed_url) and map.latitude is defined and map.longitude is defined and map.latitude and map.longitude %}
+    {% set embed_url = 'https://www.google.com/maps?q=' ~ map.latitude ~ ',' ~ map.longitude ~ '&output=embed' %}
+  {% endif %}
+
+  <section
+    id="{{ id }}"
+    class="relative p-12 md:p-0"
+    {% if background_color %}
+      style="background-color: {{ background_color|e('html_attr') }};"
+    {% endif %}
+  >
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-8 md:gap-12 md:items-stretch">
+        {# Left column: title, text, directions #}
+        <div class="md:w-1/2 max-w-xl space-y-8 md:py-20">
+          <div class="flex flex-col gap-4">
+            {% if eyebrow %}
+              <p class="text-xs font-semibold tracking-[0.25em] uppercase text-orange-400">
+                {{ eyebrow }}
+              </p>
+            {% endif %}
+
+            {% if title %}
+              <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900">
+                {{ title }}
+              </h2>
+            {% endif %}
+          </div>
+
+          {% if text %}
+            <p class="text-sm md:text-base text-neutral-700 leading-relaxed">
+              {{ text }}
+            </p>
+          {% endif %}
+
+          {% if directions|length %}
+            <div class="space-y-4">
+              {% for item in directions %}
+                <div class="flex items-start gap-3">
+                  <div class="h-6 w-6 flex items-center justify-center rounded-full bg-orange-500 text-white text-xs font-semibold flex-shrink-0">
+                    {{ loop.index }}
+                  </div>
+                  <div class="space-y-1">
+                    {% if item.label %}
+                      <p class="text-sm font-semibold text-neutral-900">
+                        {{ item.label }}
+                      </p>
+                    {% endif %}
+                    {% if item.text %}
+                      <p class="text-xs md:text-sm text-neutral-700 leading-relaxed">
+                        {{ item.text }}
+                      </p>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        {# Right column: full-height map #}
+        <div class="md:w-1/2 w-full">
+          {% if embed_url %}
+            <div class="w-full h-full rounded-lg border border-neutral-300 md:min-h-[320px] overflow-hidden">
+              <iframe
+                src="{{ embed_url|e('html_attr') }}"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="w-full h-full border-0"
+                allowfullscreen
+              ></iframe>
+            </div>
+          {% else %}
+            <div class="w-full border border-dashed border-neutral-300 px-6 py-10 text-center text-sm text-neutral-500 bg-neutral-50 h-full flex items-center justify-center">
+              {{ 'ROSAZ.LOCATION.NO_MAP'|t|default('La mappa non è disponibile in questo momento.') }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
