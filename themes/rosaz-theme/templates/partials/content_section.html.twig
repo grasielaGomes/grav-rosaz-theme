@@ -77,10 +77,17 @@
           {% set cta = section.cta|default({}) %}
           {% set cta_label = cta.label|default(null) %}
           {% set cta_link = cta.link|default(null) %}
+          {# Detect external link (WhatsApp, sites externos, mailto, tel) #}
+          {% set is_external =
+            cta_link starts with 'http' or
+            cta_link starts with 'mailto:' or
+            cta_link starts with 'tel:' 
+          %}
           {% if cta_label and cta_link %}
             <div class="pt-2">
               <a
                 href="{{ cta_link }}"
+                {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
                 class="inline-flex items-center justify-center rounded-full border border-neutral-300 px-6 py-2.5 text-sm font-semibold text-neutral-800 hover:border-orange-400 hover:text-orange-500 transition-colors duration-200"
               >
                 {{ cta_label }}
