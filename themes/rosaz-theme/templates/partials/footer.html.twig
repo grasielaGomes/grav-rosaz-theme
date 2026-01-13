@@ -48,10 +48,16 @@
 
         {% set button_label = cta.button_label ?? '' %}
         {% set button_url = cta.button_url ?? '#' %}
+        {% set is_external =
+          button_url starts with 'http' or
+          button_url starts with 'mailto:' or
+          button_url starts with 'tel:'
+        %}
 
         {% if button_label %}
           <a
             href="{{ button_url }}"
+            {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
             class="inline-flex items-center gap-3 rounded-full bg-orange-500 px-7 py-2 text-sm font-semibold text-white shadow-md hover:bg-orange-600 transition-colors duration-200"
           >
             <span
