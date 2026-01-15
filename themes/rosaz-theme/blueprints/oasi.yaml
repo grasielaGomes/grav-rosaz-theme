@@ -39,9 +39,13 @@ form:
         help_cards:
           type: tab
           title: Schede
-          import@:
-            type: partials/help-cards
-            context: theme://blueprints
+          fields:
+            header.help_cards:
+              type: fieldset
+              title: Schede
+              import@:
+                type: partials/help-cards
+                context: theme://blueprints
 
         section_medium_tab:
           type: tab
@@ -61,13 +65,13 @@ form:
             type: partials/location_section
             context: theme://blueprints
 
-        section_bottom_tab:
+        help_cards_contacts:
           type: tab
-          title: Sezione finale
+          title: Schede contatti
           fields:
-            header.section_bottom:
+            header.help_cards_contacts:
               type: fieldset
-              title: Sezione
+              title: Schede contatti
               import@:
-                type: partials/section
+                type: partials/help-cards
                 context: theme://blueprints
