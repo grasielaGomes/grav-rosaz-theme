@@ -1,66 +1,74 @@
+title: Help cards (partial)
+
 form:
   fields:
-    header.help_cards:
-      type: fieldset
-      title: 'Sezione schede di supporto'
+    .enabled:
+      type: toggle
+      label: 'Abilitata'
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
+      validate:
+        type: bool
+
+    .title:
+      type: text
+      label: 'Titolo sezione'
+
+    .text:
+      type: textarea
+      label: 'Testo principale'
+      classes: 'long'
+
+    .items:
+      type: list
+      label: 'Schede'
+      style: vertical
+      btnLabel: 'Aggiungi scheda'
       fields:
-        .enabled:
-          type: toggle
-          label: 'Abilitata'
-          highlight: 1
-          default: 1
+        .icon:
+          type: pagemediaselect
+          label: 'Icona (facoltativa, specifica della pagina)'
+          preview_images: true
+          multiple: false
+
+        .icon_key:
+          type: select
+          label: 'Tipo di icona predefinita (opzionale)'
+          default: ''
           options:
-            1: PLUGIN_ADMIN.YES
-            0: PLUGIN_ADMIN.NO
-          validate:
-            type: bool
+            '': '(nessuna)'
+            email: 'Email'
+            address: 'Indirizzo'
+            phone: 'Telefono'
 
         .title:
           type: text
-          label: 'Titolo sezione'
+          label: 'Titolo'
 
         .text:
           type: textarea
-          label: Testo principale
-          classes: 'long'
+          label: 'Testo'
+          rows: 3
 
-        .items:
-          type: list
-          label: 'Schede'
-          style: vertical
-          btnLabel: 'Aggiungi scheda'
-          fields:
-            .icon:
-              type: pagemediaselect
-              label: 'Icona'
-              preview_images: true
-              multiple: false
-            .icon_key:
-              type: select
-              label: 'Tipo icona (default tema – opzionale)'
-              default: ''
-              options:
-                '': 'Nessuno'
-                email: 'Email (default tema)'
-                address: 'Indirizzo (default tema)'
-                phone: 'Telefono (default tema)'
-            .title:
-              type: text
-              label: 'Titolo'
-            .text:
-              type: textarea
-              label: 'Testo'
-            .link:
-              type: text
-              label: 'Link'
-            .link_label:
-              type: text
-              label: 'Etichetta link'
-            .hover_bg_color:
-              type: colorpicker
-              label: 'Colore sfondo hover'
-              default: '#fdfcf6'
-            .hover_accent_color:
-              type: colorpicker
-              label: 'Colore bordo / testo hover'
-              default: '#c05621'
+        .link:
+          type: text
+          label: 'Link'
+          placeholder: 'https://..., mailto:..., tel:..., ecc.'
+
+        .link_label:
+          type: text
+          label: 'Etichetta del link (opzionale)'
+          placeholder: 'Es: Scrivici, Chiama, Apri in Maps'
+
+        .hover_bg_color:
+          type: text
+          label: 'Colore di sfondo al passaggio (hover)'
+          placeholder: '#fdf6ec'
+
+        .hover_accent_color:
+          type: text
+          label: 'Colore accento (bordi e testo al passaggio)'
+          placeholder: '#f18902'
