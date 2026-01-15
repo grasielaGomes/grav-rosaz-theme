@@ -85,7 +85,7 @@ section_medium:
 location_section:
   id: come-arrivare
   enabled: true
-  background_color: '#f9fafc'
+  background_color: '#ffffff'
   eyebrow: 'Come arrivare'
   title: 'Come raggiungere l’Oasi Santa Chiara'
   text: >
@@ -103,16 +103,34 @@ location_section:
         Tram 6 fino a Piazza Hermada oppure autobus 61 fino a Piazza Vittorio Veneto
         e poi autobus 56 in direzione Corso Quintino Sella.
 
-section_bottom:
-  id: contatti-oasi
+help_cards_contacts:
   enabled: true
-  background_color: ''
-  eyebrow: 'Per informazioni'
   title: 'Vuoi saperne di più sull’Oasi Santa Chiara?'
   text: >
     Se desideri maggiori dettagli sul soggiorno, sulla disponibilità delle camere
     o sulle possibilità di percorsi spirituali e di studio, puoi contattarci direttamente.
-  cta:
-    label: 'Chiamaci per informazioni sul Whatsapp'
-    link: "https://wa.me/393331112222?text=Buongiorno%2C%20vorrei%20avere%20informazioni%20sull'Oasi%20Santa%20Chiara."
+  items:
+    - icon_key: email
+      title: 'Email'
+      text: 'Scrivici per informazioni, richieste o prenotazioni.'
+      link: 'mailto:segreteria@francescanerosaz.org'
+      link_label: 'Scrivici'
+      hover_bg_color: '#f0ffed'
+      hover_accent_color: '#4a8201'
+
+    - icon_key: phone
+      title: 'Telefono'
+      text: 'Per parlare direttamente con noi sul +39 3331112222.'
+      link: "https://wa.me/393331112222?text=Buongiorno%2C%20vorrei%20avere%20informazioni%20sull'Oasi%20Santa%20Chiara."
+      link_label: 'Chiama sul Whatsapp'
+      hover_bg_color: '#e8f2fe'
+      hover_accent_color: '#002a5d'
+
+    - icon_key: address
+      title: 'Indirizzo'
+      text: 'P.tta Carlo Andrea Rana, 5 – Susa (TO)'
+      link: 'https://www.google.com/maps?q=P.tta+Carlo+Andrea+Rana,+5,+10059+Susa+(TO)'
+      link_label: 'Apri in Maps'
+      hover_bg_color: '#fdf6ec'
+      hover_accent_color: '#f18902'
 ---
