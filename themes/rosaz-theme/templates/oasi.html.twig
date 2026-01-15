@@ -1,7 +1,7 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-  {# section_top #}
+  {# SECTION_TOP #}
   {% include 'partials/content_section.html.twig' with { section: page.header.section_top } %}
 
   {# GALLERY STRIP #}
@@ -10,7 +10,7 @@
     {% include 'partials/gallery_strip.html.twig' with { gallery: gallery } %}
   {% endif %}
 
-   {# HELP CARDS SECTION #}
+  {# HELP CARDS SECTION #}
   {% set help = page.header.help_cards ?? {} %}
   {% if help.enabled ?? false %}
     {% if help.items is defined and help.items|length %}
@@ -22,12 +22,21 @@
     {% endif %}
   {% endif %}
 
-  {# section_medium #}
+  {# SECTION_MEDIUM #}
   {% include 'partials/content_section.html.twig' with { section: page.header.section_medium } %}
 
-  {# location_section (novo componente) #}
+  {# LOCATION_SECTION #}
   {% include 'partials/location_section.html.twig' %}
 
-  {# section_bottom #}
-  {% include 'partials/content_section.html.twig' with { section: page.header.section_bottom } %}
+   {# HELP CARDS CONTACTS SECTION #}
+  {% set help = page.header.help_cards_contacts ?? {} %}
+  {% if help.enabled ?? false %}
+    {% if help.items is defined and help.items|length %}
+      {% include 'partials/help_cards.html.twig' with {
+        title: help.title ?? null,
+        text:  help.text ?? null,
+        items: help.items
+      } %}
+    {% endif %}
+  {% endif %}
 {% endblock %}
