@@ -1,48 +1,39 @@
-{# Resolve current theme name and configuration #}
+{# 1) Resolve current theme config (fallback) #}
 {% set theme_name = config.system.pages.theme %}
 {% set theme = attribute(config.themes, theme_name)|default({}) %}
+{% set theme_footer = theme.footer ?? {} %}
 
-{# Footer configuration: always from theme config so it is global #}
-{% set footer = theme.footer ?? {} %}
+{# 2) Try to find footer-config page (per-language content) #}
+{% set footer_page = pages.find('/footer-config') %}
+{% set h = footer_page ? footer_page.header : {} %}
 
-{% set background_image = footer.background_image ?? null %}
-{% set cta = footer.cta ?? {} %}
-{% set columns = footer.columns ?? [] %}
-{% set contact = footer.contact ?? {} %}
-{% set copyright = footer.copyright ?? {} %}
+{# 3) Merge data: page header has priority, theme config is fallback #}
+{% set background_color = h.background_color
+  ?? theme_footer.background_color
+  ?? '#020617'  %} {# default: slate-900-like #}
 
-<footer class="relative w-full bg-slate-900 text-neutral-200">
-  {# Optional background image with dark overlay #}
-  {% if background_image %}
-    {% if page.media[background_image] is defined %}
-      {% set bg_src = page.media[background_image].url %}
-    {% else %}
-      {% set bg_src = background_image %}
-    {% endif %}
-    <div
-      class="absolute inset-0 opacity-20 pointer-events-none"
-      style="
-        background-image: url('{{ url(bg_src) }}');
-        background-size: cover;
-        background-position: center;
-      "
-    ></div>
-    <div class="absolute inset-0 bg-slate-900/80 pointer-events-none"></div>
-  {% endif %}
+{% set cta = h.cta ?? theme_footer.cta ?? {} %}
+{% set columns = h.columns ?? theme_footer.columns ?? [] %}
+{% set contact = h.contact ?? theme_footer.contact ?? {} %}
+{% set copyright = h.copyright ?? theme_footer.copyright ?? {} %}
 
+<footer
+  class="relative w-full text-neutral-200 px-8"
+  style="background-color: {{ background_color }};"
+>
   <div class="relative max-w-6xl mx-auto px-4 py-12 md:py-16">
     <div class="flex flex-col lg:flex-row gap-10 lg:gap-16">
       {# Left: donation CTA #}
       <div class="lg:w-4/12 space-y-6">
         {% if cta.title %}
           <h2 class="text-xl md:text-2xl lg:text-3xl font-heading font-semibold text-white leading-snug">
-            {{ cta.title|t }}
+            {{ cta.title }}
           </h2>
         {% endif %}
 
         {% if cta.subtitle %}
           <p class="text-sm md:text-base text-neutral-300 max-w-md">
-            {{ cta.subtitle|t }}
+            {{ cta.subtitle }}
           </p>
         {% endif %}
 
@@ -66,7 +57,7 @@
               ♥
             </span>
             <span class="uppercase tracking-[0.16em]">
-              {{ button_label|t }}
+              {{ button_label }}
             </span>
           </a>
         {% endif %}
@@ -79,7 +70,7 @@
           <div>
             {% if col.title %}
               <h3 class="text-base font-heading font-semibold text-white mb-4">
-                {{ col.title|t }}
+                {{ col.title }}
               </h3>
             {% endif %}
 
@@ -91,7 +82,7 @@
                       href="{{ link.url ?? '#' }}"
                       class="hover:text-white transition-colors duration-150"
                     >
-                      {{ link.label|t }}
+                      {{ link.label }}
                     </a>
                   </li>
                 {% endfor %}
@@ -103,7 +94,7 @@
         {# Contact column #}
         <div>
           <h3 class="text-base font-heading font-semibold text-white mb-4">
-            {{ (contact.title ?? 'ROSAZ.FOOTER.CONTACT_TITLE')|t }}
+            {{ contact.title ?? 'Contact' }}
           </h3>
 
           <div class="space-y-4 text-neutral-300">
@@ -133,14 +124,20 @@
 
             {% if contact.address_lines %}
               <div class="flex items-start gap-3">
-                <span class="text-orange-400" >📍</span>
-                <div >
+                <span class="text-orange-400">📍</span>
+                <div>
                   {% for line in contact.address_lines %}
-                    <p>{{ line|t }}</p>
+                    {# Accept both { text: '...' } and plain strings #}
+                    {% set value = line.text is defined ? line.text : line %}
+                    <p class="whitespace-nowrap">
+                      {{ value }}
+                    </p>
                   {% endfor %}
                 </div>
               </div>
             {% endif %}
+
+
           </div>
         </div>
       </div>
@@ -152,10 +149,10 @@
     <div
       class="max-w-6xl mx-auto px-4 py-4 text-xs text-neutral-400 flex flex-col md:flex-row items-center justify-between gap-2"
     >
-      <p>
+      <p class="text-center md:text-left">
         &copy; {{ "now"|date("Y") }}
         {% if copyright.text %}
-          {{ copyright.text|t }}
+          {{ copyright.text }}
         {% else %}
           {{ site.title|default('Suore Francescane di Susa') }}. All rights reserved.
         {% endif %}
@@ -163,7 +160,7 @@
 
       <p>
         {% if copyright.built_with %}
-          {{ copyright.built_with|t }}
+          {{ copyright.built_with }}
         {% else %}
           Built with Grav & Tailwind.
         {% endif %}
