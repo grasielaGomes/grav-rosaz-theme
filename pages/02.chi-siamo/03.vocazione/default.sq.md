@@ -55,7 +55,7 @@ help_cards:
 section_medium:
   id: discernimento
   enabled: true
-  background_color: 'rgba(249, 239, 232, 0.9)'
+  background_color: '#F1E7D9'
   eyebrow: 'Dallimi'
   title: 'Mos ec vetëm'
   text: "Dallimi nuk është vetëm të zgjedhësh mes së mirës dhe së keqes, por mes asaj që është e mirë dhe asaj që është më e mira për ty, për realizimin tënd në Krisht. Për këtë, të këshilloj të mos e bësh vetëm:\n"

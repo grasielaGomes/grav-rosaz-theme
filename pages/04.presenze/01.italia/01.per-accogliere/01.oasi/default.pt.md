@@ -64,7 +64,7 @@ help_cards:
 section_medium:
   id: informazioni-utili
   enabled: true
-  background_color: 'rgba(249, 239, 232, 0.9)'
+  background_color: '#F1E7D9'
   eyebrow: 'Informações para a estadia'
   title: 'Um ambiente protegido e sereno'
   text: >

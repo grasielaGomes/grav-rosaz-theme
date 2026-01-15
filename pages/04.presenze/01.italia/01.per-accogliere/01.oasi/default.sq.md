@@ -64,7 +64,7 @@ help_cards:
 section_medium:
   id: informazioni-utili
   enabled: true
-  background_color: 'rgba(249, 239, 232, 0.9)'
+  background_color: '#F1E7D9'
   eyebrow: 'Informacione për qëndrimin'
   title: 'Një ambient i mbrojtur dhe i qetë'
   text: >

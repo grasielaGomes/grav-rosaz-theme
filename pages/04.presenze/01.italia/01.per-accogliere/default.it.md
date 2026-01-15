@@ -1,7 +1,7 @@
 ---
 title: 'Per accogliere'
 menu: 'Per accogliere'
-template: chi-siamo
+template: page-menu
 about_menu:
   enabled: true
   eyebrow: 'Presenze in Italia'

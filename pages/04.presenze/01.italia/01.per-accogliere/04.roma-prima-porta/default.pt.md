@@ -63,7 +63,7 @@ help_cards:
 section_medium:
   id: informacoes-uteis
   enabled: true
-  background_color: 'rgba(249, 239, 232, 0.9)'
+  background_color: '#F1E7D9'
   eyebrow: 'Informações para a estadia e atividades'
   title: 'Um lugar de silêncio, fraternidade e escuta'
   text: >

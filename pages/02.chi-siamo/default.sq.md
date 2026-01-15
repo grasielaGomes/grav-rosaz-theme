@@ -1,7 +1,7 @@
 ---
 title: 'Kush jemi'
 menu: 'Kush jemi'
-template: chi-siamo
+template: page-menu
 about_menu:
   enabled: true
   eyebrow: Kush Jemi

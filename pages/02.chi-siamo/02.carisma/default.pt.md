@@ -58,7 +58,7 @@ testimonials:
 section_bottom:
   id: 'missione-mamme'
   enabled: true
-  background_color: 'rgba(249, 239, 232, 0.9)'
+  background_color: '#F1E7D9'
   eyebrow: 'A missão'
   title: 'Ser "Mães" com presença e testemunho'
   text: >

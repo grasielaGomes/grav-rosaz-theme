@@ -55,7 +55,7 @@ help_cards:
 section_medium:
   id: discernimento
   enabled: true
-  background_color: 'rgba(249, 239, 232, 0.9)'
+  background_color: '#F1E7D9'
   eyebrow: 'O discernimento'
   title: 'Não caminhe sozinho'
   text: "O discernimento não é apenas escolher entre o bem e o mal, mas entre o que é bom e o que é melhor para você, para a sua realização em Cristo. Para isso, aconselho que você não faça sozinho:\n"

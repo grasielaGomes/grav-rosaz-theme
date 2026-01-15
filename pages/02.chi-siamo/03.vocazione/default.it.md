@@ -55,7 +55,7 @@ help_cards:
 section_medium:
   id: discernimento
   enabled: true
-  background_color: 'rgba(249, 239, 232, 0.9)'
+  background_color: '#F1E7D9'
   eyebrow: 'Il discernimento'
   title: 'Non camminare da soli'
   text: "Il discernimento non è solo scegliere tra bene e male, ma tra ciò che è bene e ciò che è meglio per te, per la tua realizzazione in Cristo. Per farlo, ti consiglio di non farlo da solo:\n"

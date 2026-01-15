@@ -73,7 +73,7 @@ testimonials:
 section_bottom:
   id: 'mamme-nella-carita'
   enabled: true
-  background_color: 'rgba(249, 239, 232, 0.9)'
+  background_color: '#F1E7D9'
   eyebrow: 'Il nostro impegno concreto'
   title: 'Essere "Mamme nella Carità"'
   text: >

@@ -69,7 +69,7 @@ help_cards:
 section_medium:
   id: informazioni-soggiorno
   enabled: true
-  background_color: 'rgba(249, 239, 232, 0.9)'
+  background_color: '#F1E7D9'
   eyebrow: 'Informações para a estadia'
   title: 'Um clima de fraternidade, simplicidade e alegria'
   text: >

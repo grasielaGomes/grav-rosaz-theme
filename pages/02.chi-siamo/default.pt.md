@@ -1,7 +1,7 @@
 ---
 title: 'Quem somos'
 menu: 'Quem somos'
-template: chi-siamo
+template: page-menu
 about_menu:
   enabled: true
   eyebrow: Quem Somos
