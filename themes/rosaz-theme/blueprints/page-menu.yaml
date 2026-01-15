@@ -1,4 +1,4 @@
-title: Chi siamo
+title: Menu Pagina
 '@extends':
   type: default
   context: blueprints://pages
@@ -20,7 +20,7 @@ form:
 
         about_menu_tab:
           type: tab
-          title: Menu Chi siamo
+          title: Menu
           import@:
             type: partials/about-menu
             context: theme://blueprints
