@@ -4,7 +4,7 @@ menu: Oásis
 template: oasi
 
 section_top:
-  id: oasi-presentacao
+  id: oasi-presentazione
   enabled: true
   background_color: '#ffffff'
   eyebrow: 'Casa de Espiritualidade "Oásis Santa Chiara"'
@@ -62,7 +62,7 @@ help_cards:
       link: null
 
 section_medium:
-  id: informacoes-uteis
+  id: informazioni-utili
   enabled: true
   background_color: 'rgba(249, 239, 232, 0.9)'
   eyebrow: 'Informações para a estadia'
@@ -83,9 +83,9 @@ section_medium:
         A vida cotidiana é marcada por sobriedade, atenção ao outro e cuidado dos espaços partilhados.
 
 location_section:
-  id: como-chegar
+  id: come-arrivare
   enabled: true
-  background_color: '#f9fafc'
+  background_color: '#ffffff'
   eyebrow: 'Como chegar'
   title: 'Como chegar ao Oásis Santa Chiara'
   text: >
@@ -103,16 +103,34 @@ location_section:
         Bonde 6 até Piazza Hermada ou ônibus 61 até Piazza Vittorio Veneto
         e depois ônibus 56 em direção a Corso Quintino Sella.
 
-section_bottom:
-  id: contatos-oasi
+help_cards_contacts:
   enabled: true
-  background_color: ''
-  eyebrow: 'Para informações'
   title: 'Quer saber mais sobre o Oásis Santa Chiara?'
   text: >
     Se deseja mais detalhes sobre a estadia, sobre a disponibilidade de quartos
     ou sobre as possibilidades de percursos espirituais e de estudo, pode entrar em contato conosco diretamente.
-  cta:
-    label: 'Fale conosco para informações no Whatsapp'
-    link: "https://wa.me/393331112222?text=Buongiorno%2C%20vorrei%20avere%20informazioni%20sull'Oasi%20Santa%20Chiara."
+  items:
+    - icon_key: email
+      title: 'Email'
+      text: 'Escreva-nos para informações, pedidos ou reservas.'
+      link: 'mailto:segreteria@francescanerosaz.org'
+      link_label: 'Escreva-nos'
+      hover_bg_color: '#f0ffed'
+      hover_accent_color: '#4a8201'
+
+    - icon_key: phone
+      title: 'Telefone'
+      text: 'Para falar diretamente conosco pelo +39 3331112222.'
+      link: "https://wa.me/393331112222?text=Buongiorno%2C%20vorrei%20avere%20informazioni%20sull'Oasi%20Santa%20Chiara."
+      link_label: 'Chame no Whatsapp'
+      hover_bg_color: '#e8f2fe'
+      hover_accent_color: '#002a5d'
+
+    - icon_key: address
+      title: 'Endereço'
+      text: 'P.tta Carlo Andrea Rana, 5 – Susa (TO)'
+      link: 'https://www.google.com/maps?q=P.tta+Carlo+Andrea+Rana,+5,+10059+Susa+(TO)'
+      link_label: 'Abrir no Maps'
+      hover_bg_color: '#fdf6ec'
+      hover_accent_color: '#f18902'
 ---
