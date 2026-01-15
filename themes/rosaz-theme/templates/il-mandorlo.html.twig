@@ -1,0 +1,20 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  {# SECTION_TOP #}
+  {% include 'partials/content_section.html.twig' with { section: page.header.section_top } %}
+
+  {# GALLERY STRIP #}
+  {% set gallery = page.header.gallery_strip ?? {} %}
+  {% if gallery and (gallery.enabled is not defined or gallery.enabled) %}
+    {% include 'partials/gallery_strip.html.twig' with { gallery: gallery } %}
+  {% endif %}
+
+  {# SECTION_MEDIUM #}
+  {% include 'partials/content_section.html.twig' with { section: page.header.section_medium } %}
+
+  {# SECTION_BOTTOM #}
+  {% include 'partials/content_section.html.twig' with { section: page.header.section_bottom } %}
+
+
+{% endblock %}
