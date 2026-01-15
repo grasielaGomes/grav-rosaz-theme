@@ -35,6 +35,15 @@ form:
               label: 'Icona'
               preview_images: true
               multiple: false
+            .icon_key:
+              type: select
+              label: 'Tipo icona (default tema – opzionale)'
+              default: ''
+              options:
+                '': 'Nessuno'
+                email: 'Email (default tema)'
+                address: 'Indirizzo (default tema)'
+                phone: 'Telefono (default tema)'
             .title:
               type: text
               label: 'Titolo'
@@ -44,3 +53,14 @@ form:
             .link:
               type: text
               label: 'Link'
+            .link_label:
+              type: text
+              label: 'Etichetta link'
+            .hover_bg_color:
+              type: colorpicker
+              label: 'Colore sfondo hover'
+              default: '#fdfcf6'
+            .hover_accent_color:
+              type: colorpicker
+              label: 'Colore bordo / testo hover'
+              default: '#c05621'
