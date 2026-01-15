@@ -6,8 +6,8 @@ description: 'A custom Grav theme built with Tailwind CSS.'
 icon: paint-brush
 
 author:
-  name: 'Seu Nome'
-  email: 'seu-email@example.com'
+  name: 'name'
+  email: 'user@gmail.com'
 
 homepage: 'https://example.com'
 demo: 'https://example.com'
@@ -27,3 +27,40 @@ form:
         0: Disabled
       validate:
         type: bool
+
+    help_cards:
+      type: fieldset
+      title: 'Help cards – default icons'
+      collapsible: true
+      collapsed: true
+
+      fields:
+        help_cards.default_icons.email:
+          type: filepicker
+          label: 'Email icon'
+          folder: 'theme://images/icons'
+          preview_images: true
+          accept:
+            - .svg
+            - .png
+            - .webp
+
+        help_cards.default_icons.address:
+          type: filepicker
+          label: 'Address icon'
+          folder: 'theme://images/icons'
+          preview_images: true
+          accept:
+            - .svg
+            - .png
+            - .webp
+
+        help_cards.default_icons.phone:
+          type: filepicker
+          label: 'Phone icon'
+          folder: 'theme://images/icons'
+          preview_images: true
+          accept:
+            - .svg
+            - .png
+            - .webp
