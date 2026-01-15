@@ -85,7 +85,7 @@ section_medium:
 location_section:
   id: come-arrivare
   enabled: true
-  background_color: '#f9fafc'
+  background_color: '#ffffff'
   eyebrow: 'Si të mbërrini'
   title: 'Si të arrini në Oasin Santa Chiara'
   text: >
@@ -103,16 +103,34 @@ location_section:
         Tramvaji 6 deri në Piazza Hermada ose autobusi 61 deri në Piazza Vittorio Veneto
         dhe më pas autobusi 56 në drejtim të Corso Quintino Sella.
 
-section_bottom:
-  id: contatti-oasi
+help_cards_contacts:
   enabled: true
-  background_color: ''
-  eyebrow: 'Për informacion'
   title: 'Dëshiron të dish më shumë për Oasin Santa Chiara?'
   text: >
     Nëse dëshiron më shumë detaje për qëndrimin, për disponueshmërinë e dhomave
     ose për mundësitë e rrugëtimeve shpirtërore dhe të studimit, mund të na kontaktosh drejtpërdrejt.
-  cta:
-    label: 'Na telefono për informacion në Whatsapp'
-    link: "https://wa.me/393331112222?text=Buongiorno%2C%20vorrei%20avere%20informazioni%20sull'Oasi%20Santa%20Chiara."
+  items:
+    - icon_key: email
+      title: 'Email'
+      text: 'Na shkruaj për informacione, kërkesa ose prenotime.'
+      link: 'mailto:segreteria@francescanerosaz.org'
+      link_label: 'Na shkruaj'
+      hover_bg_color: '#f0ffed'
+      hover_accent_color: '#4a8201'
+
+    - icon_key: phone
+      title: 'Telefon'
+      text: 'Për të folur drejtpërdrejt me ne në +39 3331112222.'
+      link: "https://wa.me/393331112222?text=Buongiorno%2C%20vorrei%20avere%20informazioni%20sull'Oasi%20Santa%20Chiara."
+      link_label: 'Telefono në Whatsapp'
+      hover_bg_color: '#e8f2fe'
+      hover_accent_color: '#002a5d'
+
+    - icon_key: address
+      title: 'Adresë'
+      text: 'P.tta Carlo Andrea Rana, 5 – Susa (TO)'
+      link: 'https://www.google.com/maps?q=P.tta+Carlo+Andrea+Rana,+5,+10059+Susa+(TO)'
+      link_label: 'Hape në Maps'
+      hover_bg_color: '#fdf6ec'
+      hover_accent_color: '#f18902'
 ---
