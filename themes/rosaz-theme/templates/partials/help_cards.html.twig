@@ -1,71 +1,132 @@
-{% set section_title = title ?? null %} {% set section_text = text ?? null %} {%
-set items = items ?? [] %} {% if items|length %}
-<section class="py-12 px-12 md:py-16 md:px-0 bg-neutral-50">
-  <div class="max-w-6xl mx-auto px-4">
-    {% if section_title %}
-    <h2
-      class="text-2xl md:text-3xl lg:text-4xl font-heading font-semibold text-neutral-900 text-center {{ section_text ? 'mb-3' : 'mb-10' }}"
-    >
-      {{ section_title }}
-    </h2>
-    {% endif %}
+{% set section_title = title ?? null %}
+{% set section_text  = text ?? null %}
+{% set items         = items ?? [] %}
 
-    {% if section_text %}
-    <p class="text-sm md:text-base text-neutral-600 text-center max-w-2xl mx-auto mb-10">
-      {{ section_text }}
-    </p>
-    {% endif %}
-    <div class="flex flex-wrap justify-center gap-6">
-      {% for item in items %} {% set raw_icon = item.icon ?? null %} {% set icon
-      = null %} {% if raw_icon %} {% if page.media[raw_icon] is defined %}
-      {% set icon = page.media[raw_icon].url %} {% else %} {% set icon =
-      raw_icon %} {% endif %} {% endif %} {% set card_title = item.title ?? ''
-      %} {% set card_text = item.text ?? '' %} {% set card_link = item.link ??
-      null %}
+{% if items|length %}
 
-      <article
-        class="group w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] bg-transparent rounded-3xl border border-neutral-200 shadow-sm px-6 py-8 flex flex-col justify-between transition-all duration-800 hover:-translate-y-1 hover:shadow-xl hover:border-orange-500 hover:bg-white"
-      >
-        <div>
-          {% if icon %}
-          <div
-            class="inline-flex items-center justify-center"
-          >
-            <img src="{{ url(icon) }}" alt="" class="h-20 w-20 object-contain" />
-          </div>
-          {% endif %}
+  {# Read default icons from theme config #}
+  {% set theme_name    = config.system.pages.theme %}
+  {% set theme         = attribute(config.themes, theme_name)|default({}) %}
+  {% set default_icons = theme.help_cards.default_icons ?? {} %}
 
-          <h3
-            class="text-lg font-heading font-semibold text-neutral-900 mb-3 group-hover:text-orange-500"
-          >
-            {{ card_title }}
-          </h3>
+  {# Optional section-level hover defaults (used as fallback) #}
+  {% set section_hover_bg     = hover_bg_color ?? null %}
+  {% set section_hover_accent = hover_accent_color ?? null %}
 
-          {% if card_text %}
-          <p
-            class="text-sm text-neutral-600 leading-relaxed"
-          >
-            {{ card_text }}
-          </p>
-          {% endif %}
-        </div>
-
-        {% if card_link %}
-        <a
-          href="{{ card_link }}"
-          class="mt-6 inline-flex items-center text-xs font-semibold tracking-[0.18em] uppercase text-neutral-500 group-hover:text-orange-500"
+  <section class="py-12 px-12 md:py-16 md:px-0 bg-neutral-50">
+    <div class="max-w-6xl mx-auto px-4">
+      {% if section_title %}
+        <h2
+          class="text-2xl md:text-3xl lg:text-4xl font-heading font-semibold text-neutral-900 text-center {{ section_text ? 'mb-3' : 'mb-10' }}"
         >
-          {{ 'ROSAZ.READ_MORE'|t|default('Saiba mais') }}
-          <span
-            class="ml-2 inline-block transform transition-transform duration-600 group-hover:translate-x-1 group-hover:text-orange-500"
+          {{ section_title }}
+        </h2>
+      {% endif %}
+
+      {% if section_text %}
+        <p class="text-sm md:text-base text-neutral-600 text-center max-w-2xl mx-auto mb-10">
+          {{ section_text }}
+        </p>
+      {% endif %}
+
+      <div class="flex flex-wrap justify-center gap-6">
+        {% for item in items %}
+          {# Icon resolution: per-page icon > themed default icon #}
+          {% set raw_icon = item.icon ?? null %}
+          {% set icon_key = item.icon_key ?? item.type ?? null %}
+          {% set icon     = null %}
+
+          {# 1) Per-page icon (keeps existing behavior) #}
+          {% if raw_icon %}
+            {% if page.media[raw_icon] is defined %}
+              {% set icon = page.media[raw_icon].url %}
+            {% else %}
+              {% set icon = raw_icon %}
+            {% endif %}
+          {% elseif icon_key %}
+            {# 2) Theme-level default icons (email/address/phone) #}
+            {% set raw_default = null %}
+
+            {% if icon_key == 'email' and default_icons.email is defined %}
+              {% set raw_default = default_icons.email %}
+            {% elseif icon_key == 'address' and default_icons.address is defined %}
+              {% set raw_default = default_icons.address %}
+            {% elseif icon_key == 'phone' and default_icons.phone is defined %}
+              {% set raw_default = default_icons.phone %}
+            {% endif %}
+
+            {% if raw_default %}
+              {# Normalize theme default path #}
+              {% if raw_default starts with 'theme://' 
+                    or raw_default starts with 'http' 
+                    or raw_default starts with '/' %}
+                {% set icon = raw_default %}
+              {% else %}
+                {# Stored only as filename (from filepicker with folder) #}
+                {% set icon = 'theme://images/icons/' ~ raw_default %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+
+          {% set card_title        = item.title ?? '' %}
+          {% set card_text         = item.text ?? '' %}
+          {% set card_link         = item.link ?? null %}
+          {% set card_link_label   = item.link_label ?? null %}
+          {% set card_hover_bg     = item.hover_bg_color ?? section_hover_bg ?? '#fdfcf6' %}
+          {% set card_hover_accent = item.hover_accent_color ?? section_hover_accent ?? '#ea580c' %}
+
+          {# Determine if the link should open in a new tab #}
+          {% set is_external =
+            card_link starts with 'http' or
+            card_link starts with 'mailto:' or
+            card_link starts with 'tel:'
+          %}
+
+          {# Default link label (fallback to translation key) #}
+          {% set default_link_label = 'ROSAZ.READ_MORE'|t|default('Saiba mais') %}
+          {% set final_link_label   = card_link_label ?? default_link_label %}
+
+          <article
+            class="group w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] bg-white rounded-3xl border border-neutral-200 shadow-sm px-6 py-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-[color:var(--card-hover-bg)] hover:border-[color:var(--card-hover-accent)]"
+            style="--card-hover-bg: {{ card_hover_bg }}; --card-hover-accent: {{ card_hover_accent }};"
           >
-            &rarr;
-          </span>
-        </a>
-        {% endif %}
-      </article>
-      {% endfor %}
+            <div>
+              {% if icon %}
+                <div class="inline-flex items-center justify-center mb-4">
+                  <img src="{{ url(icon) }}" alt="" class="h-20 w-20 object-contain" />
+                </div>
+              {% endif %}
+
+              <h3
+                class="text-lg font-heading font-semibold text-neutral-900 mb-3 group-hover:text-[color:var(--card-hover-accent)]"
+              >
+                {{ card_title }}
+              </h3>
+
+              {% if card_text %}
+                <p class="text-sm text-neutral-600 leading-relaxed">
+                  {{ card_text }}
+                </p>
+              {% endif %}
+            </div>
+
+            {% if card_link %}
+              <a
+                href="{{ card_link }}"
+                {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
+                class="mt-6 inline-flex items-center text-xs font-semibold tracking-[0.18em] uppercase text-neutral-500 group-hover:text-[color:var(--card-hover-accent)]"
+              >
+                {{ final_link_label }}
+                <span
+                  class="ml-2 inline-block transform transition-transform duration-200 group-hover:translate-x-1"
+                >
+                  &rarr;
+                </span>
+              </a>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 {% endif %}
