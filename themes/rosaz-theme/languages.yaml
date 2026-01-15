@@ -1,11 +1,14 @@
 pt:
   ROSAZ:
     READ_MORE: 'Saiba mais'
+    NO_MAP: 'Sem mapa disponível'
 
 it:
   ROSAZ:
     READ_MORE: 'Scopri di più'
+    NO_MAP: 'Nessuna mappa disponibile'
 
 sq:
   ROSAZ:
     READ_MORE: 'Mëso më shumë'
+    NO_MAP: 'Nuk ka hartë të disponueshme'
