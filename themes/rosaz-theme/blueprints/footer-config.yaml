@@ -1,0 +1,121 @@
+title: Configurazione footer
+'@extends':
+  type: default
+  context: blueprints://pages
+
+form:
+  validation: loose
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: Contenuto footer
+
+          fields:
+            header.title:
+              type: text
+              label: Titolo interno
+              help: Used only in the admin. Not visible on the site.
+
+            header.background_color:
+              type: colorpicker
+              label: Colore di sfondo del footer
+              default: '#020617'
+              help: If empty, a dark default color will be used.
+
+            section_cta:
+              type: section
+              title: CTA donazione
+              underline: true
+
+            header.cta.title:
+              type: text
+              label: Titolo CTA
+
+            header.cta.subtitle:
+              type: textarea
+              label: Sottotitolo CTA
+              rows: 3
+
+            header.cta.button_label:
+              type: text
+              label: Etichetta pulsante CTA
+
+            header.cta.button_url:
+              type: text
+              label: URL pulsante CTA
+              description: 'Può essere un URL di pagina (/donazioni), un URL esterno (https://...), mailto:, tel: o link WhatsApp.'
+
+            section_columns:
+              type: section
+              title: Colonne / navigazione
+              underline: true
+
+            header.columns:
+              type: list
+              label: Colonne
+              style: vertical
+              btnLabel: Aggiungi colonna
+              fields:
+                .title:
+                  type: text
+                  label: Titolo colonna
+
+                .items:
+                  type: list
+                  label: Link
+                  style: vertical
+                  btnLabel: Aggiungi link
+                  fields:
+                    .label:
+                      type: text
+                      label: Etichetta link
+                    .url:
+                      type: text
+                      label: URL link
+
+            section_contact:
+              type: section
+              title: Box contatti
+              underline: true
+
+            header.contact.title:
+              type: text
+              label: Titolo contatto
+
+            header.contact.email:
+              type: text
+              label: Email
+
+            header.contact.phone:
+              type: text
+              label: Telefono
+
+            header.contact.address_lines:
+              type: list
+              label: Righe indirizzo
+              style: vertical
+              btnLabel: Aggiungi riga
+              fields:
+                .text:
+                  type: text
+                  label: Riga
+
+            section_copyright:
+              type: section
+              title: Copyright
+              underline: true
+
+            header.copyright.text:
+              type: text
+              label: Testo copyright
+              placeholder: 'Suore Francescane di Susa. Tutti i diritti riservati.'
+
+            header.copyright.built_with:
+              type: text
+              label: 'Testo "Realizzato con"'
+              placeholder: 'Realizzato con Grav & Tailwind.'
