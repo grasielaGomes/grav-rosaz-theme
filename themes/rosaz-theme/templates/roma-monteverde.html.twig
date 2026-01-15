@@ -1,0 +1,42 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  {# SECTION_TOP #}
+  {% include 'partials/content_section.html.twig' with { section: page.header.section_top } %}
+
+  {# GALLERY STRIP #}
+  {% set gallery = page.header.gallery_strip ?? {} %}
+  {% if gallery and (gallery.enabled is not defined or gallery.enabled) %}
+    {% include 'partials/gallery_strip.html.twig' with { gallery: gallery } %}
+  {% endif %}
+
+  {# HELP CARDS SECTION #}
+  {% set help = page.header.help_cards ?? {} %}
+  {% if help.enabled ?? false %}
+    {% if help.items is defined and help.items|length %}
+      {% include 'partials/help_cards.html.twig' with {
+        title: help.title ?? null,
+        text:  help.text ?? null,
+        items: help.items
+      } %}
+    {% endif %}
+  {% endif %}
+
+  {# SECTION_MEDIUM #}
+  {% include 'partials/content_section.html.twig' with { section: page.header.section_medium } %}
+
+  {# LOCATION_SECTION #}
+  {% include 'partials/location_section.html.twig' %}
+
+   {# HELP CARDS CONTACTS SECTION #}
+  {% set help = page.header.help_cards_contacts ?? {} %}
+  {% if help.enabled ?? false %}
+    {% if help.items is defined and help.items|length %}
+      {% include 'partials/help_cards.html.twig' with {
+        title: help.title ?? null,
+        text:  help.text ?? null,
+        items: help.items
+      } %}
+    {% endif %}
+  {% endif %}
+{% endblock %}
