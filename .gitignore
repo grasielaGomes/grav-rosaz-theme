@@ -12,8 +12,8 @@ tmp/
 accounts/
 
 # Uploads and "live" files
-images/
 data/
+plugins/**/images/
 
 # Node / vendor in themes or plugins
 **/node_modules/
