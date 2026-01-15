@@ -1,27 +1,27 @@
 ---
-title: 'Para acolher'
-menu: 'Para acolher'
+title: 'Për mikpritje'
+menu: 'Për mikpritje'
 template: chi-siamo
 about_menu:
   enabled: true
-  eyebrow: 'Presenças na Itália'
-  title: 'Casas e comunidades que acolhem'
-  subtitle: "Descubra nossas realidades dedicadas à hospitalidade e ao tempo de retiro."
+  eyebrow: 'Prani në Itali'
+  title: 'Shtëpi dhe komunitete që mikpresin'
+  subtitle: "Zbulo realitetet tona të dedikuara mikpritjes dhe kohës së tërheqjes."
   items:
     - icon: 'oasi.png'
       title: 'Oasi Santa Chiara'
-      text: 'Casa de espiritualidade em Turim para silêncio, estudo e oração.'
+      text: 'Shtëpi shpirtërore në Torino për heshtje, studim dhe lutje.'
       link: /presenze/italia/per-accogliere/oasi
     - icon: 'assisi.png'
       title: 'Perfetta Letizia'
-      text: 'Comunidade de acolhimento e partilha fraterna.'
+      text: 'Komunitet mikpritjeje dhe ndarjeje vëllazërore.'
       link: /presenze/italia/per-accogliere/perfetta-letizia
     - icon: 'monteverde.png'
       title: 'Roma Monteverde'
-      text: 'Casa religiosa no bairro Monteverde, referência de hospitalidade.'
+      text: 'Shtëpi fetare në lagjen Monteverde, pikë referimi për mikpritjen.'
       link: /presenze/italia/per-accogliere/roma-monteverde
     - icon: 'primaporta.png'
       title: 'Roma Prima Porta'
-      text: 'Presença em Roma para acolher pessoas e grupos em busca.'
+      text: 'Prani në Romë për të pritur njerëz dhe grupe në kërkim.'
       link: /presenze/italia/per-accogliere/roma-prima-porta
 ---

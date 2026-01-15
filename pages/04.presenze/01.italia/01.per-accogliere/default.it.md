@@ -8,16 +8,20 @@ about_menu:
   title: 'Case e comunita che accolgono'
   subtitle: "Scopri le nostre realta dedicate all'ospitalita e al tempo di ritiro."
   items:
-    - title: 'Oasi Santa Chiara'
+    - icon: 'oasi.png'
+      title: 'Oasi Santa Chiara'
       text: 'Casa di spiritualita a Torino per silenzio, studio e preghiera.'
       link: /presenze/italia/per-accogliere/oasi
-    - title: 'Perfetta Letizia'
+    - icon: 'assisi.png'
+      title: 'Perfetta Letizia'
       text: 'Comunita di accoglienza e condivisione fraterna.'
       link: /presenze/italia/per-accogliere/perfetta-letizia
-    - title: 'Roma Monteverde'
+    - icon: 'monteverde.png'
+      title: 'Roma Monteverde'
       text: "Casa religiosa nel quartiere Monteverde, punto di riferimento per l'ospitalita."
       link: /presenze/italia/per-accogliere/roma-monteverde
-    - title: 'Roma Prima Porta'
+    - icon: 'primaporta.png'
+      title: 'Roma Prima Porta'
       text: 'Presenza a Roma per accogliere persone e gruppi in ricerca.'
       link: /presenze/italia/per-accogliere/roma-prima-porta
 ---
