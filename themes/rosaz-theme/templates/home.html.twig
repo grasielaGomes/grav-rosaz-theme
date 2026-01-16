@@ -29,7 +29,9 @@
     {% if help.items is defined and help.items|length %}
       {% include 'partials/help_cards.html.twig' with {
         title: help.title ?? null,
-        items: help.items
+        text:  help.text ?? null,
+        items: help.items,
+        background_color: help.background_color|default(null, true)
       } %}
     {% endif %}
   {% endif %}

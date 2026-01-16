@@ -36,7 +36,8 @@
       {% include 'partials/help_cards.html.twig' with {
         title: help.title ?? null,
         text:  help.text ?? null,
-        items: help.items
+        items: help.items,
+        background_color: help.background_color|default(null, true)
       } %}
     {% endif %}
   {% endif %}
