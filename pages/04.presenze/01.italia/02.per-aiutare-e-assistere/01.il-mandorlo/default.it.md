@@ -29,27 +29,21 @@ gallery_strip:
     - src: 'mandorlo4.png'
       alt: 'Spazio esterno o angolo di preghiera della Casa Il Mandorlo'
 
-section_medium:
-  id: radici
+help_cards:
   enabled: true
   background_color: '#F1E7D9'
-  eyebrow: 'Una radice antica'
-  title: 'L’eredità del Beato Edoardo Rosaz'
-  text: >
-    La storia di questa opera affonda le sue radici nel 1856, quando il Beato Edoardo Rosaz
-    fondò il “Ritiro delle povere figlie di Maria”. Animato da un autentico spirito evangelico,
-    il suo desiderio non era fare semplice beneficenza, ma creare uno spazio educativo,
-    responsabile e rispettoso della dignità di ogni persona.
-  highlights:
-    - label: 'Un’accoglienza universale'
-      text: >
-        Fin dalle origini, la casa è stata aperta a chiunque bussasse, senza distinzione di
-        provenienza, condizione sociale o appartenenza religiosa.
-    - label: 'Risposte urgenti a bisogni urgenti'
-      text: >
-        Una carità generosa e sollecita, capace di farsi carico delle giovani orfane
-        o in fuga da situazioni familiari disastrate, offrendo un luogo sicuro
-        dove iniziare un nuovo cammino.
+  title: "Una Radice Antica: L'Eredità del Beato Edoardo Rosaz"
+  text: 'Le radici dell’opera risalgono al 1856, quando il Beato Edoardo Rosaz fondò il “Ritiro delle povere figlie di Maria”, con un’attenzione educativa e rispettosa della dignità di ogni persona.'
+  items:
+    - icon: ''
+      title: 'Un’accoglienza universale'
+      text: 'Fin dalle origini, la casa è stata aperta a chiunque bussasse, senza distinzione di provenienza, condizione sociale o appartenenza religiosa.'
+    - icon: ''
+      title: 'Risposte urgenti a bisogni urgenti'
+      text: 'Una carità generosa e sollecita, capace di farsi carico delle giovani orfane o in fuga da situazioni familiari disastrate, offrendo un luogo sicuro dove iniziare un nuovo cammino.'
+    - icon: ''
+      title: 'Educare alla dignità'
+      text: 'Non semplice beneficenza, ma un cammino responsabile che accompagna ogni persona verso crescita, autonomia e speranza.'
 
 section_bottom:
   id: identita-missione
