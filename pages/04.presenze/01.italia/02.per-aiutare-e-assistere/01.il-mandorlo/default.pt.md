@@ -1,6 +1,6 @@
 ---
-title: A Amendoeira
-menu: A Amendoeira
+title: O Mandorlo
+menu: O Mandorlo
 template: il-mandorlo
 
 section_top:
