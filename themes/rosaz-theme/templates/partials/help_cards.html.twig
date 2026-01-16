@@ -13,7 +13,13 @@
   {% set section_hover_bg     = hover_bg_color ?? null %}
   {% set section_hover_accent = hover_accent_color ?? null %}
 
-  <section class="py-12 px-12 md:py-16 md:px-0 bg-neutral-50">
+  {# New: dynamic background color for the whole section #}
+  {% set section_bg_color = background_color ?? '#f9fafb' %} {# #f9fafb ≈ bg-neutral-50 #}
+
+  <section
+    class="py-12 px-12 md:py-16 md:px-0"
+    style="background-color: {{ section_bg_color }};"
+  >
     <div class="max-w-6xl mx-auto px-4">
       {% if section_title %}
         <h2
@@ -24,7 +30,7 @@
       {% endif %}
 
       {% if section_text %}
-        <p class="text-sm md:text-base text-neutral-600 text-center max-w-2xl mx-auto mb-10">
+        <p class="text-sm md:text-base text-neutral-600 text-center max-w-3xl mx-auto mb-10">
           {{ section_text }}
         </p>
       {% endif %}
