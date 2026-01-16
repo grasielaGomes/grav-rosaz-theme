@@ -1,135 +1,66 @@
-{% set section_title = title ?? null %}
-{% set section_text  = text ?? null %}
-{% set items         = items ?? [] %}
+{% set raw_image = image ?? null %} {% if raw_image and page.media[raw_image] is
+defined %} {% set resolved_image = page.media[raw_image].url %} {% else %} {% set
+resolved_image = raw_image %} {% endif %} {% set overlay_color = overlay_color ??
+'rgba(249,115,22,0.9)' %} {% set eyebrow = eyebrow ?? null %} {% set title =
+title ?? null %} {% set text = text ?? null %} {% set cta_label = cta_label ??
+null %} {% set cta_link = cta_link ?? null %} {% set is_external =
+  cta_link starts with 'http' or
+  cta_link starts with 'mailto:' or
+  cta_link starts with 'tel:'
+%} {% set align = align ?? 'center' %}
+{% set align_classes = { 'left': 'items-start text-left', 'right': 'items-end
+text-right', 'center': 'items-center text-center' } %}
 
-{% if items|length %}
+<section class="relative overflow-hidden">
+  {# Here is the background image + parallax #}
+  {% if resolved_image %}
+    <div
+      class="relative py-16 md:py-24 bg-cover bg-center bg-no-repeat bg-fixed"
+      style="background-image: url('{{ url(resolved_image) }}');"
+    >
+  {% else %}
+    <div class="relative py-16 md:py-24 bg-neutral-900">
+  {% endif %}
+    {# Configurable color overlay #}
+    <div
+      class="absolute inset-0"
+      style="background-color: {{ overlay_color|e('html_attr') }};"
+    ></div>
 
-  {# Read default icons from theme config (user/config/themes/rosaz-theme.yaml) #}
-  {% set theme_name    = config.system.pages.theme %}
-  {% set theme_config  = attribute(config.themes, theme_name)|default({}) %}
-  {% set default_icons = theme_config.help_cards.default_icons ?? {} %}
+    {# Extra layer slightly darker for text contrast #}
+    <div class="absolute inset-0 bg-neutral-900/20"></div>
 
-  <section class="py-12 px-12 md:py-16 md:px-0 bg-neutral-50">
-    <div class="max-w-6xl mx-auto px-4">
-      {% if section_title %}
-        <h2
-          class="text-2xl md:text-3xl lg:text-4xl font-heading font-semibold text-neutral-900 text-center {{ section_text ? 'mb-3' : 'mb-10' }}"
-        >
-          {{ section_title }}
-        </h2>
+    {# Content (text + button) #}
+    <div
+      class="relative max-w-4xl mx-auto px-4 flex flex-col {{
+        align_classes[align]
+      }}"
+    >
+      {% if eyebrow %}
+      <p
+        class="text-sm md:text-base font-medium tracking-[0.18em] uppercase text-neutral-100 mb-3"
+      >
+        {{ eyebrow }}
+      </p>
+      {% endif %} {% if title %}
+      <h2
+        class="text-2xl md:text-4xl lg:text-5xl font-heading font-semibold text-neutral-50 leading-tight lg:leading-[1.1] mb-4"
+      >
+        {{ title }}
+      </h2>
+      {% endif %} {% if text %}
+      <p class="text-base md:text-lg text-neutral-100/90 mb-8 max-w-2xl">
+        {{ text }}
+      </p>
+      {% endif %} {% if cta_label and cta_link %}
+      <a
+        href="{{ cta_link }}"
+        {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
+        class="inline-flex items-center justify-center rounded-full border border-neutral-50/80 px-6 py-2.5 text-sm font-semibold text-neutral-50 hover:bg-neutral-50 hover:text-neutral-900 transition-colors duration-200"
+      >
+        {{ cta_label }}
+      </a>
       {% endif %}
-
-      {% if section_text %}
-        <p class="text-sm md:text-base text-neutral-600 text-center max-w-2xl mx-auto mb-10">
-          {{ section_text }}
-        </p>
-      {% endif %}
-
-      <div class="flex flex-wrap justify-center gap-6">
-        {% for item in items %}
-          {# Icon resolution priority:
-             1) Per-page icon (header.help_cards.items[*].icon via pagemediaselect)
-             2) Theme default icon by icon_key (email / address / phone)
-          #}
-          {% set raw_icon  = item.icon ?? null %}
-          {% set icon_key  = item.icon_key ?? item.type ?? null %}
-          {% set icon_path = null %}
-
-          {# 1) Page-level icon #}
-          {% if raw_icon %}
-            {% if page.media[raw_icon] is defined %}
-              {# Grav gives a URL like "/user/pages/01.home/italia.webp" #}
-              {% set icon_path = page.media[raw_icon].url %}
-            {% else %}
-              {# Fallback: treat raw value as path or URL #}
-              {% set icon_path = raw_icon %}
-            {% endif %}
-
-          {% elseif icon_key %}
-            {# 2) Theme default icons by key (values like "email.webp") #}
-            {% if icon_key == 'email' and default_icons.email is defined %}
-              {% set icon_path = default_icons.email %}
-            {% elseif icon_key == 'address' and default_icons.address is defined %}
-              {% set icon_path = default_icons.address %}
-            {% elseif icon_key == 'phone' and default_icons.phone is defined %}
-              {% set icon_path = default_icons.phone %}
-            {% endif %}
-          {% endif %}
-
-          {# Normalize icon_path into a real URL #}
-          {% set icon_src = null %}
-          {% if icon_path %}
-            {% if icon_path starts with 'theme://' %}
-              {# Theme stream path #}
-              {% set icon_src = url(icon_path) %}
-            {% elseif icon_path starts with 'http://' or icon_path starts with 'https://' %}
-              {# Already an absolute URL #}
-              {% set icon_src = icon_path %}
-            {% elseif icon_path starts with '/' %}
-              {# Already a site-relative URL from page.media[...].url #}
-              {% set icon_src = icon_path %}
-            {% else %}
-              {# Assume it is a filename inside theme icons folder #}
-              {% set icon_src = url('theme://images/icons/' ~ icon_path) %}
-            {% endif %}
-          {% endif %}
-
-          {% set card_title        = item.title ?? '' %}
-          {% set card_text         = item.text ?? '' %}
-          {% set card_link         = item.link ?? null %}
-          {# Background on hover (per-card) #}
-          {% set card_hover_bg     = item.hover_bg_color ?? '#fdfcf6' %}
-          {# Accent on hover (border + text) with a brand-dark default #}
-          {% set card_hover_accent = item.hover_accent_color ?? '#c05621' %}
-
-          <article
-            class="group w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] bg-white rounded-3xl border border-neutral-200 shadow-sm px-6 py-8 flex flex-col justify-between transition-all duration-800 hover:-translate-y-1 hover:shadow-xl hover:border-[var(--card-hover-accent)] hover:bg-[var(--card-hover-bg)]"
-            style="--card-hover-bg: {{ card_hover_bg }}; --card-hover-accent: {{ card_hover_accent }}"
-          >
-            <div>
-              {% if icon_src %}
-                <div class="inline-flex items-center justify-center mb-4">
-                  <img src="{{ icon_src }}" alt="" class="h-20 w-20 object-contain" />
-                </div>
-              {% endif %}
-
-              <h3
-                class="text-lg font-heading font-semibold text-neutral-900 mb-3 group-hover:text-[var(--card-hover-accent)]"
-              >
-                {{ card_title }}
-              </h3>
-
-              {% if card_text %}
-                <p class="text-sm text-neutral-600 leading-relaxed">
-                  {{ card_text }}
-                </p>
-              {% endif %}
-            </div>
-
-            {% if card_link %}
-              {# External detection (open in new tab for http/mailto/tel/whatsapp etc.) #}
-              {% set is_external =
-                card_link starts with 'http' or
-                card_link starts with 'mailto:' or
-                card_link starts with 'tel:'
-              %}
-
-              <a
-                href="{{ card_link }}"
-                {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
-                class="mt-6 inline-flex items-center text-xs font-semibold tracking-[0.18em] uppercase text-neutral-500 group-hover:text-[var(--card-hover-accent)]"
-              >
-                {{ 'ROSAZ.READ_MORE'|t|default('Saiba mais') }}
-                <span
-                  class="ml-2 inline-block transform transition-transform duration-600 group-hover:translate-x-1 group-hover:text-[var(--card-hover-accent)]"
-                >
-                  &rarr;
-                </span>
-              </a>
-            {% endif %}
-          </article>
-        {% endfor %}
-      </div>
     </div>
-  </section>
-{% endif %}
+  </div>
+</section>
