@@ -85,5 +85,5 @@ events_section:
       time: '09h00 – 17h00'
       location: 'Val di Susa'
       url: /eventos/retiro-espiritual
-media_order: 'banner-home.jpg,albania.webp,brasile.webp,italia.webp,mozambico.webp,quotes.webp,avatar-maria.png,avatar-ricardo.png,evento-1.png,evento-2.png,evento-3.png,hero-1.jpg,hero-2.jpg,logo.png'
+media_order: 'banner-home.jpg,albania.webp,brasile.webp,italia.webp,mozambico.webp,avatar-maria.png,avatar-ricardo.png,evento-1.png,evento-2.png,evento-3.png,hero-1.jpg,hero-2.jpg,logo.png'
 ---
