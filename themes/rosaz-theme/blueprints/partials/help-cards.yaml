@@ -22,6 +22,11 @@ form:
       label: 'Testo principale'
       classes: 'long'
 
+    .background_color:
+      type: colorpicker
+      label: 'Colore di sfondo della sezione'
+      default: '#f9fafb'
+
     .items:
       type: list
       label: 'Schede'
@@ -64,11 +69,11 @@ form:
           placeholder: 'Es: Scrivici, Chiama, Apri in Maps'
 
         .hover_bg_color:
-          type: text
+          type: colorpicker
           label: 'Colore di sfondo al passaggio (hover)'
-          placeholder: '#fdf6ec'
+          default: '#fdf6ec'
 
         .hover_accent_color:
-          type: text
+          type: colorpicker
           label: 'Colore accento (bordi e testo al passaggio)'
-          placeholder: '#f18902'
+          default: '#f18902'
