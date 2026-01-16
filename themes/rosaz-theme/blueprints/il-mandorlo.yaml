@@ -39,19 +39,12 @@ form:
         help_cards:
           type: tab
           title: Schede
-          import@:
-            type: partials/help-cards
-            context: theme://blueprints
-
-        section_medium_tab:
-          type: tab
-          title: Sezione mezzo
           fields:
-            header.section_medium:
+            header.help_cards:
               type: fieldset
-              title: Sezione
+              title: Schede
               import@:
-                type: partials/section
+                type: partials/help-cards
                 context: theme://blueprints
 
         section_bottom_tab:
