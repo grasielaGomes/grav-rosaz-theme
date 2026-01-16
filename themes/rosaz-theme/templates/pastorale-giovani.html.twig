@@ -1,0 +1,43 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  {# SECTION_TOP #}
+  {% include 'partials/content_section.html.twig' with { section: page.header.section_top } %}
+
+  {# GALLERY STRIP #}
+  {% set gallery = page.header.gallery_strip ?? {} %}
+  {% if gallery.enabled is not defined or gallery.enabled %}
+    {% include 'partials/gallery_strip.html.twig' with { gallery: gallery } %}
+  {% endif %}
+
+  {# HELP CARDS SECTION #}
+  {% set help = page.header.help_cards ?? {} %}
+  {% if help.enabled ?? false %}
+    {% if help.items is defined and help.items|length %}
+      {% include 'partials/help_cards.html.twig' with {
+        title:            help.title        ?? null,
+        text:             help.text         ?? null,
+        items:            help.items,
+        background_color: help.background_color|default(null, true)
+      } %}
+    {% endif %}
+  {% endif %}
+
+  {# PARALLAX BANNER #}
+  {% if page.header.parallax_banner is defined %}
+    {% set banner = page.header.parallax_banner %}
+    {% if banner.enabled is not defined or banner.enabled %}
+      {% include 'partials/parallax_banner.html.twig' with {
+        image:         banner.image|default(null),
+        overlay_color: banner.overlay_color|default(null),
+        eyebrow:       banner.eyebrow|default(null),
+        title:         banner.title|default(null),
+        text:          banner.text|default(null),
+        cta_label:     banner.cta.label|default(null),
+        cta_link:      banner.cta.link|default(null),
+        align:         banner.align|default('center')
+      } %}
+    {% endif %}
+  {% endif %}
+
+{% endblock %}
