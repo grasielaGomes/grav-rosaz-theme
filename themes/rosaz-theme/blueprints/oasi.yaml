@@ -32,9 +32,13 @@ form:
         gallery_strip:
           type: tab
           title: Galleria
-          import@:
-            type: partials/gallery
-            context: theme://blueprints
+          fields:
+            header.gallery_strip:
+              type: fieldset
+              title: Galleria
+              import@:
+                type: partials/gallery
+                context: theme://blueprints
 
         help_cards:
           type: tab
@@ -61,9 +65,13 @@ form:
         location_section_tab:
           type: tab
           title: Posizione
-          import@:
-            type: partials/location_section
-            context: theme://blueprints
+          fields:
+            header.location_section:
+              type: fieldset
+              title: Sezione posizione
+              import@:
+                type: partials/location_section
+                context: theme://blueprints
 
         help_cards_contacts:
           type: tab

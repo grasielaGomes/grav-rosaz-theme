@@ -32,9 +32,13 @@ form:
         gallery_strip:
           type: tab
           title: Galleria
-          import@:
-            type: partials/gallery
-            context: theme://blueprints
+          fields:
+            header.gallery_strip:
+              type: fieldset
+              title: Galleria
+              import@:
+                type: partials/gallery
+                context: theme://blueprints
 
         help_cards:
           type: tab

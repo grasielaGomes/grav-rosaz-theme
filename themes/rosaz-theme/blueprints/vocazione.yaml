@@ -43,9 +43,13 @@ form:
         testimonials:
           type: tab
           title: Testimonianza
-          import@:
-            type: partials/testimonials
-            context: theme://blueprints
+          fields:
+            header.testimonials:
+              type: fieldset
+              title: Testimonianza
+              import@:
+                type: partials/testimonials
+                context: theme://blueprints
 
         section_medium_tab:
           type: tab
@@ -61,9 +65,13 @@ form:
         help_cards:
           type: tab
           title: 'Schede'
-          import@:
-            type: partials/help-cards
-            context: theme://blueprints
+          fields:
+            header.help_cards:
+              type: fieldset
+              title: Schede
+              import@:
+                type: partials/help-cards
+                context: theme://blueprints
 
         parallax_bottom:
           type: tab

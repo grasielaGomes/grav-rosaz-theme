@@ -32,9 +32,13 @@ form:
         gallery:
           type: tab
           title: Galleria
-          import@:
-            type: partials/gallery
-            context: theme://blueprints
+          fields:
+            header.gallery_strip:
+              type: fieldset
+              title: Galleria
+              import@:
+                type: partials/gallery
+                context: theme://blueprints
 
         parallax:
           type: tab
@@ -50,9 +54,13 @@ form:
         testimonials:
           type: tab
           title: Testimonianza
-          import@:
-            type: partials/testimonials
-            context: theme://blueprints
+          fields:
+            header.testimonials:
+              type: fieldset
+              title: Testimonianza
+              import@:
+                type: partials/testimonials
+                context: theme://blueprints
 
         section_bottom_tab:
           type: tab

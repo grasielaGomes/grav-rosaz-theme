@@ -1,6 +1,6 @@
 form:
   fields:
-    header.testimonials.enabled:
+    .enabled:
       type: toggle
       label: Abilita sezione
       highlight: 1
@@ -11,19 +11,19 @@ form:
       validate:
         type: bool
 
-    header.testimonials.label:
+    .label:
       type: text
       label: Label superiore
 
-    header.testimonials.title:
+    .title:
       type: text
       label: Titolo
 
-    header.testimonials.subtitle:
+    .subtitle:
       type: textarea
       label: Sottotitolo
 
-    header.testimonials.items:
+    .items:
       type: list
       label: Testimonianze
       style: vertical

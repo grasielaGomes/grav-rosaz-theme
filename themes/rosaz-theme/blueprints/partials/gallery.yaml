@@ -1,6 +1,6 @@
 form:
   fields:
-    header.gallery_strip.enabled:
+    .enabled:
       type: toggle
       label: Abilita galleria
       highlight: 1
@@ -11,12 +11,12 @@ form:
       validate:
         type: bool
 
-    header.gallery_strip.background_color:
+    .background_color:
       type: colorpicker
       label: Colore di sfondo
       default: '#0f172a'
 
-    header.gallery_strip.images:
+    .images:
       type: list
       label: Immagini della galleria
       style: vertical

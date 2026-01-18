@@ -21,6 +21,10 @@ form:
         about_menu_tab:
           type: tab
           title: Menu
-          import@:
-            type: partials/about-menu
-            context: theme://blueprints
+          fields:
+            header.about_menu:
+              type: fieldset
+              title: Menu
+              import@:
+                type: partials/about-menu
+                context: theme://blueprints

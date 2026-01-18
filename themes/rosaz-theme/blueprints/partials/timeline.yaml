@@ -1,6 +1,6 @@
 form:
   fields:
-    header.timeline.enabled:
+    .enabled:
       type: toggle
       label: Abilita linea del tempo
       highlight: 1
@@ -11,20 +11,20 @@ form:
       validate:
         type: bool
 
-    header.timeline.label:
+    .label:
       type: text
       label: Label superiore (opzionale)
 
-    header.timeline.title:
+    .title:
       type: text
       label: Titolo sezione
 
-    header.timeline.subtitle:
+    .subtitle:
       type: textarea
       label: Sottotitolo (opzionale)
       classes: long
 
-    header.timeline.items:
+    .items:
       type: list
       label: Eventi nella linea del tempo
       style: vertical
