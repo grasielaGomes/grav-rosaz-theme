@@ -22,6 +22,10 @@ form:
           type: tab
           title: Hero
           fields:
+            header.hero_background_color:
+              type: colorpicker
+              label: 'Colore di sfondo hero'
+              default: '#e5e7eb'
             header.hero_slides:
               type: list
               label: 'Slide hero'
