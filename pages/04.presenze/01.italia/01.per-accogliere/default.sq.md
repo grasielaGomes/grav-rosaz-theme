@@ -1,12 +1,12 @@
 ---
-title: 'Për mikpritje'
-menu: 'Për mikpritje'
-template: chi-siamo
+title: 'Per accogliere'
+menu: 'Per accogliere'
+template: page-menu
 about_menu:
   enabled: true
   eyebrow: 'Prani në Itali'
   title: 'Shtëpi dhe komunitete që mikpresin'
-  subtitle: "Zbulo realitetet tona të dedikuara mikpritjes dhe kohës së tërheqjes."
+  subtitle: 'Zbulo realitetet tona të dedikuara mikpritjes dhe kohës së tërheqjes.'
   items:
     - icon: 'oasi.png'
       title: 'Oasi Santa Chiara'

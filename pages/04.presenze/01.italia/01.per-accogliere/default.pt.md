@@ -1,12 +1,12 @@
 ---
-title: 'Para acolher'
-menu: 'Para acolher'
-template: chi-siamo
+title: 'Per accogliere'
+menu: 'Per accogliere'
+template: page-menu
 about_menu:
   enabled: true
   eyebrow: 'Presenças na Itália'
   title: 'Casas e comunidades que acolhem'
-  subtitle: "Descubra nossas realidades dedicadas à hospitalidade e ao tempo de retiro."
+  subtitle: 'Descubra nossas realidades dedicadas à hospitalidade e ao tempo de retiro.'
   items:
     - icon: 'oasi.png'
       title: 'Oasi Santa Chiara'
