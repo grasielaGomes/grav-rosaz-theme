@@ -39,7 +39,10 @@ help_cards:
     La missione in Brasile nasce da un sogno condiviso tra la Chiesa di Susa e la Diocesi di Caxias:
     portare il Vangelo là dove la povertà materiale e spirituale è più forte. Dalla partenza
     delle prime tre sorelle, nel 1983, ha preso forma una presenza che oggi abbraccia
-    bambini, adolescenti, famiglie e malati, con uno stile profondamente francescano.
+    bambini, adolescenti, famiglie e malati, con uno stile profondamente francescano,
+    in rete con la Chiesa locale e con tanti laici impegnati, perché il Vangelo possa
+    prendere carne nei piccoli gesti quotidiani.
+
   items:
     - icon: ''
       title: 'L’inizio di un sogno (1981–1983)'
@@ -58,6 +61,8 @@ help_cards:
         ma veri semi di futuro. La “carità materna” delle sorelle accoglie bambini dai 3 ai 5 anni,
         offrendo un ambiente educativo capace di contrastare le condizioni di povertà
         e di trasmettere valori umani e cristiani secondo l’esempio del Beato Edoardo Rosaz.
+        In questo modo si compie il primo passo per spezzare il ciclo della povertà
+        e aprire strade nuove di libertà.
 
     - icon: ''
       title: 'I giovani – Progetto San Francesco'
@@ -66,7 +71,8 @@ help_cards:
         al rischio del lavoro minorile, della delinquenza e dell’abbandono scolastico.
         Attraverso doposcuola, teatro, musica, attività sportive e perfino la cura dell’orto,
         le sorelle e i laici collaboratori accompagnano i giovani in un percorso di crescita
-        personale, responsabilità e cittadinanza attiva.
+        personale, responsabilità e cittadinanza attiva, perché possano sentirsi visti,
+        valorizzati e sostenuti in una comunità che crede in loro.
 
     - icon: ''
       title: 'La cura – Pastorale della salute'
@@ -74,7 +80,8 @@ help_cards:
         La missione continua anche tra i letti d’ospedale, dove una sorella opera come infermiera
         presso l’Ospedale “Gentil Filho”. La Pastorale della salute porta il carisma francescano
         dentro le corsie, là dove la sofferenza incontra la speranza: una carezza, una parola,
-        una presenza orante che ricorda ad ogni persona la propria infinita dignità.
+        una presenza orante che ricorda ad ogni persona la propria infinita dignità
+        e rende visibile il volto misericordioso di Dio nel tempo della prova.
 
 testimonials:
   enabled: true
@@ -92,36 +99,41 @@ testimonials:
       avatar: 'avatar.png'
 
 section_bottom:
-  id: stile-missione-caxias
+  id: giornata-rosaziana
   enabled: true
   background_color: '#ffffff'
-  eyebrow: 'Uno stile di missione'
-  title: 'Un Vangelo che educa, accompagna e cura'
+  eyebrow: 'La Giornata Rosaziana'
+  title: 'Investire nel futuro del Brasile'
   text: >
-    A Caxias, la presenza delle Suore Francescane Missionarie di Susa è un intreccio di educazione,
-    prossimità e cura. Dall’infanzia alla giovinezza, fino ai malati, la missione desidera
-    “dare vita alla vita” in ogni situazione, secondo lo stile semplice e concreto del Beato Rosaz.
-    Attraverso il lavoro in rete con la Chiesa locale e con tanti laici impegnati, il Vangelo
-    prende carne nei piccoli gesti quotidiani.
+    Nata nel 2012 su iniziativa della Delegazione delle Suore Francescane Missionarie di Susa
+    in Brasile, la Giornata Rosaziana è un appuntamento annuale che si svolge a Caxias (MA) nel mese di agosto.
+    Fondata sulla convinzione del Beato Rosaz che "dall'educazione della gioventù dipende
+    il futuro della società", questa giornata è diventata una priorità pastorale per
+    l’intera comunità, un modo concreto per scommettere sui giovani e sul futuro del Brasile.
+
   highlights:
-    - label: 'Seminare futuro nell’infanzia'
+    - label: 'Identità e missione'
       text: >
-        Offrire ai bambini un ambiente educativo sicuro, fatto di gioco, apprendimento e affetto,
-        è il primo passo per spezzare il ciclo della povertà e aprire strade nuove di libertà.
+        La Giornata Rosaziana è l’espressione viva del carisma rosaziano vissuto insieme ai giovani:
+        un tempo forte di annuncio, ascolto e discernimento vocazionale. Pur partendo dalla
+        parrocchia di San Benedetto, supera i confini parrocchiali e cittadini, accogliendo
+        ragazzi e ragazze provenienti da diverse realtà ecclesiali (Rinnovamento Carismatico,
+        Cammino Neocatecumenale, accoliti e giovani senza una precisa appartenenza pastorale).
 
-    - label: 'Accompagnare gli adolescenti'
+    - label: 'Un’esperienza integrale'
       text: >
-        Con il Progetto San Francesco, i giovani trovano uno spazio dove sentirsi visti, valorizzati
-        e responsabilizzati, lontano dai pericoli della strada e vicini a una comunità che crede in loro.
+        La giornata si articola in momenti di accoglienza e preghiera, incontri formativi
+        su temi attuali in sintonia con l’insegnamento ecclesiale e sociale, celebrazione
+        eucaristica, riscoperta della vita del Beato Rosaz, pranzo condiviso, danze, giochi
+        sportivi e una verifica finale. È un’esperienza integrale che unisce fede, formazione
+        e fraternità, aiutando i giovani a scoprire la propria vocazione e il proprio posto
+        nella Chiesa e nella società.
 
-    - label: 'Essere Chiesa accanto ai malati'
+    - label: 'Una proposta sempre nuova'
       text: >
-        La Pastorale della salute rende visibile il volto misericordioso di Dio tra i letti d’ospedale,
-        portando consolazione, ascolto e preghiera a chi vive il tempo della prova.
-
-    - label: 'Camminare con la Chiesa locale'
-      text: >
-        La missione di Caxias non è un’azione isolata, ma parte della vita della Diocesi:
-        in dialogo costante con parroci, operatori pastorali e laici, per costruire insieme
-        percorsi di giustizia, fraternità e pace.
+        Ogni anno la sfida è offrire una proposta sempre nuova, capace di parlare al cuore
+        delle nuove generazioni. La Giornata Rosaziana continua così a essere una “novità”
+        che illumina il cammino dei giovani, li rende protagonisti e li invita a diventare
+        costruttori di giustizia, fraternità e pace, secondo lo stile semplice e concreto
+        del Beato Edoardo Rosaz.
 ---
