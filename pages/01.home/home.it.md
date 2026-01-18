@@ -1,6 +1,7 @@
 ---
 title: Inizio
 template: home
+hero_background_color: '#F1E7D9'
 hero_slides:
   - tag: 'Beato Edoardo Rosaz'
     title: 'Un santo tra noi'
