@@ -58,11 +58,7 @@ testimonials:
     - quote: 'La comunità Rosaz è stata un segno concreto della tenerezza di Dio nel nostro quartiere. La loro presenza costante ha portato speranza e rinnovamento a molte famiglie. Sempre presenti, semplici e profondamente umane, le suore sono state veri ponti di amore e solidarietà, aiutandoci ad affrontare le sfide con fede e coraggio.'
       name: 'Maria Helena'
       role: 'Volontaria a Susa'
-      avatar: avatar-maria.png
-    - quote: 'La presenza delle suore ha cambiato profondamente la dinamica della nostra parrocchia, soprattutto nel lavoro con i giovani. La loro dedizione e vicinanza hanno portato una nuova energia alla pastorale, rendendola più accogliente, partecipativa e piena di vita. Oggi vediamo giovani più coinvolti, famiglie più unite e una comunità che vive davvero il Vangelo nella quotidianità.'
-      name: 'Pe. Ricardo'
-      role: 'Parroco, diocesi di Torino'
-      avatar: avatar-ricardo.png
+      avatar: avatar.png
 events_section:
   enabled: true
   eyebrow: 'PRONTI A CAMMINARE INSIEME'
