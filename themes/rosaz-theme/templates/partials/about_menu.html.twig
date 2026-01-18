@@ -1,6 +1,7 @@
 
 {% set section = page.header.about_menu ?? {} %}
-{% if section.enabled and section.items is iterable and section.items|length %}
+{% set enabled = section.enabled is not defined or section.enabled %}
+{% if enabled and section.items is iterable and section.items|length %}
   {% set items = section.items %}
   <section class="py-16">
     <div class="max-w-6xl mx-auto px-4">
@@ -31,8 +32,22 @@
           {% set icon_name = item.icon ?? null %}
           {% set icon_url = icon_name ? page.media[icon_name].url|default('') : '' %}
 
+          {% set item_link_raw = (item.link ?? '')|trim %}
+          {% set is_external =
+            item_link_raw starts with 'http' or
+            item_link_raw starts with 'mailto:' or
+            item_link_raw starts with 'tel:'
+          %}
+          {% set item_path =
+            is_external
+              ? item_link_raw
+              : (item_link_raw starts with '/' ? item_link_raw : '/' ~ item_link_raw)
+          %}
+          {% set item_href = item_link_raw ? (is_external ? item_path : (base_url_relative ~ item_path)) : '#' %}
+
           <a
-            href="{{ item.link|default('#') }}"
+            href="{{ item_href }}"
+            {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
             class="group flex flex-col items-center text-center gap-4 max-w-[220px]"
           >
             <div class="relative">

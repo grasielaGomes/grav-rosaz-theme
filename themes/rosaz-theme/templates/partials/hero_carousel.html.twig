@@ -1,5 +1,9 @@
 {% set slides = slides ?? [] %} {% if slides|length %}
-<section class="relative bg-neutral-200 overflow-hidden hidden md:block">
+{% set bg_color = page.header.hero_background_color|default('#e5e7eb') %} {# #e5e7eb ≈ bg-neutral-200 #}
+<section
+  class="relative overflow-hidden hidden md:block"
+  style="background-color: {{ bg_color }};"
+>
   <div
     class="max-w-6xl mx-auto px-4 py-16 md:py-20 relative"
     data-hero-carousel
@@ -35,6 +39,10 @@
           {{ slide.subtitle }}
         </p>
         {% endif %}
+
+        {% set primary_link_raw = (slide.primary_cta_link ?? '')|trim %}
+        {% set secondary_link_raw = (slide.secondary_cta_link ?? '')|trim %}
+
         {% set primary_is_external =
           slide.primary_cta_link starts with 'http' or
           slide.primary_cta_link starts with 'mailto:' or
@@ -45,22 +53,43 @@
           slide.secondary_cta_link starts with 'mailto:' or
           slide.secondary_cta_link starts with 'tel:'
         %}
+
+        {# Normalize internal paths: ensure they start with "/" #}
+        {% set primary_path =
+          primary_is_external
+            ? primary_link_raw
+            : (primary_link_raw starts with '/' ? primary_link_raw : '/' ~ primary_link_raw)
+        %}
+
+        {% set secondary_path =
+          secondary_is_external
+            ? secondary_link_raw
+            : (secondary_link_raw starts with '/' ? secondary_link_raw : '/' ~ secondary_link_raw)
+        %}
+
+        {# Build final href:
+          - external: keep as-is
+          - internal: prefix with base_url_relative (adds subfolder when needed)
+        #}
+        {% set primary_href = primary_is_external ? primary_path : (base_url_relative ~ primary_path) %}
+        {% set secondary_href = secondary_is_external ? secondary_path : (base_url_relative ~ secondary_path) %}
+
         <div
           data-hero-cta
           class="flex flex-wrap items-center gap-3 animate-hero-cta"
         >
-          {% if slide.primary_cta_link and slide.primary_cta_label %}
+          {% if primary_link_raw and slide.primary_cta_label %}
           <a
-            href="{{ slide.primary_cta_link }}"
+            href="{{ primary_href }}"
             {% if primary_is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
             class="inline-flex items-center justify-center rounded-full bg-orange-500 px-6 py-2.5 text-sm font-semibold text-neutral-50 shadow-sm hover:bg-orange-600 transition-colors duration-200"
           >
             {{ slide.primary_cta_label }}
           </a>
-          {% endif %} {% if slide.secondary_cta_link and
+          {% endif %} {% if secondary_link_raw and
           slide.secondary_cta_label %}
           <a
-            href="{{ slide.secondary_cta_link }}"
+            href="{{ secondary_href }}"
             {% if secondary_is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
             class="inline-flex items-center justify-center rounded-full border border-neutral-300 px-6 py-2.5 text-sm font-semibold text-neutral-800 hover:border-orange-400 hover:text-orange-500 transition-colors duration-200"
           >

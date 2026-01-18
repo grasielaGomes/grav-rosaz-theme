@@ -1,8 +1,9 @@
 {% set t = testimonials ?? page.header.testimonials ?? {} %}
+{% set enabled = t.enabled is not defined or t.enabled %}
 {% set all_items = (t.items ?? []) %}
 {% set total = all_items|length %}
 
-{% if total > 0 %}
+{% if enabled and total > 0 %}
   {# Pick one testimonial based on current month (1–12) #}
   {% set month_number = "now"|date('n') %} {# 1 = January, 12 = December #}
   {% set index = (month_number - 1) % total %}

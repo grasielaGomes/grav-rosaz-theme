@@ -15,11 +15,12 @@
 #}
 
 {% set config = events_section ?? {} %}
+{% set enabled = config.enabled is not defined or config.enabled %}
 {% set eyebrow = config.eyebrow ?? '' %}
 {% set title   = config.title ?? '' %}
 {% set items   = config.items ?? [] %}
 
-{% if items|length %}
+{% if enabled and items|length %}
 <section class="bg-neutral-50 px-8 py-16 md:py-20">
   <div class="max-w-6xl mx-auto px-4">
     {# Section header #}

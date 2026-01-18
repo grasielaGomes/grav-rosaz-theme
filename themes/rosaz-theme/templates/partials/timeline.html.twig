@@ -9,9 +9,10 @@
 #}
 
 {% set timeline = timeline is defined and timeline ? timeline : (page.header.timeline ?? {}) %}
+{% set enabled = timeline.enabled is not defined or timeline.enabled %}
 {% set items = timeline.items ?? [] %}
 
-{% if timeline and items is iterable and items|length %}
+{% if enabled and items is iterable and items|length %}
   <section class="py-12 px-12 md:py-20 md:px-0 bg-neutral-100">
    <div class="max-w-6xl mx-auto px-4">
 

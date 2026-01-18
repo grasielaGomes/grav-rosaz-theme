@@ -38,17 +38,25 @@
         {% endif %}
 
         {% set button_label = cta.button_label ?? '' %}
-        {% set button_url = cta.button_url ?? '#' %}
-        {% set is_external =
-          button_url starts with 'http' or
-          button_url starts with 'mailto:' or
-          button_url starts with 'tel:'
+        {% set button_url_raw = (cta.button_url ?? '')|trim %}
+        {% set button_is_external =
+          button_url_raw starts with 'http' or
+          button_url_raw starts with 'mailto:' or
+          button_url_raw starts with 'tel:'
+        %}
+        {% set button_path =
+          button_is_external
+            ? button_url_raw
+            : (button_url_raw starts with '/' ? button_url_raw : '/' ~ button_url_raw)
+        %}
+        {% set button_href =
+          button_url_raw ? (button_is_external ? button_path : (base_url_relative ~ button_path)) : '#'
         %}
 
         {% if button_label %}
           <a
-            href="{{ button_url }}"
-            {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
+            href="{{ button_href }}"
+            {% if button_is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
             class="inline-flex items-center gap-3 rounded-full bg-orange-500 px-7 py-2 text-sm font-semibold text-white shadow-md hover:bg-orange-600 transition-colors duration-200"
           >
             <span
@@ -77,9 +85,24 @@
             {% if col.items %}
               <ul class="space-y-2 text-neutral-300">
                 {% for link in col.items %}
+                  {% set link_url_raw = (link.url ?? '')|trim %}
+                  {% set link_is_external =
+                    link_url_raw starts with 'http' or
+                    link_url_raw starts with 'mailto:' or
+                    link_url_raw starts with 'tel:'
+                  %}
+                  {% set link_path =
+                    link_is_external
+                      ? link_url_raw
+                      : (link_url_raw starts with '/' ? link_url_raw : '/' ~ link_url_raw)
+                  %}
+                  {% set link_href =
+                    link_url_raw ? (link_is_external ? link_path : (base_url_relative ~ link_path)) : '#'
+                  %}
                   <li>
                     <a
-                      href="{{ link.url ?? '#' }}"
+                      href="{{ link_href }}"
+                      {% if link_is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
                       class="hover:text-white transition-colors duration-150"
                     >
                       {{ link.label }}

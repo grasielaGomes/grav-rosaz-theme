@@ -76,17 +76,23 @@
 
           {% set card_title        = item.title ?? '' %}
           {% set card_text         = item.text ?? '' %}
-          {% set card_link         = item.link ?? null %}
+          {% set card_link_raw     = (item.link ?? '')|trim %}
           {% set card_link_label   = item.link_label ?? null %}
           {% set card_hover_bg     = item.hover_bg_color ?? section_hover_bg ?? '#f9f4f0' %}
           {% set card_hover_accent = item.hover_accent_color ?? section_hover_accent ?? '#ea580c' %}
 
           {# Determine if the link should open in a new tab #}
           {% set is_external =
-            card_link starts with 'http' or
-            card_link starts with 'mailto:' or
-            card_link starts with 'tel:'
+            card_link_raw starts with 'http' or
+            card_link_raw starts with 'mailto:' or
+            card_link_raw starts with 'tel:'
           %}
+          {% set card_path =
+            is_external
+              ? card_link_raw
+              : (card_link_raw starts with '/' ? card_link_raw : '/' ~ card_link_raw)
+          %}
+          {% set card_href = is_external ? card_path : (base_url_relative ~ card_path) %}
 
           {# Default link label (fallback to translation key) #}
           {% set default_link_label = 'ROSAZ.READ_MORE'|t|default('Saiba mais') %}
@@ -116,9 +122,9 @@
               {% endif %}
             </div>
 
-            {% if card_link %}
+            {% if card_link_raw %}
               <a
-                href="{{ card_link }}"
+                href="{{ card_href }}"
                 {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
                 class="mt-6 inline-flex items-center text-xs font-semibold tracking-[0.18em] uppercase text-neutral-500 group-hover:text-[color:var(--card-hover-accent)]"
               >
